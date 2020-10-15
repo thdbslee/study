@@ -5,7 +5,7 @@
 <%@ taglib prefix="spring"	uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fn"		uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<%@ include file="../bootstrap/Simple.jsp" %>
+<%@ include file="../bootstrap/admin.jsp" %>
 
 
 
