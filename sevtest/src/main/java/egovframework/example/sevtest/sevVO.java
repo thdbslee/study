@@ -1,49 +1,58 @@
 package egovframework.example.sevtest;
 
 public class sevVO {
-	int inx;
-	String name;
-	String level;
-	String phone;
-	String age;
-	String stwork;
+	private int INX;
+	private String[] INXS; //삭제할때 여러개 할수있도록
+	private String NAME;
+	private String PHONE;
+	private String LEVEL;
+	private String AGE;
+	private String STWORK;
+	public int getINX() {
+		return INX;
+	}
+	public void setINX(int iNX) {
+		INX = iNX;
+	}
+	public String getNAME() {
+		return NAME;
+	}
 	
-	public int getInx() {
-		return inx;
+	public String[] getINXS() {
+		return INXS;
 	}
-	public void setInx(int inx) {
-		this.inx = inx;
+	public void setINXS(String[] iNXS) {
+		INXS = iNXS;
 	}
-	public String getName() {
-		return name;
+	public void setNAME(String nAME) {
+		NAME = nAME;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public String getPHONE() {
+		return PHONE;
 	}
-	public String getLevel() {
-		return level;
+	public void setPHONE(String pHONE) {
+		PHONE = pHONE;
 	}
-	public void setLevel(String level) {
-		this.level = level;
+	public String getLEVEL() {
+		return LEVEL;
 	}
-	public String getPhone() {
-		return phone;
+	public void setLEVEL(String lEVEL) {
+		LEVEL = lEVEL;
 	}
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public String getAGE() {
+		return AGE;
 	}
-	public String getAge() {
-		return age;
+	public void setAGE(String aGE) {
+		AGE = aGE;
 	}
-	public void setAge(String age) {
-		this.age = age;
+	public String getSTWORK() {
+		return STWORK;
 	}
-	public String getStwork() {
-		return stwork;
+	public void setSTWORK(String sTWORK) {
+		STWORK = sTWORK;
 	}
-	public void setStwork(String stwork) {
-		this.stwork = stwork;
-	}
+	
+	
 	
 	
 }

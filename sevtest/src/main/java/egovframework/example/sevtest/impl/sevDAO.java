@@ -15,4 +15,23 @@ public class sevDAO  extends EgovAbstractDAO{
 		return (List<sevVO>) list("sevDAO.sevList",vo);
 	}
 
+	public boolean sevInsert(sevVO vo) throws Exception{
+		boolean bol = false;
+		bol = update("sevDAO.sevInsert",vo) > 0 ? true : false;
+		System.out.println("DAO BOL ==>"+bol);
+		return bol;
+	}
+	public sevVO sevSelect(sevVO vo)throws Exception{
+		return (sevVO) select("sevDAO.sevSelect",vo);
+	}
+	public boolean sevUpdate(sevVO vo)throws Exception{
+		boolean bol = false;
+		bol = update("sevDAO.sevUpdate",vo) > 0 ? true : false;
+		return bol;
+	}
+	public boolean sevDelete(sevVO vo)throws Exception{
+		boolean bol = false;
+		bol = update("sevDAO.sevDelete",vo) > 0 ? true : false;
+		return bol;
+	}
 }

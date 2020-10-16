@@ -19,7 +19,7 @@
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+            <a class="navbar-brand" href="/mainTest.do">HOME</a>
             <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -123,9 +123,9 @@
                         <div class="row">
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-primary text-white mb-4">
-                                    <div class="card-body">Primary Card</div>
+                                    <div class="card-body">직원관리</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
+                                        <a class="small text-white stretched-link" href="/sev_manage.do">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
@@ -181,7 +181,7 @@
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table mr-1"></i>
-                                직원관리
+                                직원리스트
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -207,13 +207,15 @@
                                             </tr>
                                         </tfoot>
                                         <tbody>
-                                            <tr>
+                                         
                                    				<c:forEach var="list" items="${list}">
-                                   					<td align="center">${list.name}</td>
-                                   					<td align="center">${list.level}</td>
-                                   					<td align="center">${list.phone }</td>
-                                   					<td align="center">${list.age}</td>
-                                   					<td align="center">${list.stwork}</td>
+                                   					<tr>
+                                   					<td align="center">${list.NAME}</td>
+                                   					<td align="center">${list.LEVEL}</td>
+                                   					<td align="center">${list.PHONE }</td>
+                                   					<td align="center">${list.AGE}</td>
+                                   					<td align="center">${list.STWORK}</td>
+                                   					</tr>
                                    				</c:forEach>
                                             </tr>
                                         </tbody>
@@ -239,7 +241,7 @@
         </div>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="resources/admin/js/scripts.js"></script>
+        <script src="resources/admin/dist/js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
         <script src="resources/admin/dist/assets/demo/chart-area-demo.js"></script>
         <script src="resources/admin/dist/assets/demo/chart-bar-demo.js"></script>
