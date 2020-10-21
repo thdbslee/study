@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="board">
+	    <typeAlias alias="boardVO" type="egovframework.example.sevtest.board.boardVO"/>
+		<typeAlias alias="sevVO" type="egovframework.example.sevtest.sevVO"/>
+		<typeAlias alias="cVO" type="egovframework.example.sevtest.board.commentVO"/>
+		
+<select id="boardDAO.boardList" parameterClass="boardVO" resultClass="boardVO">
+/*boardDAO.boardList*/
+	SELECT INX, TITLE, CONTENT FROM BOARD
+</select>
+<select id="boardDAO.boardSelect" parameterClass="boardVO" resultClass="boardVO">
+/*boardDAO.boardSelect*/
+	SELECT * FROM BOARD 
+	WHERE INX =#INX#
+</select>
+<!--댓글관리-->
+<select id="boardDAO.commentList" parameterClass="cVO" resultClass="cVO">
+/*boardDAO.commentList*/
+	SELECT A.ID,A.COMMENT,A.B_INX ,B.INX
+	FROM COMMENT A
+	LEFT JOIN BOARD B
+	ON A.B_INX = B.INX
+	WHERE B.INX=#INX#
+</select>
+<update id="boardDAO.commentInsert" parameterClass="cVO">
+/*boardDAO.commentInsert*/
+	INSERT INTO COMMENT(
+		COMMENT
+		,ID
+		,B_INX
+	)VALUES(
+		#COMMENT#
+		,#ID#
+		,#B_INX#
+	)
+</update>
+</sqlMap>
