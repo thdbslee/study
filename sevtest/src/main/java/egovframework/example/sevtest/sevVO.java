@@ -8,6 +8,43 @@ public class sevVO {
 	private String LEVEL;
 	private String AGE;
 	private String STWORK;
+	private String ID;
+	private String PASSWD; 
+	private String LOCK_YN;
+	private int FAIL_COUNT;
+	private String AUTH_CODE;
+	
+	
+	public String getID() {
+		return ID;
+	}
+	public void setID(String iD) {
+		ID = iD;
+	}
+	public String getPASSWD() {
+		return PASSWD;
+	}
+	public void setPASSWD(String pASSWD) {
+		PASSWD = pASSWD;
+	}
+	public String getLOCK_YN() {
+		return LOCK_YN;
+	}
+	public void setLOCK_YN(String lOCK_YN) {
+		LOCK_YN = lOCK_YN;
+	}
+	public int getFAIL_COUNT() {
+		return FAIL_COUNT;
+	}
+	public void setFAIL_COUNT(int fAIL_COUNT) {
+		FAIL_COUNT = fAIL_COUNT;
+	}
+	public String getAUTH_CODE() {
+		return AUTH_CODE;
+	}
+	public void setAUTH_CODE(String aUTH_CODE) {
+		AUTH_CODE = aUTH_CODE;
+	}
 	public int getINX() {
 		return INX;
 	}

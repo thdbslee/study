@@ -3,7 +3,27 @@
 
 <sqlMap namespace="sevTest">
 	<typeAlias  alias="sevVO" type="egovframework.example.sevtest.sevVO"/>
-	
+	<select id="sevDAO.UserLogin" parameterClass="sevVO" resultClass="sevVO">
+    /*sevDAO.userLogin*/    
+			SELECT * FROM SEV WHERE ID=#ID# 
+			AND PASSWD=password(#PASSWD#)
+		
+	</select>
+	<select id="sevDAO.userFailInfo" parameterClass="sevVO" resultClass="sevVO">
+       
+			SELECT * FROM SEV	WHERE ID=#ID#
+		
+	</select>
+	<update id="sevDAO.UserFailCountUpdate" parameterClass="sevVO">
+			UPDATE SEV SET 
+				FAIL_COUNT = FAIL_COUNT+1
+			WHERE ID = #ID#
+	</update>
+	<update id="sevDAO.UserLock" parameterClass="sevVO">
+			UPDATE SEV SET 
+				LOCK_YN ='Y'
+			WHERE ID = #ID#
+	</update>
 	<select id="sevDAO.sevList" parameterClass="sevVO" resultClass="sevVO">
 	/*sevDAO.sevList*/
 		SELECT * FROM SEV ORDER BY NAME

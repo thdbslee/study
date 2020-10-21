@@ -9,7 +9,27 @@ import egovframework.rte.psl.dataaccess.EgovAbstractDAO;
 
 @Repository("sevDAO")
 public class sevDAO  extends EgovAbstractDAO{
+	//로그인
+	public sevVO UserLogin(sevVO vo) throws Exception{
+		// TODO Auto-generated method stub
+		return (sevVO) select("sevDAO.UserLogin",vo);
+	}
 
+	public sevVO userFailInfo(sevVO vo) throws Exception{
+		// TODO Auto-generated method stub
+		return (sevVO)select("sevDAO.userFailInfo",vo);
+	}
+
+	public void UserFailCountUpdate(sevVO vo)throws Exception {
+		// TODO Auto-generated method stub
+		update("sevDAO.UserFailCountUpdate",vo);
+	}
+
+	public void UserLock(sevVO vo)throws Exception {
+		// TODO Auto-generated method stub
+		update("sevDAO.UserLock",vo);
+	}
+	//사용자
 	public List<sevVO> sevList(sevVO vo) throws Exception {
 		// TODO Auto-generated method stub
 		return (List<sevVO>) list("sevDAO.sevList",vo);
@@ -34,4 +54,5 @@ public class sevDAO  extends EgovAbstractDAO{
 		bol = update("sevDAO.sevDelete",vo) > 0 ? true : false;
 		return bol;
 	}
+
 }
