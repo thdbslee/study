@@ -4,6 +4,9 @@ function fn_onLoad(){
 function fn_setDefault(){
 	
 }
+function fn_cmdelete(INX){
+	
+}
 function fn_add(){
 	
 

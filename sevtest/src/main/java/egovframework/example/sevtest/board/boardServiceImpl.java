@@ -20,6 +20,15 @@ public class boardServiceImpl extends EgovAbstractServiceImpl implements boardSe
 	public boardVO boardSelect(boardVO vo)throws Exception{
 		return boardDAO.boardSelect(vo);
 	}
+	@Override
+	public boolean boardInsert(boardVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return boardDAO.boardInsert(vo);
+	}
+	@Override
+	public boolean boardDelete(boardVO vo)throws Exception{
+		return boardDAO.boardDelete(vo);
+	}
 	//댓글
 	@Override
 	public List<commentVO> commentList(commentVO cmvo)throws Exception{
@@ -29,4 +38,5 @@ public class boardServiceImpl extends EgovAbstractServiceImpl implements boardSe
 	public boolean commentInsert(commentVO cmvo)throws Exception{
 		return boardDAO.commentInsert(cmvo);
 	}
+
 }

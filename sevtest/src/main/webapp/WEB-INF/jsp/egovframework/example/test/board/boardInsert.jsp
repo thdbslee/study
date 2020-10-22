@@ -11,27 +11,30 @@
 <head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="/js/board/boardDetail.js" ></script>
  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
  <link rel="stylesheet" href="/resources/demos/style.css">
  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+ <script type="text/javascript" src="/js/board/boardInsert.js" ></script>
 </head>
 <title>게시판 등록 </title>
 <body>
 	<div>
 		<form id="frm" name="frm">
-		<input type="hidden" id="INX" name="INX" value="${boardvo.INX}"> 
 			<table class="simple_table">
 				<tbody>
 					<h4>게시판 등록</h4>
+				<tr>
+					<th>작성자</th>
+					<td><input type="hidden" id="ID" name="ID" value="${login.ID}" readOnly>${login.ID}</td>
+				</tr>
 				<tr>
 					<th scope="row">제목</th>
 					<td><input type="text" id="TITLE" name="TITLE"></td>
 				</tr>	
 				<tr> 
 					<th>내용</th>
-					<td><textarea rows="5" cols="30" name="CONTENT"></textarea>
+					<td><textarea rows="5" cols="30" name="CONTENT" id="CONTENT"></textarea>
 				</tr>
 				<tr>
 					<th>첨부파일</th>

@@ -37,7 +37,7 @@
 			</table>
 		<h5>댓글</h5>
 		<table class="simple_table">
-		<input type="hidden" id="B_INX" name="B_INX" value="${boardvo.INX}">
+		<input type="text" id="B_INX" name="B_INX" value="${boardvo.INX}">게시물 번호
 		<input type="hidden" id="ID" name="ID" value="${sevvo.ID}">
 			<tbody>
 				<c:forEach var="cmlist" items="${cmlist}">
@@ -46,6 +46,9 @@
 						<td style="width:20px;">${cmlist.ID}</td>
 						<th style="width:20px;">댓글</th>
 						<td>${cmlist.COMMENT}</td>
+						<th style="width:10px">
+							<a class="button" href="javascript:fn_cmdelete(${cmlist.INX})">삭제</a>
+						</th>
 					</tr>
 				</c:forEach>
 			</tbody>

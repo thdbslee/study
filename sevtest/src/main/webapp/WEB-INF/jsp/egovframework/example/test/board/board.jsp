@@ -4,19 +4,22 @@
 <%@ taglib prefix="ui"		uri="http://egovframework.gov/ctl/ui"%>
 <%@ taglib prefix="spring"	uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fn"		uri="http://java.sun.com/jsp/jstl/functions" %>
-<script type="text/javascript" src="/js/board/board.js" ></script> 
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+ <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+ <link rel="stylesheet" href="/resources/admin/dist/css/style.css">
+ <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+ <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
         <title>게시판</title>
         <link href="resources/admin/dist/css/styles.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="/js/board/board.js" ></script> 
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -130,14 +133,14 @@
                                     <table class="table table-bordered" id="dataTable" >
                                     <div>
                                     	<a class="button" href="javascript:fn_add();">등록</a>
-                                    	<a class="button" href="javascript:fn_edit()">수정</a>
-                                    	<a class="button" href="javascript:fn_delete()">삭제</a>
+                                    	<a class="button" href="javascript:fn_edit();">수정</a>
+                                    	<a class="button" href="javascript:fn_delete();">삭제</a>
                                     </div>
                                       	<thead>
                                       		<tr>
                                       			<th style="width:10%;"><input type="checkbox" id="all_check" name="all_check"></th>
                                       			<th>title</th>
-                                      			
+                                      			<th>id</th>
                                       		</tr>
                                       	</thead>
                                       		<tbody>
@@ -146,7 +149,7 @@
                                       				<td><input type="checkbox" id="INX_CHK" name="INX_CHK" value="${list.INX}"></td>
                                       				<td style="cursor: pointer;" onMouseOver="this.style.backgroundColor='#F0F1F3'" onMouseOut="this.style.backgroundColor='#FFFFFF'" onclick="javascript:fn_detail('${list.INX}')">
                                       				${list.TITLE}</td>
-                                      				
+                                      				<td>${list.ID}</td>
                                       				</tr>
                                       			</c:forEach>
                                       		</tbody>

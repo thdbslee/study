@@ -26,4 +26,16 @@ public class boardDAO extends EgovAbstractDAO{
 		bol = update("boardDAO.commentInsert",cmvo) > 0 ? true : false;
 		return bol;
 	}
+
+	public boolean boardInsert(boardVO vo)throws Exception {
+		boolean bol = false;
+		bol =update("boardDAO.boardInsert",vo)>0 ? true: false;
+		System.out.println("boardInsertDAO->"+bol);
+		return bol;
+	}
+	public boolean boardDelete(boardVO vo)throws Exception{
+		boolean bol = false;
+		bol = update("boardDAO.boardDelete",vo)>0?true:false;
+		return bol;
+	}
 }

@@ -183,6 +183,7 @@ public class sevController {
 	@RequestMapping(value="/workDelete.do",method=RequestMethod.POST)
 	public String workDelete(@ModelAttribute("vo")sevVO vo,HttpServletRequest request,ModelMap model)throws Exception{
 		vo.setINXS(request.getParameterValues("inx_check"));
+		
 		System.out.println(ToStringBuilder.reflectionToString(vo));
 		if(sevService.sevDelete(vo)) {
 			return "true";

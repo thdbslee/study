@@ -7,17 +7,37 @@
 		
 <select id="boardDAO.boardList" parameterClass="boardVO" resultClass="boardVO">
 /*boardDAO.boardList*/
-	SELECT INX, TITLE, CONTENT FROM NOTICE
+	SELECT INX, TITLE, CONTENT,ID FROM NOTICE
 </select>
 <select id="boardDAO.boardSelect" parameterClass="boardVO" resultClass="boardVO">
 /*boardDAO.boardSelect*/
 	SELECT * FROM NOTICE 
 	WHERE INX =#INX#
 </select>
+<update id="boardDAO.boardInsert" parameterClass="boardVO">
+/*boardDAO.boardInsert*/
+	INSERT INTO NOTICE(
+		TITLE
+		,CONTENT
+		,ID
+	)VALUES(
+		#TITLE#
+		,#CONTENT#
+		,#ID#
+	)
+</update>
+<update id="boardDAO.boardDelete" parameterClass="boardVO">
+	/*boardDAO.boardDelete*/
+		DELETE FROM NOTICE 
+		WHERE INX
+		<iterate prepend="IN" open="(" close=")" conjunction ="," property="INXS">
+			#INXS[]#
+		</iterate>
+</update>
 <!--댓글관리-->
 <select id="boardDAO.commentList" parameterClass="cVO" resultClass="cVO">
 /*boardDAO.commentList*/
-	SELECT A.ID,A.COMMENT,A.B_INX ,B.INX
+	SELECT A.ID,A.COMMENT,A.B_INX,A.INX 
 	FROM COMM A
 	LEFT JOIN NOTICE B
 	ON A.B_INX = B.INX
