@@ -12,7 +12,7 @@
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
     </context:component-scan>
-    <!-- 인터셉터 -->
+    
 		<mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/**/*.do"/>
@@ -21,7 +21,7 @@
             <mvc:exclude-mapping path="/userLogin.do"/>
           	<mvc:exclude-mapping path="/join.do"/>
           	<mvc:exclude-mapping path="/join_ok.do"/>
-		    <!--<bean class="egovframework.com.cmm.interceptor.AuthenticInterceptor" />-->
+
 		    <bean class="egovframework.example.sevtest.SessionInterceptor" />
         </mvc:interceptor>
         </mvc:interceptors>

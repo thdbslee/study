@@ -10,7 +10,9 @@ public interface sevService {
 	public sevVO userFailInfo(sevVO vo)throws Exception;//아이디확인
 	public void UserFailCountUpdate(sevVO vo)throws Exception; //카운트증가
 	public void UserLock(sevVO vo)throws Exception;//계정잠금 
-	
+	//회원가입
+	public int idcount(sevVO vo)throws Exception;
+	public boolean joinInsert(sevVO vo)throws Exception;
 	//사용자관리
 	public List<sevVO> sevList(sevVO vo)throws Exception;
 

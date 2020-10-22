@@ -57,15 +57,10 @@ public class boardController {
 			return "false";
 		}
 	}
-	/*@RequestMapping(value="/boardInsert.do")
-	public String boardInsert(@ModelAttribute("vo")boardVO vo,HttpServletRequest request,HttpSession sess,ModelMap model)throws Exception{
+	@RequestMapping(value="/boardInsert.do")
+	public String boardInsertForm(@ModelAttribute("vo")boardVO vo,HttpServletRequest request,HttpSession sess,ModelMap model)throws Exception{
 		sevVO loginvo = (sevVO)sess.getAttribute("Login");
-		model.addAttribute("sevvo", loginvo);
-		if(boardService.boardInsert(vo)) {
-			return "true";
-		}else {
-			return "false";
-		}
-	}*/
+		return"/test/board/boardInsert";
+	}
 	
 }

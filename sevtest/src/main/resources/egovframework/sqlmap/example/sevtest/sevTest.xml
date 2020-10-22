@@ -24,6 +24,27 @@
 				LOCK_YN ='Y'
 			WHERE ID = #ID#
 	</update>
+	<select id="sevDAO.idcount" parameterClass="sevVO" resultClass="java.lang.Integer">
+	/*sevDAO.idcount*/
+		SELECT COUNT(*) AS ID_COUNT FROM SEV
+		WHERE ID=#ID#
+	</select>
+	<update id="sevDAO.joinInsert" parameterClass="sevVO">
+	/*sevDAO.joinInsert*/
+		INSERT INTO SEV(
+			ID
+			,PASSWD
+			,AUTH_CODE
+			,NAME
+			,PHONE
+		)VALUES(
+			#ID#
+			,password(#PASSWD#)
+			,1
+			,#NAME#
+			,#PHONE#
+		)
+	</update>
 	<select id="sevDAO.sevList" parameterClass="sevVO" resultClass="sevVO">
 	/*sevDAO.sevList*/
 		SELECT * FROM SEV ORDER BY NAME

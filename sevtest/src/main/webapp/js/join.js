@@ -17,6 +17,18 @@ function fn_join(){
 		alert("비밀번호확인하세요");
 		return;
 	}
+	if(!$("#NAME").val()){
+		alert("이름입력하세요");
+		return;
+	}
+	if(!$("#PHONE").val()){
+		alert("번호입력하세요");
+		retrun;
+	}
+	if(!$("#AGE").val()){
+		alert("나이입력하세요");
+		return ;
+	}
 	var pass = $("#PASSWD").val();
 	var passcheck = $("#PASSWD2").val();
 	if(pass!=passcheck){
@@ -33,8 +45,13 @@ function fn_join(){
 			if(success=="true"){
 				alert("가입완료.로그인 후 사용하세요");
 				location.href="/login.do"
-			}else{
-				alert("등록실패.");	
+			}else if(success="false"){
+				alert("이미 등록된 ID입니다. 다시입력해주세요")
+				return false;
+			}
+			else{
+				alert("등록실패.");
+				return false;
 			}
 		},error:function(indx){
 			alert("에러");

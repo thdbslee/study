@@ -54,5 +54,15 @@ public class sevDAO  extends EgovAbstractDAO{
 		bol = update("sevDAO.sevDelete",vo) > 0 ? true : false;
 		return bol;
 	}
+	//회원가입
+	public int idcount(sevVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return (int)select("sevDAO.idcount",vo);
+	}
+	public boolean joinInsert(sevVO vo)throws Exception{
+		boolean bol = false;
+		bol = update("sevDAO.joinInsert",vo) > 0 ? true : false;
+		return bol;
+	}
 
 }

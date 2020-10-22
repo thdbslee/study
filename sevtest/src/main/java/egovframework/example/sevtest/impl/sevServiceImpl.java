@@ -37,6 +37,16 @@ public class sevServiceImpl extends EgovAbstractServiceImpl implements sevServic
 		// TODO Auto-generated method stub
 		sevDAO.UserLock(vo);
 	}
+	//회원가입
+	@Override
+	public int idcount(sevVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return sevDAO.idcount(vo);
+	}
+	@Override
+	public boolean joinInsert(sevVO vo)throws Exception{
+		return sevDAO.joinInsert(vo);
+	}
 	//사용자관리
 	@Override
 	public List<sevVO> sevList(sevVO vo) throws Exception {
@@ -60,6 +70,8 @@ public class sevServiceImpl extends EgovAbstractServiceImpl implements sevServic
 	public boolean sevDelete(sevVO vo)throws Exception{
 		return sevDAO.sevDelete(vo);
 	}
+
+
 
 
 }

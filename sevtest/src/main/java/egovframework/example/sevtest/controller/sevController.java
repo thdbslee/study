@@ -93,7 +93,18 @@ public class sevController {
 	@Transactional
 	@RequestMapping(value="/join_ok.do")
 	public String join_ok(HttpServletRequest request,ModelMap model,@ModelAttribute("vo")sevVO vo)throws Exception{
-		return"N";
+		//id중복체크
+		int idcount = sevService.idcount(vo); //아이디갯수체크
+		if(idcount==0) {
+			if(sevService.joinInsert(vo)) { //아이디갯수0이면 회원가입가능
+				return "true";
+			}else {
+				return "n";
+			}
+		}else {
+			return "false";
+		}
+		
 	}
 	
 	
@@ -102,7 +113,7 @@ public class sevController {
 	public String mainTest(@ModelAttribute("vo")sevVO vo,HttpServletRequest request,ModelMap model,HttpSession sess) throws Exception {
 		sevVO loginvo = (sevVO) sess.getAttribute("Login");
 		System.out.println("AUTH_CODE->"+loginvo.getAUTH_CODE());
-		model.addAttribute("login", loginvo); //jsp에 로그인한 이름 확인하기
+		model.addAttribute("login", loginvo); //jsp에 로그인한 이름 확인하기*/
 		
 		List<sevVO> list = sevService.sevList(vo);//작성자리스트 
 		model.addAttribute("list", list);
