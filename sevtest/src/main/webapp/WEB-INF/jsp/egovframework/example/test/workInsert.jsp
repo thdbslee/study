@@ -20,12 +20,20 @@
 				<td><input type="text" id="NAME" name="NAME"></td>
 			</tr>
 			<tr>
+				<th>아이디</th>
+				<td><input type="text" id="ID" name="ID"></td>
+			</tr>
+			<tr>
+				<th>비밀번호</th>
+				<td><input type="password" id="PASSWD" name="PASSWD"></td>
+			</tr>
+			<tr>
 				<th>직급</th>
 				<td>
 				<select name="LEVEL" id="LEVEL">
-					<option value="director">director</option>
-					<option value="manager">manager</option>
-					<option value="staff">staff</option>
+					<option value="0">director</option>
+					<option value="1">manager</option>
+					<option value="2">staff</option>
 				</select>
 				</td>
 			</tr>

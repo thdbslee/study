@@ -2,20 +2,22 @@ function fn_onLoad(){
 	fn_setDefault();
 }
 function fn_setDefault(){
-	console.log("11");
 	$("#STWORK").datepicker();
+    $.datepicker.setDefaults({
+        dateFormat: 'yy-mm-dd',
+        prevText: '이전 달',
+        nextText: '다음 달',
+        monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+        monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+        dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+        dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+        dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+        showMonthAfterYear: true,
+        yearSuffix: '년'
+    });
 }
 function fn_edit(){
-	/*var a = $("#stwork").val();
-	var mm = a.substr(0,2);
-	console.log("월"+mm);
-	var dd=  a.substr(3,2);
-	console.log("일"+dd)
-	var yy = a.substr(6,4);
-	console.log("년도"+yy);
-	var date = yy+"-"+mm+"-"+dd;
-	console.log("날짜->"+date);
-	$("#stwork").val(date);*/
+
 	
 	console.log("edit");
 	$.ajax({      

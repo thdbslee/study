@@ -54,6 +54,7 @@ public class sevController {
 				json.put("resultCode", "LOCK");
 			}else {
 				System.out.println("로그인성공");
+				sevService.LoginDate(vo); //로그인한날짜등록
 				sess.setAttribute("Login", vo);
 				json.put("resultCode", "Y");
 			}
@@ -112,12 +113,18 @@ public class sevController {
 	@RequestMapping(value="/mainTest.do")
 	public String mainTest(@ModelAttribute("vo")sevVO vo,HttpServletRequest request,ModelMap model,HttpSession sess) throws Exception {
 		sevVO loginvo = (sevVO) sess.getAttribute("Login");
-		System.out.println("AUTH_CODE->"+loginvo.getAUTH_CODE());
-		model.addAttribute("login", loginvo); //jsp에 로그인한 이름 확인하기*/
-		
-		List<sevVO> list = sevService.sevList(vo);//작성자리스트 
-		model.addAttribute("list", list);
-		return "/test/hello";
+		if(loginvo.getAUTH_CODE().equals("9")) {
+			System.out.println("AUTH_CODE->"+loginvo.getAUTH_CODE());
+			model.addAttribute("login", loginvo); //jsp에 로그인한 이름 확인하기*/
+			
+			List<sevVO> list = sevService.sevList(vo);//작성자리스트 
+			model.addAttribute("list", list);
+			return "/test/hello";	
+		}else {
+			System.out.println("일반사용자는mainTestxxxxxxx");
+			return "redirect:/index.do";
+		}
+
 	}
 	//일반모드로로그인시
 	@RequestMapping(value="/userMain.do")
@@ -131,11 +138,25 @@ public class sevController {
 		return "/test/userMain";
 	}
 	@RequestMapping(value="/sev_manage.do")
-	public String manageForm(@ModelAttribute("vo")sevVO vo,HttpServletRequest request,ModelMap model)throws Exception{
+	public String manageForm(@ModelAttribute("vo")sevVO vo,HttpServletRequest request,ModelMap model,HttpSession sess)throws Exception{
+		sevVO loginvo = (sevVO) sess.getAttribute("Login");
+		model.addAttribute("loginvo", loginvo);
+		if(loginvo.getAUTH_CODE().equals("9")) {
+			List<sevVO> list = sevService.sevList(vo);
+			model.addAttribute("list", list);
+			System.out.println("manage");
+			return "/test/manage";
+		}else {
+			return "redirect:/index.do";
+		}
+		
+	}
+	@RequestMapping(value="/user_List.do")
+	public String userForm(@ModelAttribute("vo")sevVO vo,HttpSession sess,HttpServletRequest request,ModelMap model)throws Exception{
+		sevVO loginvo = (sevVO)sess.getAttribute("Login");
 		List<sevVO> list = sevService.sevList(vo);
 		model.addAttribute("list", list);
-		System.out.println("manage");
-		return "/test/manage";
+		return "/test/userList";
 	}
 	//직원등록폼
 	@RequestMapping(value="/workInsert.do")
@@ -148,13 +169,17 @@ public class sevController {
 	@Transactional
 	@RequestMapping(value="/workInsert_ok.do", method=RequestMethod.POST,produces = "application/text; charset=utf8")
 	public String workInsert(@ModelAttribute("vo")sevVO vo,HttpServletRequest request,ModelMap model)throws Exception{
-		System.out.println("직원등록INSERT");
-		//System.out.println(ToStringBuilder.reflectionToString(vo));
-		if(sevService.sevInsrert(vo)) {
-			return "TRUE";
+		int idcount = sevService.idcount(vo);
+		if(idcount ==0) {
+			if(sevService.sevInsrert(vo)) {
+				return "TRUE";
+			}else {
+				return "n";
+			}
 		}else {
-			return "FALSE";
+			return "false";
 		}
+		
 	}
 	//직원수정화면 
 	@RequestMapping(value="/workEdit.do")

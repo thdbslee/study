@@ -19,7 +19,10 @@ public class sevServiceImpl extends EgovAbstractServiceImpl implements sevServic
 		// 아이디비번확인
 		return sevDAO.UserLogin(vo);
 	}
-
+	@Override
+	public void LoginDate(sevVO vo)throws Exception{
+		sevDAO.LoginDate(vo);
+	}
 	@Override
 	public sevVO userFailInfo(sevVO vo) throws Exception {
 		// TODO Auto-generated method stub

@@ -2,7 +2,24 @@ function fn_onLoad(){
 	fn_setDefault();
 }
 function fn_setDefault(){
+	console.log($("#ID").val());
+
 	
+	/*if($("#AUTH_CODE").val()==1){
+		console.log("일반모드");
+		$("#manage").click(function(){
+			alert("접근할수있는권한이없습니다.");
+			return false;
+		});
+	}*/
+	if($("#AUTH_CODE").val()==1){
+		console.log("일반모드22");
+		$("#manage").hide();
+	}
+	if($("#AUTH_CODE").val()==9){
+		console.log("관리자모드");
+	}
+
 }
 function fn_add(){
 	window.open("/boardInsert.do",'insert','width=600px,height=800px');
@@ -10,32 +27,42 @@ function fn_add(){
 function fn_detail(INX){
 	window.open("/boardDetail.do?INX="+INX,'detail','width=600px,height=800px');
 }
-function fn_delete(){
-	if(!confirm('선택한 사용자 삭제하시겠습니까 ?')){
+function fn_edit(){
+	console.log($("input[name='INX_CHK']:checked").length);
+	if($("input[name='INX_CHK']:checked").length < 1){
+		alert("수정할 게시판 선택하세요");
 		return;
 	}
-	$.ajax({
-		contentType:"application/x-www-form-urlencoded;charset=UTF-8",
-		type:"POST",
-		url:"/boardDelete.do",      
-		data: $("#boardfrm").serialize(),
-		processData : false,
-		success:function(success){
-			if(success=="true"){
-				alert("삭제완료");
-				location.reload();
-			}else if(success="nn"){
-				alert("관리자만 실행할수있습니다.");
-				return ;
+	if($("input[name='INX_CHK']:checked").length > 1){
+		alert("수정할 게시판 하나만 선택하세요");
+		return;
+	}
+	
+}
+function fn_delete(){
+			if(!confirm('선택한 사용자 삭제하시겠습니까 ?')){
+				return;
 			}
-			else{
-				alert("삭제실패.");	
-			}
-		},error:function(indx){
-			alert("에러");
-		}
+			$.ajax({
+				contentType:"application/x-www-form-urlencoded;charset=UTF-8",
+				type:"POST",
+				url:"/boardDelete.do",      
+				data: $("#boardfrm").serialize(),
+				processData : false,
+				success:function(success){
+					if(success=="true"){
+						alert("삭제완료");
+						location.reload();
+					}else if(success="nn"){
+						alert("관리자만 실행할수있습니다.");
+						return ;
+					}
+					else{
+						alert("삭제실패.");	
+					}
+				}
 
-	});
+			});
 }
 $(document).ready(function(){
 	try{

@@ -14,6 +14,10 @@ public class sevDAO  extends EgovAbstractDAO{
 		// TODO Auto-generated method stub
 		return (sevVO) select("sevDAO.UserLogin",vo);
 	}
+	public void LoginDate(sevVO vo)throws Exception{
+		System.out.println("sevDAOLoginDate");
+		update("sevDAO.LoginDate",vo);
+	}
 
 	public sevVO userFailInfo(sevVO vo) throws Exception{
 		// TODO Auto-generated method stub

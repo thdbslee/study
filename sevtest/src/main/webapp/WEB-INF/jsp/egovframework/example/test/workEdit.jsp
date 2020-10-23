@@ -31,7 +31,13 @@
 				</tr>
 				<tr>
 					<th>직위</th>
-					<td><input type="text" id="LEVEL" name="LEVEL" value="${editvo.LEVEL}"></td>
+					<td>
+						<select name="LEVEL" id="LEVEL">
+							<option value="0"${editvo.LEVEL eq '0' ?'selected':''}>director</option>
+							<option value="1"${editvo.LEVEL eq '1' ?'selected':''}>manager</option>
+							<option value="2"${editvo.LEVEL eq '2' ?'selected':''}>staff</option>
+						</select>
+					</td>
 				</tr>
 				<tr>
 					<th>번호</th>
@@ -44,6 +50,11 @@
 				<tr>
 					<th>입사일//입사예정일</th>
 					<td><input type="text" id="STWORK" name="STWORK" value="${editvo.STWORK}" readOnly></td>
+				</tr>
+				<tr>
+					<th>계정잠금</th>
+					<td><input type="radio" id="LOCK_YN" name="LOCK_YN" value="N"${editvo.LOCK_YN eq 'N' ?'checked':'' }/>N
+					<input type="radio" id="LOCK_YN" name="LOCK_YN" value="Y"${editvo.LOCK_YN eq 'Y'?'checked':''}/>Y
 				</tr>
 			</tbody>
 		</table>

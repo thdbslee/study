@@ -59,24 +59,26 @@
                             <div class="sb-sidenav-menu-heading">Interface</div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                Layouts
+                                직원관리
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="layout-static.html">Static Navigation</a>
-                                    <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
+                                    <a class="nav-link" href="/sev_manage.do" id="manage">직원관리</a>
+                                    <a class="nav-link" href="/user_List.do">직원리스트</a>
+                                    <a class="nav-link" href="layout-sidenav-light.html">퇴사직원리스트</a>
+                           
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                                Pages
+                                게시판
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                        Authentication
+                                    <a class="nav-link collapsed" href="/board.do" data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                        게시판
                                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                     </a>
                                     <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
@@ -86,8 +88,8 @@
                                             <a class="nav-link" href="password.html">Forgot Password</a>
                                         </nav>
                                     </div>
-                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
-                                        Error
+                                    <a class="nav-link collapsed" href="/" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
+                                        공지사항
                                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                     </a>
                                     <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
@@ -118,6 +120,7 @@
             </div>
             <div id="layoutSidenav_content">
             <form id="frm" name="frm">
+            <input type="hidden" id="AUTH_CODE" name="AUTH_CODE" value="${loginvo.AUTH_CODE}">
                 <main>
                     <div class="container-fluid">
                         <h1 class="mt-4">직원관리</h1>
@@ -133,11 +136,14 @@
                                             <tr>
                                             	<th></th>
                                                 <th>이름</th>
+                                                <th>아이디</th>
                                                 <th>직위</th>
                                                 <th>번호</th>
                                                 <th>나이</th>
+                                                <th>로그인날짜</th>
                                                 <th>입사일</th>
-                                                
+                                                <th>계정잠금</th>
+                                                <th>로그인실패</th>
                                             </tr>
                                         </thead>
                                         <tbody id="workTbody">
@@ -146,10 +152,14 @@
                                    				<tr>
                                    					<td><input type="checkbox" id="inx_check" name="inx_check" value="${list.INX}">
                                    					<td align="center">${list.NAME}</td>
-                                   					<td align="center">${list.LEVEL}</td>
+                                   					<td align="center">${list.ID}</td>
+                                   					<td align="center">${list.LEVEL_NAME}</td>
                                    					<td align="center">${list.PHONE}</td>
                                    					<td align="center">${list.AGE}</td>
+                                   					<td align="center">${list.LOGIN_DATE}</td>
                                    					<td align="center">${list.STWORK}</td>
+                                   					<td align="center">${list.LOCK_YN}</td>
+                                   					<td align="center">${list.FAIL_COUNT}</td>
                                    				</tr>
                                    				</c:forEach>
                                             

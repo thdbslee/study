@@ -6,6 +6,7 @@ public class sevVO {
 	private String NAME;
 	private String PHONE;
 	private String LEVEL;
+	private String LEVEL_NAME;
 	private String AGE;
 	private String STWORK;
 	private String ID;
@@ -13,8 +14,21 @@ public class sevVO {
 	private String LOCK_YN;
 	private int FAIL_COUNT;
 	private String AUTH_CODE;
+	private String LOGIN_DATE;
 	
 	
+	public String getLEVEL_NAME() {
+		return LEVEL_NAME;
+	}
+	public void setLEVEL_NAME(String lEVEL_NAME) {
+		LEVEL_NAME = lEVEL_NAME;
+	}
+	public String getLOGIN_DATE() {
+		return LOGIN_DATE;
+	}
+	public void setLOGIN_DATE(String lOGIN_DATE) {
+		LOGIN_DATE = lOGIN_DATE;
+	}
 	public String getID() {
 		return ID;
 	}

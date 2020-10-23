@@ -63,11 +63,12 @@
 				</tr>
 			</tfoot>
 		</table>
+
 		<a href="javascript:self.close();" class="button">닫기</a>
 		</form>
 	
 
-	
+		
 	</div>
 </body>
 

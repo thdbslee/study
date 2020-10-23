@@ -24,7 +24,7 @@
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <a class="navbar-brand" href="/mainTest.do">HOME</a>
-            <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
+            <button class="btn btn-link btn-sm order-1 order-lg-0" id="sebarToggle" href="#"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
                 <div class="input-group">
@@ -60,13 +60,14 @@
                             <div class="sb-sidenav-menu-heading">Interface</div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                Layouts
+                                직원관리
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="layout-static.html">Static Navigation</a>
-                                    <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
+                                    <a class="nav-link" href="/sev_manage.do">직원관리</a>
+                                    <a class="nav-link" href="/user_List.do">직원리스트</a>
+                                    <a class="nav-link" href="layout-sidenav-light.html">퇴사직원리스트</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
@@ -76,8 +77,8 @@
                             </a>
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                        Authentication
+                                    <a class="nav-link collapsed" href="/board.do" data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                       	게시판
                                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                     </a>
                                     <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
@@ -88,7 +89,7 @@
                                         </nav>
                                     </div>
                                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
-                                        Error
+                                        공지사항
                                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                     </a>
                                     <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
@@ -121,7 +122,7 @@
                 <main>
                     <div class="container-fluid">
                         <h1 class="mt-4">게시판</h1>
-                       	<h7>${login.ID}님 접속중입니다.</h7>     
+                       	<h7>${login.ID}접속중입니다.</h7>     
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table mr-1"></i>
@@ -130,6 +131,7 @@
                             <div class="card-body" >
                                 <div class="table-responsive" >
                                 	<form id="boardfrm" name="boardfrm">
+                                	<input type="hidden" id="AUTH_CODE" name="AUTH_CODE" value="${login.AUTH_CODE}">
                                     <table class="table table-bordered" id="dataTable" >
                                     <div>
                                     	<a class="button" href="javascript:fn_add();">등록</a>
@@ -143,7 +145,7 @@
                                       			<th>id</th>
                                       		</tr>
                                       	</thead>
-                                      		<tbody>
+                                      		<tbody id="aatbody">
                                       			<c:forEach var="list" items="${list}">
                                       				<tr>
                                       				<td><input type="checkbox" id="INX_CHK" name="INX_CHK" value="${list.INX}"></td>
@@ -153,6 +155,7 @@
                                       				</tr>
                                       			</c:forEach>
                                       		</tbody>
+                                      		
                                     </table>          
                                     </form>
                                    

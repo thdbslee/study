@@ -7,6 +7,7 @@ import egovframework.example.sevtest.sevVO;
 public interface sevService {
 	//로그인
 	public sevVO UserLogin(sevVO vo)throws Exception; //아이디비밀번호확인
+	public void LoginDate(sevVO vo)throws Exception;//로그인한날짜입력
 	public sevVO userFailInfo(sevVO vo)throws Exception;//아이디확인
 	public void UserFailCountUpdate(sevVO vo)throws Exception; //카운트증가
 	public void UserLock(sevVO vo)throws Exception;//계정잠금 

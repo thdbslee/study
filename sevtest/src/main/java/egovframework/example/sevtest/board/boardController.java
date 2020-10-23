@@ -28,7 +28,7 @@ public class boardController {
 		sevVO loginvo = (sevVO)sess.getAttribute("Login");
 		model.addAttribute("login", loginvo);//아이디불러오기위해 
 		List<boardVO> list = boardService.boardList(vo);
-		model.addAttribute("list", list);//리스트불러오기위해 
+		model.addAttribute("list", list);//리스트불러오기위해
 		
 		return"/test/board/board";
 	}
