@@ -17,16 +17,6 @@ public class boardDAO extends EgovAbstractDAO{
 		// TODO Auto-generated method stub
 		return (boardVO)select("boardDAO.boardSelect",vo);
 	}
-	//댓글
-	public List<commentVO> commentList(commentVO cmvo) throws Exception {
-		return (List<commentVO>) list ("boardDAO.commentList",cmvo) ;
-	}
-	public boolean commentInsert(commentVO cmvo)throws Exception{
-		boolean bol = false;
-		bol = update("boardDAO.commentInsert",cmvo) > 0 ? true : false;
-		return bol;
-	}
-
 	public boolean boardInsert(boardVO vo)throws Exception {
 		boolean bol = false;
 		bol =update("boardDAO.boardInsert",vo)>0 ? true: false;
@@ -36,6 +26,32 @@ public class boardDAO extends EgovAbstractDAO{
 	public boolean boardDelete(boardVO vo)throws Exception{
 		boolean bol = false;
 		bol = update("boardDAO.boardDelete",vo)>0?true:false;
+		return bol;
+	}
+	public void boardComDelete(boardVO vo)throws Exception{
+		delete("boardDAO.boardComDelete",vo);
+	}
+	public boolean boardUpdate(boardVO vo)throws Exception{
+		boolean bol = false;
+		bol = update("boardDAO.boardUpdate",vo)>0 ? true : false;
+		return bol;
+	}
+	//댓글
+	public List<commentVO> commentList(commentVO cmvo) throws Exception {
+		return (List<commentVO>) list ("boardDAO.commentList",cmvo) ;
+	}
+	public boolean commentInsert(commentVO cmvo)throws Exception{
+		boolean bol = false;
+		bol = update("boardDAO.commentInsert",cmvo) > 0 ? true : false;
+		return bol;
+	}
+	public int commenTotCnt(commentVO cmvo)throws Exception{
+		return (int) select("boardDAO.commenTotCnt",cmvo);
+	}
+	public boolean commentDelete(commentVO cmvo)throws Exception{
+		boolean bol = false;
+		bol = update("boardDAO.commentDelete",cmvo) > 0 ? true : false;
+		System.out.println("DeleteDAO->"+bol);
 		return bol;
 	}
 }

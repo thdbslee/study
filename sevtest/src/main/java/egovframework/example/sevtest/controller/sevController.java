@@ -216,4 +216,49 @@ public class sevController {
 			return "false";
 		}
 	}
+	// 개인정보MyPage
+	@RequestMapping(value="/setting.do")
+	public String settingForm(HttpSession sess,HttpServletRequest request,ModelMap model)throws Exception{
+		sevVO loginvo = (sevVO) sess.getAttribute("Login");
+		model.addAttribute("loginvo", loginvo);
+		System.out.println("loginvo->"+loginvo);
+		System.out.println(ToStringBuilder.reflectionToString(loginvo));
+		return"/test/setting/settingForm";
+	}
+	//Mypage 비밀번호확인 후 변경홈페이지나오게
+	@ResponseBody
+	@Transactional
+	@RequestMapping(value="/setting_passwd.do")
+	public String settingpasswd(@ModelAttribute("vo")sevVO vo,HttpSession sess,HttpServletRequest request,ModelMap model)throws Exception{
+		sevVO loginvo = (sevVO)sess.getAttribute("Login");
+		vo = sevService.UserLogin(vo);
+		if(vo!=null) {
+			return "true";
+		}else {
+			return "false";
+		}
+	}
+	@RequestMapping(value="/setting_edit_form.do")
+	public String setEditForm(@ModelAttribute("vo")sevVO vo,HttpSession sess,HttpServletRequest request,ModelMap model)throws Exception{
+		sevVO loginvo = (sevVO) sess.getAttribute("Login");
+		model.addAttribute("loginvo",loginvo);
+		return"/test/setting/setting";
+	}
+	
+	@ResponseBody
+	@Transactional
+	@RequestMapping(value="/setting_eidt.do")
+	public String settingEdit(@ModelAttribute("vo")sevVO vo,HttpSession sess,HttpServletRequest request,ModelMap model)throws Exception{
+		sevVO loginvo = (sevVO) sess.getAttribute("Login");
+		model.addAttribute("vo", vo);
+		System.out.println("loginvoNAME->"+loginvo.getNAME());
+		if(sevService.userSettingUpdate(vo)) {
+			System.out.println("정보변경");
+			return "true";
+		}else {
+			System.out.println("정보변경오류");
+			return "false";
+		}
+		
+	}
 }

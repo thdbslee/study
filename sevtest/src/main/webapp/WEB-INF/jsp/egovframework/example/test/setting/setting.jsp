@@ -15,11 +15,11 @@
  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-        <title>게시판</title>
+        <title>MyPage</title>
         <link href="resources/admin/dist/css/styles.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="/js/board/board.js" ></script> 
+        <script type="text/javascript" src="/js/setting/setting.js" ></script> 
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -40,7 +40,7 @@
                     <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                         <a class="dropdown-item" href="#">Settings</a>
-                        <a class="dropdown-item" href="#">Activity Log</a>
+                        <a class="dropdown-item" href="/setting.do">MyPage</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="/logout.do">로그아웃</a>
                     </div>
@@ -121,61 +121,54 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                        <h1 class="mt-4">게시판</h1>
-                       	<h7>${login.ID}접속중입니다.</h7>     
-                        <div class="card mb-4">
+                        <h1 class="mt-4">MyPage</h1>
+      					<div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table mr-1"></i>
-                                게시판
+                                MyPage
                             </div>
-                            <div class="card-body" >
-                                <div class="table-responsive" >
-                                	<form id="boardfrm" name="boardfrm">
-
-                                	<input type="hidden" id="AUTH_CODE" name="AUTH_CODE" value="${login.AUTH_CODE}">
-                                    <table class="table table-bordered" id="dataTable" >
-                                    <div>
-										                                    
-                                    	<a class="button" href="javascript:fn_add();">등록</a>
-                                    	<a class="button" href="javascript:fn_edit();">수정</a>
-                                    	<a class="button" href="javascript:fn_delete();">삭제</a>
-                                    </div>
-                                      	<thead>
-                                      		<tr>
-                                      			<th style="width:10%;"><input type="checkbox" id="all_check" name="all_check"></th>
-                                      			<th>title</th>
-                                      			<th>id</th>
-                                      			<th style="width:100px;">date</th>
-                                      		</tr>
-                                      	</thead>
-                                      		<tbody id="aatbody">
-                                      			<c:forEach var="list" items="${list}">
-                                      				<tr>
-                                      				<td>
-                                      				<c:choose>
-                                      					<c:when test="${login.AUTH_CODE eq 9 }">
-                                      						<input type="checkbox" id="INX_CHK" name="INX_CHK" value="${list.INX}"> 
-                                      					</c:when>
-                                  						<c:when test="${login.ID eq list.ID}">
-                                  							<input type="checkbox" id="INX_CHK" name="INX_CHK" value="${list.INX}"> 
-                                  						</c:when>
-                                      				</c:choose>
-                                      								
-                              						</td>
-                                      				<td style="cursor: pointer;" onMouseOver="this.style.backgroundColor='#F0F1F3'" onMouseOut="this.style.backgroundColor='#FFFFFF'" onclick="javascript:fn_detail('${list.INX}')">
-                                      				${list.TITLE}</td>
-                                      				<td>${list.ID}</td>
-                                      				<td style="width:100px;">${list.NOTICE_DATE}</td>
-                                      				</tr>
-                                      			</c:forEach>
-                                      		</tbody>
-                                      		
-                                    </table>          
+                            <div>
+                                <div>
+                                <form id="frm" name="frm">
+                                    <table  width="100%" cellspacing="0">
+                                       <thead>
+                                       		<tr>
+                                       			<th>아이디</th>
+                                       			<td>
+                                       				<input type="text" id="ID" name="ID" value="${loginvo.ID}" readOnly>
+                                       			</td>
+                                       		</tr>
+                                       		<tr>
+                                       			<th>이름</th>
+                                       			<td>
+                                       				<input type="text" id="NAME" name="NAME" value="${loginvo.NAME}">
+                                       			</td>
+                                       		</tr>
+                                       		<tr>
+                                       			<th>비빌번호</th>
+                         						<td>
+                         						<input type="password" id="PASSWD" name="PASSWD" ></td>
+                                       		</tr>
+                                       		
+                                       		<tr>
+                                       			<th>직위</th>
+                                       			<td><select name="LEVEL" id="LEVEL">
+												<option value="0"${loginvo.LEVEL eq '0' ?'selected':''}>director</option>
+												<option value="1"${loginvo.LEVEL eq '1' ?'selected':''}>manager</option>
+												<option value="2"${loginvo.LEVEL eq '2' ?'selected':''}>staff</option>
+												</select></td>
+                                       		</tr>
+                                       		<tr>
+                                       			<th>번호</th>
+                                       			<td><input type="text" id="PHONE" name="PHONE" value="${loginvo.PHONE}"></td>
+                                       		</tr>
+                                       </thead>
+                                    </table>
+                                    <a href="javascript:fn_userEdit()" class="button">변경</a>
                                     </form>
-                                   
                                 </div>
                             </div>
-                        </div>-
+                        </div>
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
@@ -192,7 +185,6 @@
                 </footer>
             </div>
         </div>
-        
         <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="resources/admin/dist/js/scripts.js"></script>
@@ -231,4 +223,3 @@
 }
 
 </style>
-

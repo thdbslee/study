@@ -29,6 +29,14 @@ public class boardServiceImpl extends EgovAbstractServiceImpl implements boardSe
 	public boolean boardDelete(boardVO vo)throws Exception{
 		return boardDAO.boardDelete(vo);
 	}
+	@Override
+	public void boardComDelete(boardVO vo)throws Exception{
+		boardDAO.boardComDelete(vo);
+	}
+	@Override
+	public boolean boardUpdate(boardVO vo)throws Exception{
+		return boardDAO.boardUpdate(vo);
+	}
 	//댓글
 	@Override
 	public List<commentVO> commentList(commentVO cmvo)throws Exception{
@@ -38,5 +46,13 @@ public class boardServiceImpl extends EgovAbstractServiceImpl implements boardSe
 	public boolean commentInsert(commentVO cmvo)throws Exception{
 		return boardDAO.commentInsert(cmvo);
 	}
-
+	@Override
+	public int commenTotCnt(commentVO cmvo)throws Exception{
+		return boardDAO.commenTotCnt(cmvo);
+	}
+	@Override
+	public boolean commentDelete(commentVO cmvo)throws Exception{
+		System.out.println("DeleteService");
+		return boardDAO.commentDelete(cmvo);
+	}
 }

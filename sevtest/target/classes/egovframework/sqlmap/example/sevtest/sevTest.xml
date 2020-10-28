@@ -16,9 +16,7 @@
 		WHERE ID =#ID#
 	</update>
 	<select id="sevDAO.userFailInfo" parameterClass="sevVO" resultClass="sevVO">
-       
 			SELECT * FROM SEV	WHERE ID=#ID#
-		
 	</select>
 	<update id="sevDAO.UserFailCountUpdate" parameterClass="sevVO">
 			UPDATE SEV SET 
@@ -117,5 +115,16 @@
 		<iterate prepend="IN" open="(" close=")" conjunction ="," property="INXS">
 			#INXS[]#
 		</iterate>
+	</update>
+	<!-- MyPage -->
+	<update id="sevDAO.userSettingUpdate" parameterClass="sevVO">
+	/*sevDAO.userSettingUpdate*/
+	 	UPDATE SEV 
+	 	SET 
+	 	NAME = #NAME#
+	 	,LEVEL = #LEVEL#
+	 	,PHONE = #PHONE#
+	 	WHERE ID = #ID#
+	
 	</update>
 </sqlMap>

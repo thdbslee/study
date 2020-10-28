@@ -1,12 +1,20 @@
 package egovframework.example.sevtest.board;
 
-public class commentVO {
+import egovframework.example.sample.service.SampleDefaultVO;
+
+public class commentVO extends SampleDefaultVO{
 	private int INX;
 	private String COMMENT;
 	private String ID;
 	private int B_INX;
-	
-	
+	private String LOGIN_DATE;
+
+	public String getLOGIN_DATE() {
+		return LOGIN_DATE;
+	}
+	public void setLOGIN_DATE(String lOGIN_DATE) {
+		LOGIN_DATE = lOGIN_DATE;
+	}
 	public int getINX() {
 		return INX;
 	}

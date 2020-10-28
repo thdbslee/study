@@ -1,13 +1,21 @@
 package egovframework.example.sevtest.board;
 
-public class boardVO {
+
+public class boardVO  {
 	private int INX;
 	private String TITLE;
 	private String CONTENT;
 	private String ID;
 	private String INXS[]; //여러개 삭제할 수 있도록
+	private String NOTICE_DATE;
 	
 	
+	public String getNOTICE_DATE() {
+		return NOTICE_DATE;
+	}
+	public void setNOTICE_DATE(String nOTICE_DATE) {
+		NOTICE_DATE = nOTICE_DATE;
+	}
 	public String[] getINXS() {
 		return INXS;
 	}

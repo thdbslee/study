@@ -12,23 +12,31 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import egovframework.example.cmmn.ComDefaultVO;
 import egovframework.example.sevtest.sevVO;
 import egovframework.example.sevtest.service.*;
+import egovframework.rte.fdl.property.EgovPropertyService;
+import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 @Controller
 public class boardController {
 	@Resource(name="sevService")
 	sevService sevService;
 	@Resource(name="boardService")
 	boardService boardService;
+	/** EgovPropertyService */
+	@Resource(name = "propertiesService")
+	protected EgovPropertyService propertiesService;
 	
 	@RequestMapping(value="/board.do", produces="application/text; charset=utf8")
 	public String boardForm(@ModelAttribute("vo")boardVO vo,HttpServletRequest request,HttpSession sess,ModelMap model)throws Exception{
 		sevVO loginvo = (sevVO)sess.getAttribute("Login");
 		model.addAttribute("login", loginvo);//아이디불러오기위해 
 		List<boardVO> list = boardService.boardList(vo);
-		model.addAttribute("list", list);//리스트불러오기위해
+		
+		model.addAttribute("list", list);//리스트불러오기위해 
 		
 		return"/test/board/board";
 	}
@@ -55,22 +63,48 @@ public class boardController {
 	@ResponseBody
 	@Transactional
 	@RequestMapping("/boardDelete")
-	public String boardDelete(@ModelAttribute("vo")boardVO vo,HttpSession sess,HttpServletRequest request,ModelMap model)throws Exception{
+	public String boardDelete(@ModelAttribute("vo")boardVO vo,commentVO cmvo,HttpSession sess,HttpServletRequest request,ModelMap model)throws Exception{
 		sevVO loginvo = (sevVO) sess.getAttribute("Login");
-			
 		vo.setINXS(request.getParameterValues("INX_CHK"));
-		System.out.println(ToStringBuilder.reflectionToString(vo));
+		//System.out.println(ToStringBuilder.reflectionToString(vo));
+		System.out.println("AUTH_CODE->"+loginvo.getAUTH_CODE());
+		System.out.println("loginID->"+loginvo.getID());
+		System.out.println("ID->"+vo.getID());
+		
 		if(loginvo.getAUTH_CODE().equals("9")) {
-			if(boardService.boardDelete(vo)) {
+			if(boardService.boardDelete(vo)) {//게시물삭제시
+				boardService.boardComDelete(vo); //게시물번호와같은 댓글삭제
 				return "true";
 			}else {
-				
 				return "false";
 			}
-		}else {
-			System.out.println("일반사용자");
-			return "nn";
+		}else {//일반사용자일경우
+				boardService.boardDelete(vo);
+				boardService.boardComDelete(vo);
+				return"true";
 		}
+		
+	}
+	@RequestMapping(value="/boardEdit.do")
+	public String boardEditForm(@ModelAttribute("vo")boardVO vo,HttpSession sess,HttpServletRequest request,ModelMap model)throws Exception{
+		sevVO loginvo = (sevVO)sess.getAttribute("Login");
+		vo = boardService.boardSelect(vo);
+		System.out.println("INX->"+vo.getINX());
+		model.addAttribute("boardvo",vo);
+		return "/test/board/boardEdit";
+	}
+	
+	@ResponseBody
+	@Transactional
+	@RequestMapping(value="/boardEdit_ok.do")
+	public String boardEdit(@ModelAttribute("vo")boardVO vo,HttpSession sess,HttpServletRequest request,ModelMap model)throws Exception{
+		sevVO loginvo = (sevVO)sess.getAttribute("Login");
+		if(boardService.boardUpdate(vo)) {
+			return"ture";
+		}else {
+			return "false";
+		}
+		
 	}
 	/** 댓글달기
 	 * @param vo
@@ -85,14 +119,44 @@ public class boardController {
 	public String boardDetail(@ModelAttribute("vo")boardVO vo,@ModelAttribute("cmvo")commentVO cmvo,HttpSession sess,HttpServletRequest request,ModelMap model)throws Exception{
 		sevVO loginvo = (sevVO) sess.getAttribute("Login");
 		model.addAttribute("sevvo", loginvo);
+		/** EgovPropertyService.sample */
+		cmvo.setPageUnit(propertiesService.getInt("pageUnit"));
+		cmvo.setPageSize(propertiesService.getInt("pageSize"));
+
+		/** pageing setting */
+		PaginationInfo paginationInfo = new PaginationInfo();
+		paginationInfo.setCurrentPageNo(cmvo.getPageIndex());//현재페이지번호
+		//System.out.println("crrentPageNo->"+cmvo.getPageIndex());
+		paginationInfo.setRecordCountPerPage(5); //한 페이지에 게시되는 게시물 건수
+		paginationInfo.setPageSize(cmvo.getPageSize());//페이지리스트에게시되는페이지건수
+		//System.out.println("PageSize->"+cmvo.getPageSize());
+		
+		//System.out.println("recordCountperpage->"+paginationInfo.getRecordCountPerPage());
+		//System.out.println("pageSize->"+paginationInfo.getPageSize());
+		//paginationInfo.setRecordCountPerPage(cmvo.getPageUnit());//한페이지당게시되는게시물건수
+		//System.out.println("RecourCountperPage->"+cmvo.getPageUnit());
+
+		cmvo.setFirstIndex(paginationInfo.getFirstRecordIndex());
+		System.out.println("FirstIndex->"+cmvo.getFirstIndex());
+		cmvo.setLastIndex(paginationInfo.getLastRecordIndex());
+		System.out.println("LastIndex->"+cmvo.getLastIndex());
+		cmvo.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
+		System.out.println("pageIndex->"+cmvo.getPageIndex());
+		
+		
 		//게시판선택
 		vo = boardService.boardSelect(vo);
 		model.addAttribute("boardvo", vo);
-		
 		//댓글리스트불러오기
 		List<commentVO> list = boardService.commentList(cmvo);
-		
 		model.addAttribute("cmlist", list);
+		System.out.println("리스트"+list);
+		
+		int totCnt = boardService.commenTotCnt(cmvo);
+		paginationInfo.setTotalRecordCount(totCnt);
+		model.addAttribute("paginationInfo", paginationInfo);
+		
+	
 		
 		return "/test/board/boardDetail";
 	}
@@ -101,13 +165,27 @@ public class boardController {
 	@Transactional
 	@RequestMapping(value="/comment_ok.do", produces="application/text; charset=utf8")
 	public String commentInsert(@ModelAttribute("cmvo")commentVO cmvo,HttpSession sess,HttpServletRequest request,ModelMap model)throws Exception{
-		sevVO loginvo =(sevVO)sess.getAttribute("Login");
+		
 		if(boardService.commentInsert(cmvo)) {
 			return "true";
 		}else {
 			return "false";
 		}
 	}
-	
+	//댓글삭제
+	@ResponseBody
+	@Transactional
+	@RequestMapping(value="/comDelete.do")
+	public String comDelete(@ModelAttribute("cmvo")commentVO cmvo,HttpSession sess,HttpServletRequest request,ModelMap model)throws Exception{
+		sevVO loginvo = (sevVO) sess.getAttribute("Login");
+		
+		cmvo.setINX(Integer.parseInt(request.getParameter("delInx"))); //delInx값을 넣어준다 
+		System.out.println("delINX->"+cmvo.getINX());
+		if(boardService.commentDelete(cmvo)) {
+			return "true";
+		}else {
+			return "false";
+		}
+	}
 	
 }

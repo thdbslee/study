@@ -24,4 +24,6 @@ public interface sevService {
 	public boolean sevUpdate(sevVO vo)throws Exception;
 	
 	public boolean sevDelete(sevVO vo)throws Exception;
+	//개인정보변경 
+	public boolean userSettingUpdate(sevVO vo)throws Exception;
 }

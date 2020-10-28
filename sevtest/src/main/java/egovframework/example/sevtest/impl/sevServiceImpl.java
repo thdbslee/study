@@ -73,7 +73,11 @@ public class sevServiceImpl extends EgovAbstractServiceImpl implements sevServic
 	public boolean sevDelete(sevVO vo)throws Exception{
 		return sevDAO.sevDelete(vo);
 	}
-
+	//개인정보변경
+	@Override
+	public boolean userSettingUpdate(sevVO vo)throws Exception{
+		return sevDAO.userSettingUpdate(vo);
+	}
 
 
 

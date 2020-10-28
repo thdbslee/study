@@ -52,6 +52,29 @@
 </body>
 
 <style>
+.button {
+
+  background-color: pink;
+
+  border: none;
+
+  color: white;
+
+  padding: 5px 3px;
+
+  text-align: center;
+
+  text-decoration: none;
+
+  display: inline-block;
+
+  font-size: 16px;
+
+  margin: 4px 2px;
+
+  cursor: pointer;
+
+}
 .simple_table { width: 100%; border: none; border-collapse: separate; border-spacing: 2px;}
 .simple_table th { padding: 15px; border: none; border-left: 5px solid #C03; border-bottom: 1px solid #DDD; background: #FCF0F3; font-weight: normal; text-align:center; text-shadow: 0 1px #FFF; vertical-align: middle;}
 .simple_table td { padding: 15px; border: none; border-bottom: 1px solid #DDD; text-align: left; vertical-align: baseline;}

@@ -4,12 +4,41 @@ function fn_onLoad(){
 function fn_setDefault(){
 	
 }
-function fn_cmdelete(INX){
+function fn_cmdelete(inx){
+	//alert("inx->"+inx);
+	//alert("delInx->"+$("#delInx").val(inx));
+	$("#delInx").val(inx);
+	if(!confirm('댓글삭제하시겠습니까?')){
+		return;
+	}
+	$.ajax({
+		contentType:"application/x-www-form-urlencoded;charset=UTF-8",
+		type:"POST",
+		url:"/comDelete.do",
+		data:$("#frm").serialize(),
+		success:function(data){
+			if(data=="true"){
+				alert("댓글삭제완료");
+				location.reload();
+			}else{
+				alert("삭제실패");
+			}
+		}
+	});
+}
+
+/* pagination 페이지 링크 function */
+function fn_egov_link_page(pageNo){
+	$("#pageIndex").val(pageNo);
+	document.frm.action = '/boardDetail.do';
+   	document.frm.submit();
 	
 }
-function fn_add(){
-	
+/*function fn_egov_link_page(pageNo){
+	location.href="/boardDetail.do?pageNo="+pageNo;
 
+}*/
+function fn_add(){
 	$.ajax({
 		contentType:"application/x-www-form-urlencoded;charset=UTF-8",
 		type:"POST",
@@ -26,6 +55,7 @@ function fn_add(){
 		}
 	});
 }
+
 $(document).ready(function(){
 	try{
 		fn_onLoad();
