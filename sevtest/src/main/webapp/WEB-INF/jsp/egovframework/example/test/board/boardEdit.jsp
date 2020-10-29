@@ -37,6 +37,14 @@
 					<th>내용</th>
 					<td><textarea rows="5" cols="30" name="CONTENT">${boardvo.CONTENT}</textarea>
 				</tr>
+				<tr>
+					<th>첨부파일</th>
+					<td>
+						<c:if test="${boardvo.IMG_1 ne null}">
+							<img src="/upload/${boardvo.IMG_1}" style="max-width: 50%; max-height: 50%;">
+						</c:if>
+					</td>
+				</tr>
 				</tbody>
 			</table>
 			<table>

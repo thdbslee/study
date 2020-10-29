@@ -1,6 +1,11 @@
 package egovframework.example.sevtest.board;
 
+import java.io.File;
+import java.io.InputStream;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -11,11 +16,16 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import egovframework.example.cmmn.ComDefaultVO;
+import egovframework.example.cmmn.service.EgovFileMngService;
+import egovframework.example.cmmn.service.EgovFileMngUtil;
 import egovframework.example.sevtest.sevVO;
 import egovframework.example.sevtest.service.*;
 import egovframework.rte.fdl.property.EgovPropertyService;
@@ -29,7 +39,8 @@ public class boardController {
 	/** EgovPropertyService */
 	@Resource(name = "propertiesService")
 	protected EgovPropertyService propertiesService;
-	
+
+		
 	@RequestMapping(value="/board.do", produces="application/text; charset=utf8")
 	public String boardForm(@ModelAttribute("vo")boardVO vo,HttpServletRequest request,HttpSession sess,ModelMap model)throws Exception{
 		sevVO loginvo = (sevVO)sess.getAttribute("Login");
@@ -53,13 +64,49 @@ public class boardController {
 		sevVO loginvo = (sevVO)sess.getAttribute("Login");
 		//로그인아이디나타내기 
 		model.addAttribute("login", loginvo);
-		System.out.println("boardInsert->"+vo.getTITLE());
-		if(boardService.boardInsert(vo)) {
-			return"true";
-		}else {
-			return"false";
+		String rtn = "";
+		MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
+		Map<String, MultipartFile> files = multiRequest.getFileMap();
+		InputStream fis = null;
+		Iterator itr = files.entrySet().iterator();
+
+		while (true) {
+			MultipartFile file;
+			do {
+				do {
+					if (!itr.hasNext()) {
+						if(boardService.boardInsert(vo)) {
+							return "true";
+						}else {
+							return "false";
+						}
+					
+						
+					}
+
+					Entry<String, MultipartFile> entry = (Entry) itr.next();
+					file = (MultipartFile) entry.getValue();
+				} while ("".equals(file.getOriginalFilename()));
+			} while (!file.getOriginalFilename().endsWith(".jpg") && !file.getOriginalFilename().endsWith(".JPG")
+					&& !file.getOriginalFilename().endsWith(".png")
+					&& !file.getOriginalFilename().endsWith(".PNG"));
+
+			
+			String filePath = request.getSession().getServletContext().getRealPath("/");
+			System.out.println("filePath=>"+filePath);
+			String ext = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(46));
+			System.out.println("ext->"+ext);
+			String destination = System.nanoTime() + ext;
+			System.out.println("destination->"+destination);
+			File saveFile = new File(filePath + "/upload/" + destination);
+			System.out.println("saveFile=>"+saveFile);
+			file.transferTo(saveFile);
+			vo.setIMG_1(destination);
+			
 		}
-	}
+		
+		}
+	
 	@ResponseBody
 	@Transactional
 	@RequestMapping("/boardDelete")
@@ -119,6 +166,7 @@ public class boardController {
 	public String boardDetail(@ModelAttribute("vo")boardVO vo,@ModelAttribute("cmvo")commentVO cmvo,HttpSession sess,HttpServletRequest request,ModelMap model)throws Exception{
 		sevVO loginvo = (sevVO) sess.getAttribute("Login");
 		model.addAttribute("sevvo", loginvo);
+		
 		/** EgovPropertyService.sample */
 		cmvo.setPageUnit(propertiesService.getInt("pageUnit"));
 		cmvo.setPageSize(propertiesService.getInt("pageSize"));
@@ -126,13 +174,8 @@ public class boardController {
 		/** pageing setting */
 		PaginationInfo paginationInfo = new PaginationInfo();
 		paginationInfo.setCurrentPageNo(cmvo.getPageIndex());//현재페이지번호
-		//System.out.println("crrentPageNo->"+cmvo.getPageIndex());
 		paginationInfo.setRecordCountPerPage(5); //한 페이지에 게시되는 게시물 건수
 		paginationInfo.setPageSize(cmvo.getPageSize());//페이지리스트에게시되는페이지건수
-		//System.out.println("PageSize->"+cmvo.getPageSize());
-		
-		//System.out.println("recordCountperpage->"+paginationInfo.getRecordCountPerPage());
-		//System.out.println("pageSize->"+paginationInfo.getPageSize());
 		//paginationInfo.setRecordCountPerPage(cmvo.getPageUnit());//한페이지당게시되는게시물건수
 		//System.out.println("RecourCountperPage->"+cmvo.getPageUnit());
 
@@ -147,6 +190,10 @@ public class boardController {
 		//게시판선택
 		vo = boardService.boardSelect(vo);
 		model.addAttribute("boardvo", vo);
+		//게시판 선택 후 조회 수 증가시키기 
+		boardService.boardInfoUpdate(vo);
+		System.out.println("조회 수request->"+request.getParameter("INFO"));
+		System.out.println("조회 수 vo->"+vo.getINFO());
 		//댓글리스트불러오기
 		List<commentVO> list = boardService.commentList(cmvo);
 		model.addAttribute("cmlist", list);
@@ -187,5 +234,6 @@ public class boardController {
 			return "false";
 		}
 	}
+	
 	
 }

@@ -36,6 +36,9 @@ public class boardDAO extends EgovAbstractDAO{
 		bol = update("boardDAO.boardUpdate",vo)>0 ? true : false;
 		return bol;
 	}
+	public void boardInfoUpdate(boardVO vo)throws Exception{
+		update("boardDAO.boardInfoUpdate",vo);
+	}
 	//댓글
 	public List<commentVO> commentList(commentVO cmvo) throws Exception {
 		return (List<commentVO>) list ("boardDAO.commentList",cmvo) ;

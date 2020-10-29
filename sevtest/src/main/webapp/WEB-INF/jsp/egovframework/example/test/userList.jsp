@@ -133,7 +133,7 @@
                                         <thead>
                                             <tr>
                                                 <th>이름</th>
-                                                <th>직위</th>
+                                                <th>등급</th>
                                                 <th>번호</th>
                                                 <th>나이</th>
                                                 <th>입사일</th>

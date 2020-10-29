@@ -37,6 +37,11 @@ public class boardServiceImpl extends EgovAbstractServiceImpl implements boardSe
 	public boolean boardUpdate(boardVO vo)throws Exception{
 		return boardDAO.boardUpdate(vo);
 	}
+	@Override
+	public void boardInfoUpdate(boardVO vo)throws Exception{
+		boardDAO.boardInfoUpdate(vo);
+	}
+
 	//댓글
 	@Override
 	public List<commentVO> commentList(commentVO cmvo)throws Exception{

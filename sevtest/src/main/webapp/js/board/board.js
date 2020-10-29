@@ -4,21 +4,6 @@ function fn_onLoad(){
 function fn_setDefault(){
 
 
-	
-	/*if($("#AUTH_CODE").val()==1){
-		console.log("일반모드");
-		$("#manage").click(function(){
-			alert("접근할수있는권한이없습니다.");
-			return false;
-		});
-	}*/
-	if($("#AUTH_CODE").val()==1){
-		console.log("일반모드22");
-		$("#manage").hide();
-	}
-	if($("#AUTH_CODE").val()==9){
-		console.log("관리자모드");
-	}
 
 }
 function fn_add(){
@@ -37,7 +22,7 @@ function fn_edit(){
 		return;
 	}
 	var INX_CHK= $("input[name='INX_CHK']:checked").val();
-	window.open("/boardEdit.do?INX="+INX_CHK,'update','width=600px,height=400px');
+	window.open("/boardEdit.do?INX="+INX_CHK,'update','width=600px,height=1000px');
 }
 function fn_delete(){
 			if(!confirm('선택한 사용자 삭제하시겠습니까 ?')){

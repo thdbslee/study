@@ -1,5 +1,6 @@
 package egovframework.example.sevtest.board;
 
+import org.springframework.web.multipart.MultipartFile;
 
 public class boardVO  {
 	private int INX;
@@ -8,8 +9,30 @@ public class boardVO  {
 	private String ID;
 	private String INXS[]; //여러개 삭제할 수 있도록
 	private String NOTICE_DATE;
+	private int INFO; //조회수 
+	private MultipartFile IMG1;
+	private String IMG_1;
 	
 	
+	public int getINFO() {
+		return INFO;
+	}
+	public void setINFO(int iNFO) {
+		INFO = iNFO;
+	}
+	public MultipartFile getIMG1() {
+		return IMG1;
+	}
+	public void setIMG1(MultipartFile iMG1) {
+		IMG1 = iMG1;
+	}
+	
+	public String getIMG_1() {
+		return IMG_1;
+	}
+	public void setIMG_1(String iMG_1) {
+		IMG_1 = iMG_1;
+	}
 	public String getNOTICE_DATE() {
 		return NOTICE_DATE;
 	}

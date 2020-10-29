@@ -36,6 +36,14 @@
 					<th>내용</th>
 					<td><textarea rows="5" cols="30" name="CONTENT" readOnly>${boardvo.CONTENT}</textarea>
 				</tr>
+				<tr>
+					<th>첨부파일</th>
+					<td>
+					<c:if test="${boardvo.IMG_1 ne null}">
+					<img src="/upload/${boardvo.IMG_1}" style="max-width: 50%; max-height: 50%;">
+					</c:if>
+					</td>
+				</tr>
 				</tbody>
 			</table>
 		
@@ -77,7 +85,8 @@
     	<div id="paging">
       		<ui:pagination paginationInfo = "${paginationInfo}" type="image" jsFunction="fn_egov_link_page" />
       	</div>
-		<a href="javascript:self.close();" class="button">닫기</a>
+		<a href="javascript:fn_close();" class="button">닫기</a>
+		
 		</form>
 		
 

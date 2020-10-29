@@ -7,7 +7,7 @@
 		<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 <select id="boardDAO.boardList" parameterClass="boardVO" resultClass="boardVO">
 /*boardDAO.boardList*/
-	SELECT INX, TITLE, CONTENT,ID,NOTICE_DATE
+	SELECT INX, TITLE, CONTENT,ID,INFO,NOTICE_DATE
 	FROM NOTICE
 	GROUP BY DATE_FORMAT(NOTICE_DATE,'%Y-%m-%d %h:%i:%s')
 	ORDER BY NOTICE_DATE DESC
@@ -16,8 +16,14 @@
 /*boardDAO.boardSelect*/
 	SELECT * FROM NOTICE 
 	WHERE INX =#INX#
-
 </select>
+<!-- 조회수 증가 -->
+<update id="boardDAO.boardInfoUpdate" parameterClass="boardVO">
+/*boardDAO.boardInfoUpdate*/
+	UPDATE NOTICE SET 
+	INFO = INFO + 1 
+	WHERE INX = #INX#
+</update>
 <update id="boardDAO.boardInsert" parameterClass="boardVO">
 /*boardDAO.boardInsert*/
 	INSERT INTO NOTICE(
@@ -25,11 +31,13 @@
 		,CONTENT
 		,ID
 		,NOTICE_DATE
+		,IMG_1
 	)VALUES(
 		#TITLE#
 		,#CONTENT#
 		,#ID#
 		,DATE_FORMAT(NOW(),'%Y-%m-%d %h:%i:%s')
+		,#IMG_1#
 	)
 </update>
 <update id="boardDAO.boardDelete" parameterClass="boardVO">

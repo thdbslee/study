@@ -16,11 +16,12 @@
  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
  <script type="text/javascript" src="/js/board/boardInsert.js" ></script>
+ <script type="text/javascript" src="/js/egovframework/EgovMultiFile.js" ></script>
 </head>
 <title>게시판 등록 </title>
 <body>
 	<div>
-		<form id="frm" name="frm">
+		<form id="frm" name="frm" enctype="multipart/form-data" method="post">
 			<table class="simple_table">
 				<tbody>
 					<h4>게시판 등록</h4>
@@ -38,7 +39,9 @@
 				</tr>
 				<tr>
 					<th>첨부파일</th>
-					<td></td>
+					<td><input type="file"  id="egovComFileUploader" name="IMG1" id="IMG1"></td>
+					<label>파일찾기</label>
+					<div id="egovComFileList"></div>
 				</tr>
 				</tbody>
 			</table>

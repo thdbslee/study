@@ -10,6 +10,8 @@ public interface boardService {
 	public boolean boardDelete(boardVO vo)throws Exception;
 	public void boardComDelete(boardVO vo)throws Exception; //게시물삭제시해당하는댓글같이삭제
 	public boolean boardUpdate(boardVO vo)throws Exception;
+	public void boardInfoUpdate(boardVO vo)throws Exception;
+	
 	//댓글
 	public List<commentVO> commentList(commentVO cmvo)throws Exception;
 	public boolean commentInsert(commentVO cmvo)throws Exception;

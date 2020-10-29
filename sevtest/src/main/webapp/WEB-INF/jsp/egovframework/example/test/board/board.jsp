@@ -65,29 +65,23 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="/sev_manage.do">직원관리</a>
-                                    <a class="nav-link" href="/user_List.do">직원리스트</a>
-                                    <a class="nav-link" href="layout-sidenav-light.html">퇴사직원리스트</a>
+                                    <a class="nav-link" href="/sev_manage.do">사용자관리</a>
+                                    <a class="nav-link" href="/user_List.do">사용자리스트</a>
+                                    <a class="nav-link" href="layout-sidenav-light.html">탈퇴리스트</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                                Pages
+                                게시판
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link collapsed" href="/board.do" data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                       	게시판
-                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                    </a>
-                                    <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
-                                        <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="login.html">Login</a>
-                                            <a class="nav-link" href="register.html">Register</a>
+                    				 <nav class="sb-sidenav-menu-nested nav">
+                                            <a class="nav-link" href="/board.do">자유게시판</a>
+                                            <a class="nav-link" href="register.html">등업게시판</a>
                                             <a class="nav-link" href="password.html">Forgot Password</a>
                                         </nav>
-                                    </div>
                                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
                                         공지사항
                                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -145,6 +139,7 @@
                                       			<th style="width:10%;"><input type="checkbox" id="all_check" name="all_check"></th>
                                       			<th>title</th>
                                       			<th>id</th>
+                                      			<th style="width:8%;">조회수</th>
                                       			<th style="width:100px;">date</th>
                                       		</tr>
                                       	</thead>
@@ -162,9 +157,11 @@
                                       				</c:choose>
                                       								
                               						</td>
-                                      				<td style="cursor: pointer;" onMouseOver="this.style.backgroundColor='#F0F1F3'" onMouseOut="this.style.backgroundColor='#FFFFFF'" onclick="javascript:fn_detail('${list.INX}')">
+                                      				<td  id="test" name="test" style="cursor: pointer;" onMouseOver="this.style.backgroundColor='#F0F1F3'" onMouseOut="this.style.backgroundColor='#FFFFFF'" onclick="javascript:fn_detail('${list.INX}')">
                                       				${list.TITLE}</td>
                                       				<td>${list.ID}</td>
+                                      				<td style="text-align:center">
+                                      				<input type="hidden" id="INFO" name="INFO" value="${list.INFO}">${list.INFO}</td>
                                       				<td style="width:100px;">${list.NOTICE_DATE}</td>
                                       				</tr>
                                       			</c:forEach>
