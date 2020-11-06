@@ -78,7 +78,16 @@ public class sevServiceImpl extends EgovAbstractServiceImpl implements sevServic
 	public boolean userSettingUpdate(sevVO vo)throws Exception{
 		return sevDAO.userSettingUpdate(vo);
 	}
-
-
-
+	//등업게시판 등록시 count 증가
+	public void sevUpdateLev(sevVO sevvo)throws Exception{
+		sevDAO.sevUpdateLev(sevvo);
+	}
+	//등록건수,id불러오기
+	public sevVO sevLevList(sevVO sevvo)throws Exception{
+		return sevDAO.sevLevList(sevvo);
+	}
+	//level guest->staff upgrade시키기 
+	public void sevLevelUpgrade(sevVO sevvo)throws Exception{
+		sevDAO.sevLevelUpgrade(sevvo);
+	}
 }

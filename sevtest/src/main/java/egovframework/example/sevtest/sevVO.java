@@ -15,8 +15,15 @@ public class sevVO {
 	private int FAIL_COUNT;
 	private String AUTH_CODE;
 	private String LOGIN_DATE;
+	private int LEV_COUNT ; //등업게시물 등록 건수
 	
 	
+	public int getLEV_COUNT() {
+		return LEV_COUNT;
+	}
+	public void setLEV_COUNT(int lEV_COUNT) {
+		LEV_COUNT = lEV_COUNT;
+	}
 	public String getLEVEL_NAME() {
 		return LEVEL_NAME;
 	}

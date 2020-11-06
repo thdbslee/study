@@ -45,11 +45,13 @@ public class boardController {
 	public String boardForm(@ModelAttribute("vo")boardVO vo,HttpServletRequest request,HttpSession sess,ModelMap model)throws Exception{
 		sevVO loginvo = (sevVO)sess.getAttribute("Login");
 		model.addAttribute("login", loginvo);//아이디불러오기위해 
-		List<boardVO> list = boardService.boardList(vo);
-		
-		model.addAttribute("list", list);//리스트불러오기위해 
-		
-		return"/test/board/board";
+		System.out.println("login Level==>"+loginvo.getLEVEL());
+	
+			List<boardVO> list = boardService.boardList(vo);
+			
+			model.addAttribute("list", list);//리스트불러오기위해 
+			
+			return"/test/board/board";
 	}
 	@RequestMapping(value="/boardInsert.do")
 	public String boardInsertForm(@ModelAttribute("vo")boardVO vo,HttpServletRequest request,HttpSession sess,ModelMap model)throws Exception{
@@ -109,7 +111,7 @@ public class boardController {
 	
 	@ResponseBody
 	@Transactional
-	@RequestMapping("/boardDelete")
+	@RequestMapping(value="/boardDelete.do")
 	public String boardDelete(@ModelAttribute("vo")boardVO vo,commentVO cmvo,HttpSession sess,HttpServletRequest request,ModelMap model)throws Exception{
 		sevVO loginvo = (sevVO) sess.getAttribute("Login");
 		vo.setINXS(request.getParameterValues("INX_CHK"));
@@ -118,20 +120,16 @@ public class boardController {
 		System.out.println("loginID->"+loginvo.getID());
 		System.out.println("ID->"+vo.getID());
 		
-		if(loginvo.getAUTH_CODE().equals("9")) {
 			if(boardService.boardDelete(vo)) {//게시물삭제시
 				boardService.boardComDelete(vo); //게시물번호와같은 댓글삭제
 				return "true";
 			}else {
 				return "false";
 			}
-		}else {//일반사용자일경우
-				boardService.boardDelete(vo);
-				boardService.boardComDelete(vo);
-				return"true";
-		}
+
 		
 	}
+	
 	@RequestMapping(value="/boardEdit.do")
 	public String boardEditForm(@ModelAttribute("vo")boardVO vo,HttpSession sess,HttpServletRequest request,ModelMap model)throws Exception{
 		sevVO loginvo = (sevVO)sess.getAttribute("Login");
@@ -146,6 +144,7 @@ public class boardController {
 	@RequestMapping(value="/boardEdit_ok.do")
 	public String boardEdit(@ModelAttribute("vo")boardVO vo,HttpSession sess,HttpServletRequest request,ModelMap model)throws Exception{
 		sevVO loginvo = (sevVO)sess.getAttribute("Login");
+		System.out.println("테스트 : "+vo.getCONTENT());
 		if(boardService.boardUpdate(vo)) {
 			return"ture";
 		}else {
@@ -192,8 +191,7 @@ public class boardController {
 		model.addAttribute("boardvo", vo);
 		//게시판 선택 후 조회 수 증가시키기 
 		boardService.boardInfoUpdate(vo);
-		System.out.println("조회 수request->"+request.getParameter("INFO"));
-		System.out.println("조회 수 vo->"+vo.getINFO());
+		
 		//댓글리스트불러오기
 		List<commentVO> list = boardService.commentList(cmvo);
 		model.addAttribute("cmlist", list);

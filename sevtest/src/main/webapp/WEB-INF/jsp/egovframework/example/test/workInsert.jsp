@@ -34,6 +34,7 @@
 					<option value="0">director</option>
 					<option value="1">manager</option>
 					<option value="2">staff</option>
+					<option value="3">guest</option>
 				</select>
 				</td>
 			</tr>

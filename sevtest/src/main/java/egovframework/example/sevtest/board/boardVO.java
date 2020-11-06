@@ -9,15 +9,15 @@ public class boardVO  {
 	private String ID;
 	private String INXS[]; //여러개 삭제할 수 있도록
 	private String NOTICE_DATE;
-	private int INFO; //조회수 
 	private MultipartFile IMG1;
 	private String IMG_1;
+	private String INFO; //조회수
 	
 	
-	public int getINFO() {
+	public String getINFO() {
 		return INFO;
 	}
-	public void setINFO(int iNFO) {
+	public void setINFO(String iNFO) {
 		INFO = iNFO;
 	}
 	public MultipartFile getIMG1() {

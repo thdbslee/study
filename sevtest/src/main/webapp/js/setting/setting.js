@@ -13,8 +13,8 @@ function fn_userEdit(){
 			url 	:"/setting_eidt.do",
 			success : function(data){
 				if(data=="true"){
-					alert("사용자정보 변경완료,로그인 후 사용하세요");
-					location.href="/login.do";
+					alert("사용자 정보 변경완료");
+					location.href="/userMain.do";
 				}else if(data=="N"){
 					alert("비밀번호맞지않습니다.");
 				}

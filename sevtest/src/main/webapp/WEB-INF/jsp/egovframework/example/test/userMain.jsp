@@ -63,9 +63,8 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                	<a class="nav-link" href="/sev_manage.do" id="manage">직원관리</a>
-                                    <a class="nav-link" href="layout-static.html">직원리스트</a>
-                                    <a class="nav-link" href="layout-sidenav-light.html">퇴사직원</a>
+                                    <a class="nav-link" href="/user_List.do">사용자리스트</a>
+                                    <a class="nav-link" href="layout-sidenav-light.html">탈퇴리스트</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
@@ -81,9 +80,9 @@
                                     </a>
                                     <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="login.html">Login</a>
-                                            <a class="nav-link" href="register.html">Register</a>
-                                            <a class="nav-link" href="password.html">Forgot Password</a>
+                                            <a class="nav-link" href="/board.do">자유게시판</a>
+                                            <a class="nav-link" href="/QAlist.do">QA게시판</a>
+                                            <a class="nav-link" href="/levelList.do">등업게시판</a>
                                         </nav>
                                     </div>
                                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
@@ -121,6 +120,7 @@
                     <div class="container-fluid">
                         <h1 class="mt-4">WELCOME</h1>
                        	<h4>${login.ID}님 접속중입니다.</h4>
+                       	
                        	<input type="hidden" id="AUTH_CODE" name="AUTH_CODE" value="${login.AUTH_CODE }">
                         <div class="row">
                             <div class="col-xl-3 col-md-6">

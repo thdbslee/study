@@ -35,8 +35,8 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="#">Settings</a>
                         <a class="dropdown-item" href="/setting.do">MyPage</a>
+                        <a class="dropdown-item" href="/writeboard.do">작성글</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="/logout.do">로그아웃</a>
                     </div>
@@ -82,8 +82,8 @@
                                     <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
                                             <a class="nav-link" href="/board.do">자유게시판</a>
-                                            <a class="nav-link" href="404.html">Q&A 게시판</a>
-                                            <a class="nav-link" href="500.html">500 Page</a>
+                                            <a class="nav-link" href="/QAlist.do">Q&A 게시판</a>
+                                            <a class="nav-link" href="/levelList.do">등업게시판</a>
                                         </nav>
                                     </div>
                                 </nav>

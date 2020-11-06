@@ -74,5 +74,13 @@ public class sevDAO  extends EgovAbstractDAO{
 		bol = update("sevDAO.userSettingUpdate",vo) > 0? true : false;
 		return bol;
 	}
-
+	public void sevUpdateLev(sevVO sevvo)throws Exception{
+		update("sevDAO.sevUpdateLev",sevvo);
+	}
+	public sevVO sevLevList(sevVO sevvo)throws Exception{
+		return (sevVO) select("sevDAO.sevLevList",sevvo);
+	}
+	public void sevLevelUpgrade(sevVO sevvo)throws Exception{
+		update("sevDAO.sevLevelUpgrade",sevvo);
+	}
 }

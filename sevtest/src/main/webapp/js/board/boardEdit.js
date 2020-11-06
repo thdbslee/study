@@ -10,12 +10,14 @@ function fn_update(){
 		alert("제목을입력하세요");
 		return;
 	}
-
+	var frm = $("#frm").serialize();
+	var frmData = decodeURIComponent(frm);
+//	alert($("#frm").serialize());
 	$.ajax({
 		contentType:"application/x-www-form-urlencoded;charset=UTF-8",
 		type:"POST",
 		url:"/boardEdit_ok.do",
-		data:$("#frm").serialize(),
+		data:frmData,
 		success:function(data){
 			if(data=="ture"){
 				alert("수정완료");

@@ -26,4 +26,12 @@ public interface sevService {
 	public boolean sevDelete(sevVO vo)throws Exception;
 	//개인정보변경 
 	public boolean userSettingUpdate(sevVO vo)throws Exception;
+	//등업게시판등록시 lev_count 증가
+	public void sevUpdateLev(sevVO sevvo)throws Exception;
+	//등록건수,id불러오기 
+	public sevVO sevLevList(sevVO sevvo)throws Exception;
+	//level guest-> staff (3->2)로 upgrade
+	public void sevLevelUpgrade(sevVO sevvo)throws Exception;
+	
+
 }

@@ -65,14 +65,18 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
+                                	<c:choose>
+                                	<c:when test="${loginvo.AUTH_CODE eq 9 }">
                                     <a class="nav-link" href="/sev_manage.do">직원관리</a>
+                                    </c:when>
+                                    </c:choose>
                                     <a class="nav-link" href="/user_List.do">직원리스트</a>
                                     <a class="nav-link" href="layout-sidenav-light.html">퇴사직원리스트</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                                Pages
+                                게시판
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
@@ -83,9 +87,9 @@
                                     </a>
                                     <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="login.html">Login</a>
-                                            <a class="nav-link" href="register.html">Register</a>
-                                            <a class="nav-link" href="password.html">Forgot Password</a>
+                                             <a class="nav-link" href="/board.do">자유게시판</a>
+                                            <a class="nav-link" href="/QAlist.do">QA게시판</a>
+                                            <a class="nav-link" href="/levelList.do">등업게시판</a>
                                         </nav>
                                     </div>
                                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
@@ -121,11 +125,11 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                        <h1 class="mt-4">직원리스트</h1>
+                        <h1 class="mt-4">사용자리스트</h1>
       					<div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table mr-1"></i>
-                                직원리스트
+                                사용자리스트
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">

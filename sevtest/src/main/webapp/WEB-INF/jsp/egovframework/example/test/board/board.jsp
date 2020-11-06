@@ -79,8 +79,8 @@
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                     				 <nav class="sb-sidenav-menu-nested nav">
                                             <a class="nav-link" href="/board.do">자유게시판</a>
-                                            <a class="nav-link" href="register.html">등업게시판</a>
-                                            <a class="nav-link" href="password.html">Forgot Password</a>
+                                            <a class="nav-link" href="/QAlist.do">Q&A게시판</a>
+                                            <a class="nav-link" href="/levelList.do">등업게시판</a>
                                         </nav>
                                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
                                         공지사항
@@ -116,7 +116,8 @@
                 <main>
                     <div class="container-fluid">
                         <h1 class="mt-4">게시판</h1>
-                       	<h7>${login.ID}접속중입니다.</h7>     
+                       	<h7>${login.ID}접속중입니다.</h7> 
+                       	 
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table mr-1"></i>
@@ -125,7 +126,8 @@
                             <div class="card-body" >
                                 <div class="table-responsive" >
                                 	<form id="boardfrm" name="boardfrm">
-
+                                
+									<input type="hidden" id="LEVEL" name="LEVEL" value="${login.LEVEL }">
                                 	<input type="hidden" id="AUTH_CODE" name="AUTH_CODE" value="${login.AUTH_CODE}">
                                     <table class="table table-bordered" id="dataTable" >
                                     <div>

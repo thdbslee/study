@@ -65,7 +65,7 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="/sev_manage.do">직원관리</a>
+                               
                                     <a class="nav-link" href="/user_List.do">직원리스트</a>
                                     <a class="nav-link" href="layout-sidenav-light.html">퇴사직원리스트</a>
                                 </nav>
@@ -83,9 +83,9 @@
                                     </a>
                                     <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="login.html">Login</a>
-                                            <a class="nav-link" href="register.html">Register</a>
-                                            <a class="nav-link" href="password.html">Forgot Password</a>
+                                              <a class="nav-link" href="/board.do">자유게시판</a>
+                                            <a class="nav-link" href="/QAlist.do">Q&A 게시판</a>
+                                            <a class="nav-link" href="/levelList.do">등업게시판</a>
                                         </nav>
                                     </div>
                                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
@@ -135,7 +135,7 @@
                                        		<tr>
                                        			<th>아이디</th>
                                        			<td>
-                                       				<input type="text" id="ID" name="ID" value="${loginvo.ID}" readOnly>
+                                       				<input type="hidden" id="ID" name="ID" value="${loginvo.ID}" readOnly>${loginvo.ID}
                                        			</td>
                                        		</tr>
                                        		<tr>
@@ -150,14 +150,14 @@
                          						<input type="password" id="PASSWD" name="PASSWD" ></td>
                                        		</tr>
                                        		
-                                       		<tr>
+                                       		<!-- <tr>
                                        			<th>직위</th>
                                        			<td><select name="LEVEL" id="LEVEL">
 												<option value="0"${loginvo.LEVEL eq '0' ?'selected':''}>director</option>
 												<option value="1"${loginvo.LEVEL eq '1' ?'selected':''}>manager</option>
 												<option value="2"${loginvo.LEVEL eq '2' ?'selected':''}>staff</option>
 												</select></td>
-                                       		</tr>
+                                       		</tr>-->
                                        		<tr>
                                        			<th>번호</th>
                                        			<td><input type="text" id="PHONE" name="PHONE" value="${loginvo.PHONE}"></td>

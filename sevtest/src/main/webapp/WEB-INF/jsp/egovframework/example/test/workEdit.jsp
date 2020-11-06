@@ -36,6 +36,7 @@
 							<option value="0"${editvo.LEVEL eq '0' ?'selected':''}>director</option>
 							<option value="1"${editvo.LEVEL eq '1' ?'selected':''}>manager</option>
 							<option value="2"${editvo.LEVEL eq '2' ?'selected':''}>staff</option>
+							<option value="3"${editvo.LEVEL eq '3' ?'selected':''}>guest</option>
 						</select>
 					</td>
 				</tr>

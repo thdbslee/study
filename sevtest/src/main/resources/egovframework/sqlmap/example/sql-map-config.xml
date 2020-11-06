@@ -4,4 +4,8 @@
 
 <sqlMapConfig>
 	<sqlMap resource="egovframework/sqlmap/example/sample/EgovSample_Sample_SQL.xml"/>
-<sqlMap resource="egovframework/sqlmap/example/sevtest/sevTest.xml"></sqlMap><sqlMap resource="egovframework/sqlmap/example/sevtest/board.xml"></sqlMap></sqlMapConfig>
+<sqlMap resource="egovframework/sqlmap/example/sevtest/sevTest.xml"></sqlMap>
+<sqlMap resource="egovframework/sqlmap/example/sevtest/board.xml"></sqlMap>
+<sqlMap resource="egovframework/sqlmap/example/sevtest/QA.xml"></sqlMap>
+<sqlMap resource="egovframework/sqlmap/example/sevtest/level.xml"></sqlMap>
+</sqlMapConfig>

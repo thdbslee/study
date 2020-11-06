@@ -251,9 +251,10 @@ public class sevController {
 	public String settingEdit(@ModelAttribute("vo")sevVO vo,HttpSession sess,HttpServletRequest request,ModelMap model)throws Exception{
 		sevVO loginvo = (sevVO) sess.getAttribute("Login");
 		model.addAttribute("vo", vo);
-		System.out.println("loginvoNAME->"+loginvo.getNAME());
+		System.out.println("변경전이름=>"+loginvo.getNAME());
 		if(sevService.userSettingUpdate(vo)) {
-			System.out.println("정보변경");
+			sess.setAttribute("Login", loginvo); //세션업데이트하기->로그아웃안해도 세션바뀜
+			System.out.println("변경후이름=>"+loginvo.getNAME());
 			return "true";
 		}else {
 			System.out.println("정보변경오류");

@@ -5,7 +5,9 @@
 <%@ taglib prefix="spring"	uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fn"		uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
- 
+ <%
+//  	request.setCharacterEncoding("utf-8");
+ %>
 <!DOCTYPE html>
 
 <html lang="ko">
@@ -24,7 +26,7 @@
 <title>게시판 수정하기</title>
 <body>
 	<div>
-			<form id="frm" name="frm">
+			<form id="frm" name="frm" method="post">
 			<table class="simple_table">
 				<tbody>
 					<h4>게시판 수정하기</h4>

@@ -41,12 +41,14 @@
 			,AUTH_CODE
 			,NAME
 			,PHONE
+			,AGE
 		)VALUES(
 			#ID#
 			,password(#PASSWD#)
 			,1
 			,#NAME#
 			,#PHONE#
+			,#AGE#
 		)
 	</update>
 	<select id="sevDAO.sevList" parameterClass="sevVO" resultClass="sevVO">
@@ -56,6 +58,7 @@
 		,CASE WHEN LEVEL = '0' THEN 'director'
 		WHEN LEVEL = '1' THEN 'manager' 
 		WHEN LEVEL = '2' THEN 'staff' 
+		WHEN LEVEL = '3' THEN 'guest'
 		END LEVEL_NAME
 		,ID
 		,PHONE
@@ -122,7 +125,6 @@
 	 	UPDATE SEV 
 	 	SET 
 	 	NAME = #NAME#
-	 	,LEVEL = #LEVEL#
 	 	,PHONE = #PHONE#
 	 	WHERE ID = #ID#
 	
