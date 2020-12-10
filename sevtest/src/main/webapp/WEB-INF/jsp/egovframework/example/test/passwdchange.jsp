@@ -18,40 +18,40 @@
  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
  <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
  <link type="text/css" rel="stylesheet" href="/css/egovframework/sample.css"/>
-<script type="text/javascript" src="/js/level/levelInsert.js" ></script>
-
-
+<script type="text/javascript" src="/js/passwdchange.js" ></script>
 
 </head>
-<title>등업게시판</title>
+<title>비밀번호 변경</title>
 <body>
 	<div>
 			<form id="frm" name="frm" method="post">
 			<input type="text" id="ID" name="ID" value="${loginvo.ID}">
-
-			<table class="simple_table">
-				<tbody>
-					<h4>등업게시판</h4>
-				<tr>
-					<th scope="row">제목</th>
-					<td><input type="text" id="TITLE" name="TITLE"></td>
-				</tr>	
-				<tr> 
-					<th>내용</th>
-					<td><textarea rows="5" cols="30" name="CONTENT"></textarea>
-				</tr>
-				</tbody>
-			</table>
-			<table>
-				<a href="javascript:fn_insert();" class="button">등록</a>
-				<a href="javascript:self.close();" class="button">닫기</a>
-			</table>	
+				<table class="simple_table">
+					<tr>
+						<th>현재비밀번호</th>
+						<td><input type="password" id="OLDPASSWD" name="OLDPASSWD" placeholder="현재비밀번호"></td>
+					</tr>
+					<tr>	
+						<th>변경비밀번호</th>
+						<td><input type="password" id="NEWPASSWD" name="NEWPASSWD" placeholder="비밀번호"></td>
+					</tr>
+					<tr>
+						<th>비밀번호확인</th>
+						<td><input type="password" id="PASSWDCHK" name="PASSWDCHK" placeholder="비밀번호확인"></td>
+					</tr>
+				</table>
+				<a  href="javascript:fn_passwdchange()" >변경하기</a>
+				<a  href="javascript:self.close()">닫기</a>
 			</form>	
 	</div>
 </body>
-
+<div id="dialog" class="dialog" >
+	<div id="dialogType">
+		<p id="dialogMsg" class="dialog_msg"></p>
+	</div>
+</div>	
 <style>
-.simple_table { width: 100%; height:100px; border:1px; margin:auto;text-align:center;}
+.simple_table { width: 100%; height:70px; border:1px; margin:auto;text-align:center;}
 .simple_table th { padding: 5px; border: none;  border-bottom: 1px solid #DDD; background: #FCF0F3; font-weight: normal; text-align:center; text-shadow: 0 1px #FFF; vertical-align: middle;}
 .simple_table td { padding: 5px; border: none; border-bottom: 1px solid #DDD; text-align:center; }
 .button {
@@ -78,4 +78,3 @@
 
 }
 </style>
-

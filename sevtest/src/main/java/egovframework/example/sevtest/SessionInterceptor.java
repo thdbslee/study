@@ -21,10 +21,12 @@ public class SessionInterceptor extends HandlerInterceptorAdapter {
 	 */
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception { 
-	  System.out.println("인터셉터");
 		sevVO loginVo = (sevVO) request.getSession().getAttribute("Login");	// 로그인 사용자 세션정보
-		String requestURI = request.getRequestURI();          					// 요청 URI
-		  
+		String requestURI = request.getRequestURI(); // 요청 URI ex)/index.do
+		/*System.out.println("URI->"+requestURI); 
+		StringBuffer requestURL = request.getRequestURL(); ex)http://localhost:8080/index.do
+		System.out.println("URL->"+requestURL);*/
+		
 		if (requestURI.indexOf("/login.do") > -1) { //indexof값이없으면 -1리턴인데 -1보다크면 true로가니까 컨트롤러로간다
 			return true;
 		} else if (requestURI.indexOf("/userLogin.do") > -1) {
@@ -45,7 +47,7 @@ public class SessionInterceptor extends HandlerInterceptorAdapter {
 	}
 	
 	@Override
-	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView check) throws Exception {
+	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView model) throws Exception {
 		String requestURI = request.getRequestURI();   
 		sevVO loginVo = (sevVO) request.getSession().getAttribute("Login");	// 로그인 사용자 세션정보
 		//System.out.println("requestURI :"+requestURI);
@@ -61,9 +63,13 @@ public class SessionInterceptor extends HandlerInterceptorAdapter {
 				throw new ModelAndViewDefiningException(new ModelAndView("redirect:/levelList.do"));
 				
 			}
-		
-		
 		}
+		//로그인정보 뷰단에 보냄
+		if(loginVo !=null) {
+			System.out.println("인터셉터loginVo::"+loginVo.getID());
+			model.addObject("loginvo", loginVo);
+		}
+		
 	}
 	
 }

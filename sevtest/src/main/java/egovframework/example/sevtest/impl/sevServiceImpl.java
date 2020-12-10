@@ -50,6 +50,15 @@ public class sevServiceImpl extends EgovAbstractServiceImpl implements sevServic
 	public boolean joinInsert(sevVO vo)throws Exception{
 		return sevDAO.joinInsert(vo);
 	}
+	//현재비밀번호맞나확인
+	@Override
+	public int passcount(sevVO vo)throws Exception{
+		return sevDAO.passcount(vo);
+	}
+	@Override
+	public void updatePasswd(sevVO vo)throws Exception{
+		sevDAO.updatePasswd(vo);
+	}
 	//사용자관리
 	@Override
 	public List<sevVO> sevList(sevVO vo) throws Exception {

@@ -14,6 +14,9 @@ public interface sevService {
 	//회원가입
 	public int idcount(sevVO vo)throws Exception;
 	public boolean joinInsert(sevVO vo)throws Exception;
+	//현재비밀번호맞나확인 
+	public int passcount(sevVO vo)throws Exception;
+	public void updatePasswd(sevVO vo)throws Exception;
 	//사용자관리
 	public List<sevVO> sevList(sevVO vo)throws Exception;
 

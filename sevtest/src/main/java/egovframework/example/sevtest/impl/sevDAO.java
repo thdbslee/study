@@ -68,6 +68,13 @@ public class sevDAO  extends EgovAbstractDAO{
 		bol = update("sevDAO.joinInsert",vo) > 0 ? true : false;
 		return bol;
 	}
+	//비밀번호변경
+	public int passcount(sevVO vo)throws Exception{
+		return (int)select("sevDAO.passcount",vo);
+	}
+	public void updatePasswd(sevVO vo)throws Exception{
+		update("sevDAO.updatePasswd",vo);
+	}
 	//개인정보변경
 	public boolean userSettingUpdate(sevVO vo)throws Exception{
 		boolean bol = false;

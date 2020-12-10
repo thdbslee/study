@@ -18,5 +18,18 @@ public class levelDAO extends EgovAbstractDAO {
 		
 		return (List<levelVO>) list("levelDAO.levelList",vo);
 	}
-
+	public levelVO levelSelect(levelVO vo)throws Exception{
+		return (levelVO) select("levelDAO.levelSelect",vo);
+	}
+	public boolean levelUpdate(levelVO vo)throws Exception{
+		boolean bol = false;
+		bol = update("levelDAO.levelUpdate",vo) > 0 ? true : false ; 
+		return bol;
+	}
+	public boolean levelDelete(levelVO vo)throws Exception{
+		boolean bol = false;
+		bol = update("levelDAO.levelDelete",vo) > 0 ? true : false;
+		System.out.println("bol=>"+bol);
+		return bol;
+	}
 }

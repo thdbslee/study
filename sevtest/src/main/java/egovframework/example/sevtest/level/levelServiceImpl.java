@@ -20,5 +20,15 @@ public class levelServiceImpl extends EgovAbstractServiceImpl implements levelSe
 	
 		return levelDAO.levelInsert(vo);
 	}
+	public levelVO levelSelect(levelVO vo)throws Exception{
+		return levelDAO.levelSelect(vo);
+	}
+	public boolean levelUpdate(levelVO vo)throws Exception{
+		return levelDAO.levelUpdate(vo);
+	}
+	public boolean levelDelete(levelVO vo)throws Exception{
+		System.out.println("deleteService");
+		return levelDAO.levelDelete(vo);
+	}
 
 }

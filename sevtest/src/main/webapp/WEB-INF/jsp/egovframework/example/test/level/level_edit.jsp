@@ -18,7 +18,7 @@
  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
  <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
  <link type="text/css" rel="stylesheet" href="/css/egovframework/sample.css"/>
-<script type="text/javascript" src="/js/level/levelInsert.js" ></script>
+<script type="text/javascript" src="/js/level/levelEdit.js" ></script>
 
 
 
@@ -27,23 +27,27 @@
 <body>
 	<div>
 			<form id="frm" name="frm" method="post">
-			<input type="text" id="ID" name="ID" value="${loginvo.ID}">
-
+		
+			<input type="hidden" id="INX" name="INX" value="${vo.INX}">
 			<table class="simple_table">
 				<tbody>
-					<h4>등업게시판</h4>
+					<h4>등업게시판 </h4>
+				<tr>
+					<th>아이디</th>
+					<td><input type="hidden" id="ID" name="ID" value="${loginvo.ID}">${loginvo.ID}</td>
+				</tr>
 				<tr>
 					<th scope="row">제목</th>
-					<td><input type="text" id="TITLE" name="TITLE"></td>
-				</tr>	
+					<td><input type="text" id="TITLE" name="TITLE" value="${vo.TITLE}"></td>
+				</tr>
 				<tr> 
 					<th>내용</th>
-					<td><textarea rows="5" cols="30" name="CONTENT"></textarea>
+					<td><textarea rows="5" cols="30" name="CONTENT">${vo.CONTENT}</textarea>
 				</tr>
 				</tbody>
 			</table>
 			<table>
-				<a href="javascript:fn_insert();" class="button">등록</a>
+				<a href="javascript:fn_edit();" class="button">수정</a>
 				<a href="javascript:self.close();" class="button">닫기</a>
 			</table>	
 			</form>	

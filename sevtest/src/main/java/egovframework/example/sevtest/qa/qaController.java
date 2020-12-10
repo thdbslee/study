@@ -114,9 +114,9 @@ public class qaController {
 	public String QA_ANSWER(@ModelAttribute("anvo")QA_ANSWERVO anvo,@ModelAttribute("vo")QAVO vo,HttpServletRequest request,HttpSession sess,ModelMap model)throws Exception{
 		sevVO loginvo = (sevVO) sess.getAttribute("Login");
 		model.addAttribute("loginvo", loginvo);
-		if(qaService.answerInsert(anvo)) {
-			if(loginvo.getAUTH_CODE().equals("9")) {
-				qaService.qaAnswerUpdate(vo);
+		if(qaService.answerInsert(anvo)) { 
+			if(loginvo.getAUTH_CODE().equals("9")) { 
+				qaService.qaAnswerUpdate(vo); //관리자댓글달면 답변유무 Y로 update
 			}
 			return "true";
 		}else {

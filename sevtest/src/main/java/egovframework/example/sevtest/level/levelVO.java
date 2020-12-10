@@ -2,11 +2,20 @@ package egovframework.example.sevtest.level;
 
 public class levelVO {
 	private int INX;
+	private String INXS[];
 	private String ID;
 	private String CONTENT;
 	private String INSERT_DATE;
 	private String TITLE;
 
+	
+	
+	public String[] getINXS() {
+		return INXS;
+	}
+	public void setINXS(String[] iNXS) {
+		INXS = iNXS;
+	}
 	public String getTITLE() {
 		return TITLE;
 	}

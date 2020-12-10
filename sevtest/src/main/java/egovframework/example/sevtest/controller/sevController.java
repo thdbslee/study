@@ -24,7 +24,7 @@ public class sevController {
 	private sevService sevService;
 	
 	
-	//로그인
+	//로그인 인덱스.jsp첫페이지 login.do로 설정
 	@RequestMapping(value="/login.do")
 	public String login(@ModelAttribute("vo")sevVO vo,HttpServletRequest request,ModelMap model,HttpSession sess)throws Exception{
 		sevVO loginVO = (sevVO)sess.getAttribute("Login");
@@ -58,8 +58,7 @@ public class sevController {
 				sess.setAttribute("Login", vo);
 				json.put("resultCode", "Y");
 			}
-		}else {
-			System.out.println("");
+		}else {//로그인 실패시 
 			String loginId = request.getParameter("ID");
 			failVo.setID(loginId);
 			failVo = sevService.userFailInfo(failVo);
@@ -107,7 +106,37 @@ public class sevController {
 		}
 		
 	}
-	
+	//비밀번호변경
+	@RequestMapping(value="/changePasswd.do")
+	public String changePasswd(@ModelAttribute("vo")sevVO vo,HttpServletRequest request,ModelMap model,HttpSession sess)throws Exception{
+		sevVO loginvo = (sevVO) sess.getAttribute("Login");
+		model.addAttribute("loginvo", loginvo);
+		System.out.println("비밀번호 change");
+		return "/test/passwdchange";
+	}
+	//비밀번호변경확인
+	@ResponseBody
+	@Transactional
+	@RequestMapping(value="/passwdchange_ok.do")
+	public String changePasswdOK(@ModelAttribute("vo")sevVO vo,@ModelAttribute("newvo")sevVO newvo,HttpServletRequest request,HttpSession sess,ModelMap model)throws Exception{
+		sevVO loginvo =(sevVO) sess.getAttribute("Login");
+		//sevVO vo에 현재비밀번호넣기 
+		vo.setPASSWD(request.getParameter("OLDPASSWD").toString());
+		System.out.println("현재 ::"+vo.getPASSWD());
+		//sevVO newvo에 새비밀번호 넣기
+		newvo.setPASSWD(request.getParameter("NEWPASSWD").toString());
+		System.out.println("새 ::"+newvo.getPASSWD());
+		//현재 비밀번호 맞는지 확인
+		int passcount = sevService.passcount(vo);
+		if(passcount > 0) {
+			//비밀번호변경로직추가
+			sevService.updatePasswd(newvo);
+			return "Y"; //변경완료
+		}else {
+			return "N"; //변경실패
+		}
+		
+	}
 	
 	//사용자관리
 	@RequestMapping(value="/mainTest.do")
@@ -193,10 +222,9 @@ public class sevController {
 	@ResponseBody
 	@Transactional
 	@RequestMapping(value ="/workEdit_ok.do", method=RequestMethod.POST)
-	public String workEditOk(@ModelAttribute("vo")sevVO vo,HttpServletRequest request,ModelMap model)throws Exception{
+	public String workEditOk(@ModelAttribute("vo")sevVO vo,HttpServletRequest request,ModelMap model,HttpSession sess)throws Exception{
 		//vo.setInx(Integer.parseInt(request.getParameter("inx")));
 		if(sevService.sevUpdate(vo)) {
-			
 			return "true";
 		}else {
 			return "false";

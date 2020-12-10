@@ -14,12 +14,13 @@
  <link rel="stylesheet" href="/resources/admin/dist/css/style.css">
  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script type="text/javascript" src="/js/egovframework/EgovMultiFile.js" ></script>
 
-        <title>등업 게시판</title>
+        <title>공지사항</title>
         <link href="resources/admin/dist/css/styles.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="/js/level/level.js" ></script> 
+        <script type="text/javascript" src="/js/notice/notice.js" ></script> 
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -39,8 +40,9 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="#">Settings</a>
-                        <a class="dropdown-item" href="#">Activity Log</a>
+                         <a class="dropdown-item" href="/setting.do">MyPage</a>
+                        <a class="dropdown-item" href="/writeboard.do">작성글</a>
+                        <a class="dropdown-item" href="javascript:fn_changePasswd()">비밀번호변경</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="/logout.do">로그아웃</a>
                     </div>
@@ -82,11 +84,11 @@
                                             <a class="nav-link" href="/QAlist.do">Q&A게시판</a>
                                             <a class="nav-link" href="/levelList.do">등업게시판</a>
                                         </nav>
-                                    <a class="nav-link collapsed" href="/notice.do" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
+                                    <a class="nav-link collapsed" href="/notice.do">
                                         공지사항
                                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                     </a>
-                                   <!--  <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                                    <!-- <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
                                             <a class="nav-link" href="401.html">401 Page</a>
                                             <a class="nav-link" href="404.html">404 Page</a>
@@ -115,56 +117,47 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                        <h1 class="mt-4">등업게시판</h1>
-                       	<h7>${loginvo.ID}접속중입니다.</h7>   
+                        <h1 class="mt-4">공지사항 작성</h1>
+                       	<h7>${loginvo.ID}접속중입니다.</h7> 
                        	 
-                       	<table>
-                       		         <div class="card-body" >
-                                <div class="table-responsive" >
-                                	<form id="frm" name="frm">
-<input type="hidden" id="msgContent" name="msgContent" value="${msgContent}">
-                                    <table class="table table-bordered" id="dataTable" >
-                                    <div>
-										                                    
-                                    	<a class="button" href="javascript:fn_add();">등록</a>
-                                    	<a class="button" href="javascript:fn_edit();">수정</a>
-                                    	<a class="button" href="javascript:fn_delete();">삭제</a>
-                                    </div>
-                                      	<thead>
-                        					<tr>	
-                        						<th style="width:5%"></th>
-                        						<th style="width:20%">제목</th>
-                        						<th style="width:10%">아이디</th>
-                        						<th style="width:10%">작성일</th>
-                        					</tr>
-                        					
-                                      	</thead>
-                                      		<tbody>
-                                      		<c:forEach var="list" items="${list}">
-                                      			<tr>
-                                      				<td><input type="checkbox" id="INX" name="INX" value="${list.INX}"></td>
-                                      				<td style="cursor: pointer;" onMouseOver="this.style.backgroundColor='#F0F1F3'" onMouseOut="this.style.backgroundColor='#FFFFFF'" onclick="javascript:fn_detail('${list.INX}')">
-                                      				${list.TITLE}</td>
-                                      				<td style="cursor: pointer;" onMouseOver="this.style.backgroundColor='#F0F1F3'" onMouseOut="this.style.backgroundColor='#FFFFFF'" onclick="javascript:fn_detail('${list.INX}')">
-                                      				${list.ID}</td>
-                                      				<td style="cursor: pointer;" onMouseOver="this.style.backgroundColor='#F0F1F3'" onMouseOut="this.style.backgroundColor='#FFFFFF'" onclick="javascript:fn_detail('${list.INX}')">
-                                      				${list.INSERT_DATE}</td>
-                                      			</tr>
-                                      		</c:forEach>
-                                      		</tbody>
-                                      		<tfoot>
-                                      			
-                                      		</tfoot>
-                                    </table>          
-                                    </form>
-                                   
-                                </div>
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table mr-1"></i>
+                                공지사항작성
                             </div>
-                       		
-                       	</table>
-                    	
+                            <div class="card-body" >
+                             <table class="table table-bordered" id="dataTable" >
+                             	<form id="frm" name="frm" method="post" enctype="multipart/form-data">
+                             	<input type="hidden" id="NAME" name="NAME" value="${loginvo.NAME}">
+                                    <div>
+	                                    <tbody>
+	                                    	<tr>
+	                                    		<th>제목</th> 
+	                                    		<td><input type="text" id="TITLE" name="TITLE"></td>
+	                                    	</tr>
+	                                    	<tr>
+	                                    		<th>내용</th>
+	                                    		<td colspan="5">
+	                                    			<textarea rows="20" cols="30" style="width:99%;" id="CONTENT" name="CONTENT"></textarea>
+	                                    		</td>
+	                                    	</tr>
+	                                    	<tr>
+	                                    		<th>첨부파일</th>
+	                                    		<td><input type="file"  id="egovComFileUploader" name="IMG1" id="IMG1"></td>
+												<div id="egovComFileList"></div>
+	                                    	</tr>
+	                                    </tbody>
+	                                    <tfoot>
+	                                    	<a class="button" href="javascript:fn_add()">등록</a>
+	                                    	<a class="button" href="/notice.do">목록</a>
+	                                    </tfoot>
+                                   </div>
+                                  </form>
+                 				</table>
+                            </div>
+                        </div>
+                    </div>
                 </main>
-
             </div>
         </div>
         
@@ -206,4 +199,38 @@
 }
 
 </style>
+<script>
+	function fn_add(){
+		if(!$("#TITLE").val()){
+			alert("제목을 입력하세요");
+			return;
+		}
+		if(!$("#CONTENT").val()){
+			alert("내용을 입력하세요");
+			return;
+		}
+		var formData = new FormData($("#frm")[0]);
+		$.ajax({
+			contentType:"application/x-www-form-urlencoded;charset=UTF-8",
+			type:"POST",
+			url:"/noticeInsert_ok.do",      
+			data: formData,
+			processDate: false,
+			async       : false,
+			traditional : true,
+			processData: false,
+			contentType: false,
+			success:function(success){
+				if(success=="true"){
+					alert("공지사항 등록완료.");
+					location.href="/notice.do";
+				}else{
+					alert("등록실패.");	
+				}
+			},error:function(indx){
+				alert("에러");
+			}
+		});
+	}
+</script>
 

@@ -22,7 +22,7 @@
 </div>
 <div>
 	<form id="frm" name="frm" method="post">
-	<input type="text" id="INX" name="INX" value="${editvo.INX}">
+	<input type="hidden" id="INX" name="INX" value="${editvo.INX}">
 		<table>
 			<tbody>
 				<tr>
@@ -30,7 +30,15 @@
 					<td><input type="text" id="NAME" name="NAME" value="${editvo.NAME}"></td>
 				</tr>
 				<tr>
-					<th>직위</th>
+					<th>아이디</th>
+					<td><input type="hidden" id="ID" name="ID" value="${editvo.ID}">${editvo.ID}</td>
+				</tr>
+				<tr>
+					<th>비밀번호</th>
+					<td><input type="password" id="PASSWD" name="PASSWD"></td>
+				</tr>
+				<tr>
+					<th>레벨</th>
 					<td>
 						<select name="LEVEL" id="LEVEL">
 							<option value="0"${editvo.LEVEL eq '0' ?'selected':''}>director</option>
@@ -49,7 +57,7 @@
 					<td><input type="text" id="AGE" name="AGE" value="${editvo.AGE}"></td>
 				</tr>
 				<tr>
-					<th>입사일//입사예정일</th>
+					<th>가입일//가입예정일</th>
 					<td><input type="text" id="STWORK" name="STWORK" value="${editvo.STWORK}" readOnly></td>
 				</tr>
 				<tr>

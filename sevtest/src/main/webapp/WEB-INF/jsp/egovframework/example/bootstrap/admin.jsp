@@ -37,6 +37,7 @@
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                         <a class="dropdown-item" href="/setting.do">MyPage</a>
                         <a class="dropdown-item" href="/writeboard.do">작성글</a>
+                        <a class="dropdown-item" href="javascript:fn_changePasswd()">비밀번호변경</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="/logout.do">로그아웃</a>
                     </div>
@@ -86,6 +87,17 @@
                                             <a class="nav-link" href="/levelList.do">등업게시판</a>
                                         </nav>
                                     </div>
+                                   <a class="nav-link collapsed" href="/notice.do">
+                                        공지사항
+                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                    </a>
+                                    <!-- <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                                        <nav class="sb-sidenav-menu-nested nav">
+                                            <a class="nav-link" href="401.html">401 Page</a>
+                                            <a class="nav-link" href="404.html">404 Page</a>
+                                            <a class="nav-link" href="500.html">500 Page</a>
+                                        </nav>
+                                    </div>-->
                                 </nav>
                             </div>
                             <div class="sb-sidenav-menu-heading">Addons</div>
@@ -240,3 +252,9 @@
         <script src="resources/admin/dist/assets/demo/datatables-demo.js"></script>
     </body>
 </html>
+<script>
+function fn_changePasswd(){
+	window.open("/changePasswd.do",'passwdchange','width=450,height=300');
+}
+
+</script>

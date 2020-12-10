@@ -39,8 +39,9 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="#">Settings</a>
-                        <a class="dropdown-item" href="/setting.do">MyPage</a>
+                       <a class="dropdown-item" href="/setting.do">MyPage</a>
+                        <a class="dropdown-item" href="/writeboard.do">작성글</a>
+                        <a class="dropdown-item" href="javascript:fn_changePasswd()">비밀번호변경</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="/logout.do">로그아웃</a>
                     </div>
@@ -171,6 +172,7 @@
         <script src="resources/admin/dist/assets/demo/datatables-demo.js"></script>
     </body>
 </html>
+
 <style>
 
 .button {
@@ -198,3 +200,8 @@
 }
 
 </style>
+<script>
+function fn_changePasswd(){
+	window.open("/changePasswd.do",'passwdchange','width=450,height=300');
+}
+</script>

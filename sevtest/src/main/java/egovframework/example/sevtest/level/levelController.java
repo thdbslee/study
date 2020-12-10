@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -71,5 +72,53 @@ public class levelController {
 		}else {
 			return "false";
 		}
+	}
+	@RequestMapping(value="/level_edit.do")
+	public String levelEditForm(@ModelAttribute("vo")levelVO vo,HttpSession sess,HttpServletRequest request,ModelMap model)throws Exception{
+		sevVO loginvo = (sevVO)sess.getAttribute("Login");
+		model.addAttribute("loginvo", loginvo);
+		
+		vo = levelService.levelSelect(vo);
+		model.addAttribute("vo", vo);
+		
+		
+		return "/test/level/level_edit";
+	}
+	@ResponseBody
+	@Transactional
+	@RequestMapping(value="/levelEidt_ok.do")
+	public String levelEdit(@ModelAttribute("vo")levelVO vo,HttpSession sess,HttpServletRequest request,ModelMap model)throws Exception{
+		sevVO loginvo = (sevVO) sess.getAttribute("Login");
+		model.addAttribute("loginvo",loginvo);
+		
+		if(levelService.levelUpdate(vo)) {
+			return "true";
+		}else {
+			return "false";
+		}
+	}
+	@RequestMapping(value="/level_detail.do")
+	public String levelDetail(@ModelAttribute("vo")levelVO vo,HttpSession sess,HttpServletRequest request,ModelMap model)throws Exception{
+		sevVO loginvo = (sevVO) sess.getAttribute("Login");
+		System.out.println("vo=>"+ToStringBuilder.reflectionToString(loginvo));
+		model.addAttribute("loginvo", loginvo);
+		 
+		vo = levelService.levelSelect(vo);
+		model.addAttribute("vo",vo);
+		return "/test/level/level_detail";
+	}
+	@ResponseBody
+	@Transactional
+	@RequestMapping(value="/levelDelete.do")
+	public String levelDelete(@ModelAttribute("vo")levelVO vo,HttpSession sess,HttpServletRequest request,ModelMap model)throws Exception{
+		sevVO loginvo = (sevVO) sess.getAttribute("Login");
+		vo.setINXS(request.getParameterValues("INX"));
+		System.out.println("INXS->"+vo.getINXS());
+		if(levelService.levelDelete(vo)) {
+			return "true" ;
+		}else {
+			return "false";
+		}
+		
 	}
 }

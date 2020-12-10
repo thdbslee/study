@@ -78,9 +78,11 @@
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                     				 <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="/board.do">자유게시판</a>
-                                            <a class="nav-link" href="/QAlist.do">Q&A게시판</a>
-                                            <a class="nav-link" href="/levelList.do">등업게시판</a>
+                                            <a class="dropdown-item" href="/setting.do">MyPage</a>
+                       						 <a class="dropdown-item" href="/writeboard.do">작성글</a>
+                        					<a class="dropdown-item" href="javascript:fn_changePasswd()">비밀번호변경</a>
+                      						  <div class="dropdown-divider"></div>
+                       						 <a class="dropdown-item" href="/logout.do">로그아웃</a>
                                         </nav>
                                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
                                         공지사항
