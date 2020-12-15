@@ -6,7 +6,8 @@
 <select id="noticeDAO.noticeList" parameterClass="noticeVO" resultClass="noticeVO">
 /*noticeDAO.noticeList*/
 	SELECT
-	INX , NAME, TITLE, CONTENT, IMG_1 ,INSERT_DATE 
+	INX , NAME, TITLE, CONTENT, IMG_1 
+	,DATE_FORMAT(INSERT_DATE,'%Y-%m-%d')AS INSERT_DATE
 	FROM NOTICE2
 </select>
 <select id="noticeDAO.noticeSelect" parameterClass="noticeVO" resultClass="noticeVO">
@@ -32,6 +33,13 @@
 	)	
 
 </update>
-
+<update id="noticeDAO.noticeDelete" parameterClass="noticeVO">
+/*noticeDAO.noticeDelete*/
+	DELETE FROM NOTICE2 
+	WHERE INX
+	<iterate prepend="IN" open="(" close=")" conjunction="," property="INXS">
+		#INXS[]#
+	</iterate>
+</update>
 
 </sqlMap>

@@ -8,4 +8,4 @@
 <sqlMap resource="egovframework/sqlmap/example/sevtest/board.xml"></sqlMap>
 <sqlMap resource="egovframework/sqlmap/example/sevtest/QA.xml"></sqlMap>
 <sqlMap resource="egovframework/sqlmap/example/sevtest/level.xml"></sqlMap>
-<sqlMap resource="egovframework/sqlmap/example/sevtest/notice.xml"></sqlMap></sqlMapConfig>
+<sqlMap resource="egovframework/sqlmap/example/sevtest/notice.xml"></sqlMap><sqlMap resource="egovframework/sqlmap/example/sevtest/totalwrite.xml"></sqlMap></sqlMapConfig>

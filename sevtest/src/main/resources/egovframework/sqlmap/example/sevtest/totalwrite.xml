@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="totalWrite">
+	<typeAlias  alias="totalVO" type="egovframework.example.sevtest.totalwrite.totalVO"/>
+	
+<select id="totalDAO.totalWriteList" parameterClass="totalVO" resultClass="totalVO">
+/*totalDAO.totalWriteList*/
+	<![CDATA[
+	SELECT A.INX ,A.TITLE,A.CONTENT , A.ID,A.MENU, 
+	A.DT
+	,@rownum:=@rownum+1 as RNUM
+	FROM 
+	(
+	  SELECT INX,TITLE,ID,NOTICE_DATE AS DT, 'FREE' AS MENU , CONTENT
+	   FROM NOTICE
+	  WHERE ID=#ID#
+	  UNION ALL 
+	  SELECT INX,TITLE,ID,INSERT_DATE AS DT, 'Q&A' AS MENU , CONTENT
+	   FROM QA WHERE ID=#ID#
+	  UNION ALL
+	  SELECT INX,TITLE,ID,INSERT_DATE AS DT,'LEVEL' AS MENU ,CONTENT
+	  FROM LEVEL WHERE ID=#ID#
+	  ) A
+	  ,(SELECT @rownum:=0)DT
+	]]>
+	<dynamic prepend="WHERE">
+		<isNotEmpty property="searchText" prepend="AND">
+			<isEqual property="searchType" compareValue ="2">
+				A.TITLE LIKE CONCAT('%',#searchText#,'%')
+			</isEqual>
+		</isNotEmpty>
+	</dynamic>	  
+	ORDER BY DT DESC
+
+</select>
+<select id="totalDAO.totalSelect" parameterClass="totalVO" resultClass="totalVO">
+/*totalDAO.totalSelect*/
+	<![CDATA[
+	SELECT A.INX ,A.TITLE,A.CONTENT , A.ID,A.MENU, 
+	A.DT
+	FROM 
+	(
+	  SELECT INX,TITLE,ID,NOTICE_DATE AS DT, 'FREE' AS MENU , CONTENT
+	   FROM NOTICE
+	  WHERE ID= #ID#
+	  UNION ALL 
+	  SELECT INX,TITLE,ID,INSERT_DATE AS DT, 'Q&A' AS MENU , CONTENT
+	   FROM QA WHERE ID= #ID#
+	  UNION ALL
+	  SELECT INX,TITLE,ID,INSERT_DATE AS DT,'LEVEL' AS MENU ,CONTENT
+	  FROM LEVEL WHERE ID= #ID#
+	  ) A
+  	WHERE A.INX =#INX#
+	
+	]]>
+</select>
+<delete id="totalDAO.totalDelete" parameterClass="totalVO">
+/*totalDAO.totalDelete*/
+</delete>
+</sqlMap>

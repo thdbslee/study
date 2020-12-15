@@ -40,17 +40,13 @@ public class boardController {
 	@Resource(name = "propertiesService")
 	protected EgovPropertyService propertiesService;
 
-		
+	//자유게시판
 	@RequestMapping(value="/board.do", produces="application/text; charset=utf8")
 	public String boardForm(@ModelAttribute("vo")boardVO vo,HttpServletRequest request,HttpSession sess,ModelMap model)throws Exception{
-		sevVO loginvo = (sevVO)sess.getAttribute("Login");
-		model.addAttribute("login", loginvo);//아이디불러오기위해 
-		System.out.println("login Level==>"+loginvo.getLEVEL());
-	
 			List<boardVO> list = boardService.boardList(vo);
 			
 			model.addAttribute("list", list);//리스트불러오기위해 
-			
+		
 			return"/test/board/board";
 	}
 	@RequestMapping(value="/boardInsert.do")

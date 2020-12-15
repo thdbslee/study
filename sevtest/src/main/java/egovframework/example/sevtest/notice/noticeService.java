@@ -9,5 +9,6 @@ public interface noticeService {
 	public List<noticeVO> noticeList(noticeVO vo)throws Exception;
 
 	public noticeVO noticeSelect(noticeVO vo) throws Exception;
-
+	
+	public boolean noticeDelete(noticeVO vo)throws Exception;
 }

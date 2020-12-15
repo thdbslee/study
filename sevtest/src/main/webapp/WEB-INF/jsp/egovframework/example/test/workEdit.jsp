@@ -35,7 +35,7 @@
 				</tr>
 				<tr>
 					<th>비밀번호</th>
-					<td><input type="password" id="PASSWD" name="PASSWD"></td>
+					<td><input type="password" id="PASSWD" name="PASSWD" value="${editvo.PASSWD}"></td>
 				</tr>
 				<tr>
 					<th>레벨</th>

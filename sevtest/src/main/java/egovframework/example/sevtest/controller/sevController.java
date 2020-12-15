@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,6 +41,11 @@ public class sevController {
 		}else {//일반사용자로그인할때
 			return "redirect:/userMain.do";
 		}
+	}
+	//메뉴 
+	@RequestMapping(value="/layoutMenu.do")
+	public String topmenu(HttpServletRequest request, Model model, HttpSession sess) throws Exception{
+		return "/test/layout/menu";
 	}
 	@ResponseBody
 	@Transactional

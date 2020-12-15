@@ -23,8 +23,6 @@
 </head>
 <title>게시판 상세보기 </title>
 <body>
-	<div>
-
 			<table class="simple_table">
 				<tbody>
 					<h4>게시판 상세보기</h4>
@@ -48,7 +46,7 @@
 			</table>
 		
 			
-		<h5>댓글</h5>
+		<h1>댓글</h1>
 		<form id="frm" name="frm">
 		<input type="hidden" id="pageIndex" name="pageIndex" value="${cmvo.pageIndex}" > 
 		<input type="hidden" name="INX" value="${boardvo.INX}">
@@ -118,8 +116,8 @@
   cursor: pointer;
 
 }
-.simple_table { width: 100%; border: none; border-collapse: separate; border-spacing: 2px;}
-.simple_table th { padding: 5px; border: none;  border-bottom: 1px solid #DDD; background: #FCF0F3; font-weight: normal; text-align:center; text-shadow: 0 1px #FFF; vertical-align: middle;}
+.simple_table {font-size :20px;  width: 100%; border: none; border-collapse: separate; border-spacing: 2px;}
+.simple_table th {font-size :20px; padding: 5px; border: none;  border-bottom: 1px solid #DDD; background: #FCF0F3; font-weight: normal; text-align:center; text-shadow: 0 1px #FFF; vertical-align: middle;}
 .simple_table td { padding: 5px; border: none; border-bottom: 1px solid #DDD; text-align:center; }
 table.type07 {
     border-collapse: collapse;
@@ -155,7 +153,29 @@ table.type07 td {
 }
 <style>
 
+.button {
 
+  background-color: pink;
+
+  border: none;
+
+  color: white;
+
+  padding: 5px 3px;
+
+  text-align: center;
+
+  text-decoration: none;
+
+  display: inline-block;
+
+  font-size: 20px;
+
+  margin: 4px 2px;
+
+  cursor: pointer;
+
+}
 
 </style>
 

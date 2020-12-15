@@ -27,7 +27,7 @@
 				<th>비밀번호</th>
 				<td><input type="password" id="PASSWD" name="PASSWD"></td>
 			</tr>
-			<tr>
+			<!--<tr>
 				<th>직급</th>
 				<td>
 				<select name="LEVEL" id="LEVEL">
@@ -37,7 +37,7 @@
 					<option value="3">guest</option>
 				</select>
 				</td>
-			</tr>
+			</tr>-->
 			<tr>
 				<th>번호</th>
 				<td><input type="text" id="PHONE" name="PHONE"></td>

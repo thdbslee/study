@@ -108,7 +108,9 @@
 	</update>
 	<select id="sevDAO.sevSelect" parameterClass="sevVO" resultClass="sevVO">
 	/*sevDAO.sevSelect*/
-		SELECT INX,ID,NAME, LEVEL, PHONE, AGE, STWORK,LOCK_YN FROM SEV
+		SELECT INX,ID,NAME, LEVEL, PHONE, AGE, STWORK,LOCK_YN
+		,PASSWD
+		FROM SEV
 		WHERE INX = #INX# ORDER BY NAME
 	</select>
 	<update id="sevDAO.sevUpdate" parameterClass="sevVO">

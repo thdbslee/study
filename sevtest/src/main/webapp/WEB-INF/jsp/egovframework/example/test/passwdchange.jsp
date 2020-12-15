@@ -25,7 +25,7 @@
 <body>
 	<div>
 			<form id="frm" name="frm" method="post">
-			<input type="text" id="ID" name="ID" value="${loginvo.ID}">
+			<input type="hidden" id="ID" name="ID" value="${loginvo.ID}">
 				<table class="simple_table">
 					<tr>
 						<th>현재비밀번호</th>
@@ -40,8 +40,8 @@
 						<td><input type="password" id="PASSWDCHK" name="PASSWDCHK" placeholder="비밀번호확인"></td>
 					</tr>
 				</table>
-				<a  href="javascript:fn_passwdchange()" >변경하기</a>
-				<a  href="javascript:self.close()">닫기</a>
+				<a  class="button" href="javascript:fn_passwdchange()" >변경하기</a>
+				<a  class="button" href="javascript:self.close()">닫기</a>
 			</form>	
 	</div>
 </body>
@@ -52,8 +52,8 @@
 </div>	
 <style>
 .simple_table { width: 100%; height:70px; border:1px; margin:auto;text-align:center;}
-.simple_table th { padding: 5px; border: none;  border-bottom: 1px solid #DDD; background: #FCF0F3; font-weight: normal; text-align:center; text-shadow: 0 1px #FFF; vertical-align: middle;}
-.simple_table td { padding: 5px; border: none; border-bottom: 1px solid #DDD; text-align:center; }
+.simple_table th { font_size :20px ;padding: 5px; border: none;  border-bottom: 1px solid #DDD; background: #FCF0F3; font-weight: normal; text-align:center; text-shadow: 0 1px #FFF; vertical-align: middle;}
+.simple_table td { font_size :20px ;padding: 5px; border: none; border-bottom: 1px solid #DDD; text-align:center; }
 .button {
 
   background-color: pink;
@@ -71,7 +71,7 @@
   display: inline-block;
 
   font-size: 16px;
-
+  font-weight : bold;
   margin: 4px 2px;
 
   cursor: pointer;

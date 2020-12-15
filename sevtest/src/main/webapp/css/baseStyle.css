@@ -1,0 +1,395 @@
+﻿@charset "utf-8";
+
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+/* font-family: 'Noto Sans KR', sans-serif; */
+/* Thin 250, Light 300, DemiLight 350, Regular 400, Medium 500, Bold 700, Black 900 */
+/* 100, 300,400, 500,700,900 */
+/* 이슈 : 2018년 01월 15일 나눔웹폰트를 시작으로 01월 24일 본고딕 웹폰트 링크 변경으로  */
+/*
+@font-face {
+	font-family: 'Nanum Gothic';
+	font-style: normal;
+	font-weight: 400;
+	src: url(//fonts.gstatic.com/ea/nanumgothic/v5/NanumGothic-Regular.eot);
+	src: url(//fonts.gstatic.com/ea/nanumgothic/v5/NanumGothic-Regular.eot?#iefix) format('embedded-opentype'),
+		url(//fonts.gstatic.com/ea/nanumgothic/v5/NanumGothic-Regular.woff2) format('woff2'),
+		url(//fonts.gstatic.com/ea/nanumgothic/v5/NanumGothic-Regular.woff) format('woff'),
+		url(//fonts.gstatic.com/ea/nanumgothic/v5/NanumGothic-Regular.ttf) format('truetype');
+}
+@font-face {
+	font-family: 'Nanum Gothic';
+	font-style: normal;
+	font-weight: 700;
+	src: url(//fonts.gstatic.com/ea/nanumgothic/v5/NanumGothic-Bold.eot);
+	src: url(//fonts.gstatic.com/ea/nanumgothic/v5/NanumGothic-Bold.eot?#iefix) format('embedded-opentype'),
+		url(//fonts.gstatic.com/ea/nanumgothic/v5/NanumGothic-Bold.woff2) format('woff2'),
+		url(//fonts.gstatic.com/ea/nanumgothic/v5/NanumGothic-Bold.woff) format('woff'),
+		url(//fonts.gstatic.com/ea/nanumgothic/v5/NanumGothic-Bold.ttf) format('truetype');
+}
+@font-face {
+	font-family: 'Nanum Gothic';
+	font-style: normal;
+	font-weight: 800;
+	src: url(//fonts.gstatic.com/ea/nanumgothic/v5/NanumGothic-ExtraBold.eot);
+	src: url(//fonts.gstatic.com/ea/nanumgothic/v5/NanumGothic-ExtraBold.eot?#iefix) format('embedded-opentype'),
+		url(//fonts.gstatic.com/ea/nanumgothic/v5/NanumGothic-ExtraBold.woff2) format('woff2'),
+		url(//fonts.gstatic.com/ea/nanumgothic/v5/NanumGothic-ExtraBold.woff) format('woff'),
+		url(//fonts.gstatic.com/ea/nanumgothic/v5/NanumGothic-ExtraBold.ttf) format('truetype');
+}
+*/
+
+@font-face {
+	font-family: 'Noto Sans KR';
+	font-style: normal;
+	font-weight: 100;
+	src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Thin.woff2) format('woff2'),	
+		url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Thin.woff) format('woff'),
+		url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Thin.otf) format('opentype');
+}
+@font-face {
+	font-family: 'Noto Sans KR';
+	font-style: normal;
+	font-weight: 300;
+	src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.woff2) format('woff2'),	
+		url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.woff) format('woff'),
+		url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.otf) format('opentype');
+}
+@font-face {
+	font-family: 'Noto Sans KR';
+	font-style: normal;
+	font-weight: 400;
+	src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff2) format('woff2'),	
+		url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff) format('woff'),
+		url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.otf) format('opentype');
+}
+@font-face {
+	font-family: 'Noto Sans KR';
+	font-style: normal;
+	font-weight: 500;
+	src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.woff2) format('woff2'),	
+		url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.woff) format('woff'),
+		url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.otf) format('opentype');
+}
+@font-face {
+	font-family: 'Noto Sans KR';
+	font-style: normal;
+	font-weight: 700;
+	src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.woff2) format('woff2'),	
+		url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.woff) format('woff'),
+		url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.otf) format('opentype');
+}
+@font-face {
+	font-family: 'Noto Sans KR';
+	font-style: normal;
+	font-weight: 900;
+	src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.woff2) format('woff2'),	
+		url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.woff) format('woff'),
+		url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.otf) format('opentype');
+}
+/*
+# Nanum Gothic (Korean) http://www.google.com/webfonts/earlyaccess
+Regular 400,
+Bold 700 
+800
+*/
+
+/* @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css); */
+
+/*
+# Nanum Barun Gothic
+UltraLight 200,
+Light 300,
+Regular 400,
+Bold 700
+
+@import url("https://cdn.rawgit.com/openhiun/hangul/14c0f6faa2941116bb53001d6a7dcd5e82300c3f/nanumbarungothic.css");
+*/
+
+
+/* Base Style Start */
+/* * {margin: 0; padding: 0; border: 0; box-sizing: border-box; -moz-box-sizing: border-box;} */
+
+html, body {position: relative; width: 100%; height: 100%; margin: 0px auto; padding: 0;}
+body, div, ul, li, dl, dt, dd, ol, p, h1, h2, h3, h4, h5, h6, table, form {margin: 0; padding: 0; border: 0;}
+
+body {
+	position: relative;
+	font-family: 'Noto Sans KR', 'Nanum Gothic', 'Malgun Gothic', '맑은 고딕', sans-serif; word-break: keep-all; /* word-break: break-all; */ word-wrap: break-word;
+	font-size : 14px; font-weight: normal; color: #666;
+	background-color: #f2f3f8;
+
+	min-width: 320px;
+}
+/* Base Style End */
+/* Text Base Style Start */
+dl, dt, dd, ul, ol, li, p {list-style : none; /* for smartEditor text-align : justify; */ vertical-align : middle; letter-spacing : 0px; line-height: 1.5em; }
+
+h1 {font-weight: bold; color: #222; font-size: 36px; line-height: 50px;}
+h2 {font-weight: bold; color: #222; font-size: 30px; line-height: 40px;}
+h3 {font-weight: bold; color: #222; font-size: 24px; line-height: 30px;}
+h4 {font-weight: bold; color: #222; font-size: 18px; line-height: 30px;}
+h5 {font-weight: bold; color: #222; font-size: 14px; line-height: 25px;}
+h6 {font-weight: bold; color: #222; font-size: 12px; line-height: 20px;}
+
+.bold	{font-weight: bold !important;}
+.left	{text-align: justify !important;}
+.center	{text-align: center !important;}
+.right	{text-align: right !important;}
+
+.round3 {border-radius: 3px; overflow: hidden;}
+.round5 {border-radius: 5px; overflow: hidden;}
+.round10 {border-radius: 10px; overflow: hidden;}
+
+.pColor01 {color: #f9df34;}
+.pColor01dark {}
+.pColor01light {}
+.pColoe01lightGray {}
+
+.pColorRed {color: #d63434;}
+
+/* Text Base Style Start */
+
+img {border: none; margin: 0; padding: 0;}
+
+/* a href Style Start */
+a {letter-spacing: 0px;	margin: 0; text-align: justify; text-decoration: none; outline: 0; color: #444;}
+a:hover {text-decoration: underline; color: #222;}
+/* a href Style End */
+
+.dummy {clear: both; width: 100%; height: 0; border: 0; margin: 0; padding: 0; line-height: 0; font-size: 0;}
+.line01 {width: 100%; height: 1px; border: 0; margin: 0; padding: 0; line-height: 0; font-size: 0; background-color: #dddddd;}
+
+.hidden {display: none;}
+
+.clearFix:after {content:""; display: block; clear: both;} /* 부모창에 자식창의 높이를 알려주는 권장방법 */
+.clearFix {*zoom: 1;} /* IE5.5 ~ 7 브라우저 대응 핵 */
+
+/* form 요소 Start */
+input[type=text],
+input[type=textarea],
+textarea {font-family: 'Noto Sans KR', 'Nanum Gothic', 'Malgun Gothic', '맑은 고딕', sans-serif; display: inline-block; vertical-align: middle; resize: none;}
+/*
+input[type=checkbox] {width: 20px; height: 20px;}
+input[type=radio] {width: 20px; height: 20px;}
+*/
+/* input[placeholder], [placeholder],*[placeholder] {color: #bbb !important; font-weight: bold; font-size: 14px !important;} */
+/* Webkit Browsers */
+/* Mozilla FF 4 ~ 18 */
+/* Mozilla FF 19+ */
+/* IE 10~ */
+input::-webkit-input-placeholder,
+input:-moz-placeholder,
+input::-moz-placeholder,
+input:-ms-input-placeholder {color: #999; font-weight: 300; font-size: 13px;}
+
+textarea::-webkit-input-placeholder,
+textarea:-moz-placeholder,
+textarea::-moz-placeholder,
+textarea:-ms-input-placeholder {color: #999; font-weight: 300; font-size: 13px;}
+
+.formField {display: inline-block; height: 30px; line-height: 20px; box-sizing: border-box; padding: 4px; font-size : 13px; font-weight: normal; color : #333; vertical-align: middle; border: 1px #ddd solid; background-color: #fdfdfd; border-radius: 0px;} /* box-sizing: inherit; */
+.formField:focus {border: 1px #444 solid; background-color: #fff;}
+select {
+	font-family: 'Noto Sans KR', 'Nanum Gothic', 'Malgun Gothic', '맑은 고딕', sans-serif;
+	display: inline-block; height: 30px; line-height: 20px; padding: 4px; font-size : 13px; font-weight: normal; color : #333; vertical-align: middle; background-color : #fdfdfd; border: 1px #ddd solid;
+	border-radius: 0px;
+}
+select:focus {border: 1px #444 solid; background-color : #fff;}
+/* form 요소 End */
+
+/* Table Base Style Start */
+table {table-layout: fixed; width: 100%; margin: 0 auto; padding: 0; border-collapse: separate; font-size: 13px;  background-color: #fff;}
+table caption {display: none;}
+table th {border-top: 1px #ddd solid; border-bottom: 1px #ddd solid;}
+table th {color: #444; background-color: #f9f9f9; border-bottom: 1px #ddd solid; line-height: 30px; text-align: center;}
+table th, table td {box-sizing: border-box; padding: 10px 10px; border-left: 1px #ddd solid; border-right: 0; border-top: 0; font-weight: 300;}
+table th:first-child, table td:first-child {border-left: 0;}
+table td {color: #444; border-bottom: 1px #ddd solid; line-height: 1.6em; text-align: center;}
+table th {color: #444; font-weight: 500; background-color: #f9f9f9; border-bottom: 1px #ddd solid;  line-height: 30px; border-left: 1px #ddd solid;}
+table th.point {color: #fff; background-color: #444652;}
+table input[type=text] {width: 100px; height: 30px; box-sizing: border-box; padding: 0 10px; border: 1px #eee solid; line-height: 28px; font-size: 13px; font-weight: 300; color: #222;}
+
+table.searchTable {width: 820px; margin-left: 0;}
+table.searchTable th,
+table.searchTable td {height: 60px; padding: 10px 15px;}
+
+.btArea {width: 170px; height: 60px; box-sizing: border-box; padding: 20px 0; margin: 0 auto; text-align: center;}
+.btArea2 {width: 340px; height: 60px; box-sizing: border-box; padding: 20px 0; margin: 0 auto; text-align: center;}
+.btArea3 {width: 520px; height: 60px; box-sizing: border-box; padding: 20px 0; margin: 0 auto; text-align: center;}
+a.bottomBtn {float: left; display: block; width: 160px; height: 40px; margin: 0 5px; line-height: 40px; font-size: 16px; font-weight: 300; color: #fff; text-align: center; background-color: #444;}	
+a.bt {float: left; display: block; width: auto; height: 30px; margin: 0 5px; box-sizing: border-box; padding: 0 10px; line-height: 30px; font-size: 14px; font-weight: 500; text-align: center; color: #fff; transition: all 0.3s;}
+a.bt:hover {background-color: #222;}
+a.btRed {background-color: #f30045;}
+a.btGray {background-color: #444652;}
+a.btBig {height: 40px; line-height: 40px;}
+
+.bt50 {display: inline-block; width: 50px; height: 30px; line-height: 30px; margin: 5px; font-size: 14px; font-weight: 300; color: #fff; text-align: center; background-color: #444652; color:#fff;}
+/* Table Base Style End */
+
+/* detail view start */
+.viewPopup {width: 1060px; height: 530px;}
+.viewPopup .leftView {float: left; width: 520px; height: 100%; margin: 0 5px; box-sizing: content-box; text-align: center;}
+.viewPopup .leftView .titleArea {width: 520px; height: 40px;}
+.viewPopup .rightView {float: right; width: 520px; margin: 0 5px; height: 100%; box-sizing: content-box; text-align: center;}
+.viewPopup .rightView .partImg {width: 100%; height: 50%;}
+.viewPopup .rightView .partImg .titleArea {width: 520px; height: 40px;}
+.viewPopup .rightView .phoneImg {width: 100%; height: 40%;}
+.viewPopup .rightView .phoneImg .titleArea {width: 520px; height: 40px;}
+/* detail view end */
+
+/* paging start */
+.pagingArea {width: 100%; height: 30px; margin-top: 20px; text-align: center;}
+.pagingArea .pager {display: inline-block; height: 30px;}
+.pagingArea .btnPager {float: left; display: block; width: 30px; height: 30px; background-image: url('../img/btnPager.png');}
+.pagingArea .btnFirst {background-position: 0 0;}
+.pagingArea .btnPrev {background-position: -30px 0;}
+.pagingArea .btnNext {background-position: -60px 0;}
+.pagingArea .btnEnd {background-position: -90px 0;}
+.pagingArea .btnFirst:hover {background-position: 0 -30px;}
+.pagingArea .btnPrev:hover {background-position: -30px -30px;}
+.pagingArea .btnNext:hover {background-position: -60px -30px;}
+.pagingArea .btnEnd:hover {background-position: -90px -30px;}
+.pagingArea a.page {float: left; display: block; width: 30px; height: 30px; line-height: 30px; font-size: 12px; font-weight: 300; text-align: center; color: #777;}
+.pagingArea a:hover.page {color: #fff; background-color: #444;}
+/* paging end */
+
+/* popup layer page01 start */
+/*
+#excelPopup01 {position: absolute; display: none; top: 360px; left: 50%; margin-left: -390px; width: 600px; height: 340px; border-radius: 30px; overflow: hidden; background-color: #fff; box-shadow: 0 0 10px 0 #888; z-index: 2;}
+*/
+#excelPopup01 {position: absolute; display: none; width: 600px; height: 340px; border-radius: 30px; overflow: hidden; background-color: #fff; box-shadow: 0 0 10px 0 #888; z-index: 2;}
+#excelPopup01 > .titleArea {width: 100%; height: 60px; box-sizing: border-box; padding: 10px 40px; line-height: 40px; font-size: 18px; font-weight: 500; color: #fff; background-color: #444;}
+#excelPopup01 > .contentArea {width: 100%; height: 280px; box-sizing: border-box; padding: 40px;}
+#excelPopup01 > .contentArea > p.comment {width: 100%; height: 20px; line-height: 20px; font-size: 13px; font-weight: 300; color: #444; margin-bottom: 10px;}
+#excelPopup01 > .contentArea > .checkLine {width: 100%; height: 30px;}
+#excelPopup01 > .contentArea > .checkLine > a.bt120 {display: block; width: 120px; height: 30px; line-height: 30px; font-size: 14px; font-weight: 300; color: #fff; text-align: center; background-color: #444;}
+#excelPopup01 > .contentArea > .fileArea {width: 100%; height: 60px; box-sizing: border-box; padding: 15px 20px; margin: 20px auto; border-radius: 10px; background-color: #f9f9f9;}
+#excelPopup01 > .contentArea > .fileArea > label {float: left; display: block; width: 120px; height: 30px; line-height: 30px; font-size: 14px; font-weight: 300; color: #444;}
+#excelPopup01 > .contentArea > .fileArea > input[type=file] {float: left; height: 30px;}
+#excelPopup01 > .contentArea > .btnArea {width: 280px; height: 40px; margin: 0 auto;}
+#excelPopup01 > .contentArea > .btnArea > a.bt120 {float: left; display: block; width: 120px; height: 40px; margin: 0 10px; line-height: 40px; font-size: 16px; font-weight: 300; color: #fff; text-align: center; background-color: #444;}
+#excelPopup01 > .contentArea > .btnArea > a.cancel {background-color: #999;}
+/* popup layer page01 end */
+	
+/* Slide Animation */
+.slideanim {visibility: hidden;}
+.slide {
+  animation-name: slide;
+  -webkit-animation-name: slide;
+  animation-duration: 1s;
+  -webkit-animation-duration: 1s;
+  visibility: visible;
+}
+@keyframes slide {
+	0% {opacity: 0; transform: translateY(70%);} 
+	100% {opacity: 1; transform: translateY(0%);}
+}
+@-webkit-keyframes slide {
+	0% {opacity: 0; -webkit-transform: translateY(70%);} 
+	100% {opacity: 1; -webkit-transform: translateY(0%);}
+}
+
+/* 웹접근성을 위한 본문 바로가기 : Navigation Skip (메뉴 스킵) */
+.bind {position: absolute; top: 0; left: 0; width: 1px; height: 1px; overflow: hidden; visibility: hidden; font-size: 0px; line-height: 0px;}
+/* 웹접근성을 위한 본문 바로가기 : Navigation Skip (메뉴 스킵) */
+
+#loginWrap {position: relative; display: block; width: 100%; height: 100%; min-height: 400px; background: url('../img/intranetLoginBG.jpg') center center no-repeat; background-size: cover;}
+#loginWrap .loginArea {position: absolute; top: 40px; left: 50%; margin-left: -480px; display: block; width: 960px; height: 920px; overflow: hidden;}
+#loginWrap .loginArea .titleArea {width: 100%; height: 100px; box-sizing: border-box; padding: 0 0 20px;}
+#loginWrap .loginArea .titleArea > h1 {width: 100%; height: 80px; line-height: 80px; text-align: center;}
+#loginWrap .loginArea .titleArea > h1 > img {display: block; width: 220px; height: 80px; margin: 0 auto;}
+
+#loginWrap .loginArea .contentArea {position: relative; display: block; width: 960px; height: 760px; margin: 0 auto;}
+#loginWrap .loginArea .contentArea > .leftArea {float: left; position: relative; display: block; width: 480px; height: 760px; box-sizing: border-box; padding: 40px; background: url('../img/loginLeftBG.jpg') left top no-repeat;}
+#loginWrap .loginArea .contentArea > .leftArea > h2 {width: 100%; height: 60px;}
+#loginWrap .loginArea .contentArea > .leftArea > h2 > img {float: left; display: block; width: 180px; height: 60px;}
+#loginWrap .loginArea .contentArea > .leftArea > .productTitleArea {width: 100%; height: 80px; margin-top: 220px;}
+#loginWrap .loginArea .contentArea > .leftArea > .productTitleArea > .subTitle {width: 100%; height: 30px; line-height: 30px; font-size: 24px; font-weight: 300; color: #fff;}
+#loginWrap .loginArea .contentArea > .leftArea > .productTitleArea > h3 {width: 100%; height: 50px; line-height: 50px; font-size: 42px; font-weight: 500; color: #fff;}
+#loginWrap .loginArea .contentArea > .leftArea > .productTitleArea > h3 > span {color: #f30045;}
+#loginWrap .loginArea .contentArea > .leftArea > ul.productInfo {width: 100%; height: 90px; margin-top: 40px;}
+#loginWrap .loginArea .contentArea > .leftArea > ul.productInfo > li {width: 100%; height: 30px; list-style: none; line-height: 30px; font-size: 14px; font-weight: 300; color: #fff;}
+#loginWrap .loginArea .contentArea > .leftArea > .companyCI {position: absolute; bottom: 40px; right: 40px; display: block; widtH: 120px; height: 40px; z-index: 1;}
+#loginWrap .loginArea .contentArea > .leftArea > .companyCI > img {float: left; display: block; width: 120px; height: 40px;}
+
+#loginWrap .loginArea .contentArea > .rightArea {float: left; display: block; width: 480px; height: 760px; box-sizing: border-box; padding: 20px 0 20px;}
+#loginWrap .loginArea .contentArea > .rightArea > .formArea {width: 100%; height: 720px; box-sizing: border-box; padding: 80px 60px; border: 1px #fff solid; border-left: 0; background-color: rgba(255,255,255,0.3);}
+#loginWrap .loginArea .contentArea > .rightArea > .formArea > .loginTitle {width: 100%; height: 60px; line-height: 60px; font-size: 48px; font-weight: 300; color: #222;}
+#loginWrap .loginArea .contentArea > .rightArea > .formArea > .loginInfo {width: 100%; height: 40px; line-height: 40px; font-size: 18px; font-weight: 300; color: #222;}
+#loginWrap .loginArea .contentArea > .rightArea > .formArea > .loginBox {display: block; width: 100%; height: 280px; margin-top: 40px; box-sizing: border-box; padding: 30px 30px 40px; background-color: #eee;}
+#loginWrap .loginArea .contentArea > .rightArea > .formArea > .loginBox input[type=text],
+#loginWrap .loginArea .contentArea > .rightArea > .formArea > .loginBox input[type=password] {display: block; width: 100%; height: 40px; box-sizing: border-box; padding: 10px 20px; border: 0; line-height: 20px; font-size: 14px; font-weight: 300; color: #444; margin: 10px auto 0;}
+#loginWrap .loginArea .contentArea > .rightArea > .formArea > .loginBox .labelArea {width: 100%; height: 20px; padding: 10px 0;}
+#loginWrap .loginArea .contentArea > .rightArea > .formArea > .loginBox .labelArea > label {padding-left: 5px; font-size: 13px; font-weight: 300; color: #222;}
+#loginWrap .loginArea .contentArea > .rightArea > .formArea > .loginBox a.loginSign {display: block; width: 100%; height: 40px; line-height: 40px; font-size: 14px; font-weight: 500; color: #fff; margin: 0 auto; text-align: center; background-color: #4b73eb; text-decoration: none; transition: all 0.3s;}
+#loginWrap .loginArea .contentArea > .rightArea > .formArea > .loginBox a.loginSign:hover {background-color: #222;}
+#loginWrap .loginArea .contentArea > .rightArea > .formArea > .loginBox ul.joinNsearch {width: 100%; height: 30px;}
+#loginWrap .loginArea .contentArea > .rightArea > .formArea > .loginBox ul.joinNsearch > li:nth-child(1) {float: left; width: 30%; height: 30px;}
+#loginWrap .loginArea .contentArea > .rightArea > .formArea > .loginBox ul.joinNsearch > li:nth-child(2) {float: right; width: 70%; height: 30px;}
+#loginWrap .loginArea .contentArea > .rightArea > .formArea > .loginBox ul.joinNsearch > li > a {display: block; width: 100%; height: 30px; line-height: 30px; font-size: 13px; font-weight: 300; color: #666;}
+#loginWrap .loginArea .contentArea > .rightArea > .formArea > .loginBox ul.joinNsearch > li:nth-child(2) > a {float: right; text-align: right;}
+#loginWrap .loginArea .contentArea > .rightArea > .formArea > dl.supportInfo {display: block; width: 100%; height: 100px; margin-top: 40px;}
+#loginWrap .loginArea .contentArea > .rightArea > .formArea > dl.supportInfo > dt {width: 100%; height: 40px; line-height: 40px; font-size: 18px; font-weight: 300; color: #222;}
+#loginWrap .loginArea .contentArea > .rightArea > .formArea > dl.supportInfo > dd {width: 100%; height: 20px; line-height: 20px; font-size: 14px; font-weight: 300; color: #777;}
+
+#loginWrap .loginArea p.copyright {display: block; width: 100%; height: 60px; box-sizing: border-box; padding: 20px 0 0; line-height: 40px; font-size: 14px; font-weight: 300; color: #666; text-align: center;}
+
+#wrap {position: relative; width: 100%; height: 100%; padding: 0; margin: 0 auto;}
+
+	.intranetHeadArea {position: relative; width: 100%; height: 60px;}
+	.intranetHeadArea > .header {position: fixed; top: 0; left: 0; width: 100%; height: 60px; box-sizing: border-box; padding-left: 200px; background: url('../img/adminPageHeaderBg.jpg') center center no-repeat; background-size: cover; z-index: 1;}
+	.intranetHeadArea > .header h2 {position: absolute; top: 0; left: 0; width: 200px; height: 60px; background-color: #5981e6; z-index: 1;}
+	.intranetHeadArea > .header h2 img {width: 200px; height: 60px;}
+	.intranetHeadArea > .header h3 {width: 100%; height: 60px; line-height: 60px; margin-left: 40px; font-size: 18px; font-weight: 500; text-align: left; color: #fff;}
+	.intranetHeadArea > .header ul.topMenu {position: absolute; top: 0; right: 0; width: 120px; height: 60px; z-index: 1;}
+	.intranetHeadArea > .header ul.topMenu > li {float: left; width: 120px; height: 60px;}
+	.intranetHeadArea > .header ul.topMenu > li > a {display: block; width: 100%; height: 60px; box-sizing: border-box; padding-left: 50px; line-height: 60px; font-size: 14px; font-weight: 500; color: #fff; text-align: left;}
+	.intranetHeadArea > .header ul.topMenu > li > a:hover {text-decoration: none;}
+	.intranetHeadArea > .header ul.topMenu > li:nth-child(1) {background-color: #f30045; background-image: url('../img/iconSetMenu.png'); background-position: 0px -300px; background-repeat: no-repeat; transition: all 0.3s;}
+	.intranetHeadArea > .header ul.topMenu > li:hover:nth-child(1) {background-color: #222;}
+
+	#wrap > #leftArea {position: fixed; display: block; width: 200px; height: 100%; background-color: #444652; z-index: 1; transition: all 0.3s;}
+		#leftArea ul.leftMenu {float: left; width: 200px; min-height: 360px; box-sizing: border-box; padding: 0; background-color: #444652; transition: all 0.3s;}
+		#leftArea ul.leftMenu > li {position: relative; float: left; width: 200px; height: 60px; background-color: #444652; transition: all 0.3s;}
+		#leftArea ul.leftMenu > li:hover,
+		#leftArea ul.leftMenu > li.on {background-color: #25283c;}
+		#leftArea ul.leftMenu > li > a {position: absolute; top: 0; left: 0; display: block; width: 200px; height: 60px; box-sizing: border-box; padding: 0 20px 0 60px; line-height: 60px; font-size: 14px; font-weight: 300; color: #fff; z-index: 1; transition: all 0.3s;}
+		#leftArea ul.leftMenu > li > a:hover {text-decoration: none;}
+		#leftArea ul.leftMenu > li > .icon {position: absolute; display: block; top: 0; left: 0; width: 60px; height: 60px; z-index: 1; background-image: url('../img/iconSetMenu.png');}
+		#leftArea ul.leftMenu > li:nth-child(1) > .icon {background-position: 0px 0px;}
+		#leftArea ul.leftMenu > li:nth-child(2) > .icon {background-position: 0px -60px;}
+		#leftArea ul.leftMenu > li:nth-child(3) > .icon {background-position: 0px -120px;}
+		#leftArea ul.leftMenu > li:nth-child(4) > .icon {background-position: 0px -180px;}
+		#leftArea ul.leftMenu > li:nth-child(5) > .icon {background-position: 0px -240px;}
+		#leftArea ul.leftMenu > li:nth-child(6) > .icon {background-position: 0px -300px;}
+
+		#leftArea ul.leftMenu > li.on:nth-child(1) > .icon {background-position: -60px 0px;}
+		#leftArea ul.leftMenu > li.on:nth-child(2) > .icon {background-position: -60px -60px;}
+		#leftArea ul.leftMenu > li.on:nth-child(3) > .icon {background-position: -60px -120px;}
+		#leftArea ul.leftMenu > li.on:nth-child(4) > .icon {background-position: -60px -180px;}
+		#leftArea ul.leftMenu > li.on:nth-child(5) > .icon {background-position: -60px -240px;}
+		#leftArea ul.leftMenu > li.on:nth-child(6) > .icon {background-position: -60px -300px;}
+
+	#wrap > #rightArea {position: relative; width: 100%; min-width: 960px; box-sizing: border-box; padding-left: 200px; background-color: #f2f3f8; transition: all 0.3s;}
+		#rightArea .intranetTitle {width: 100%; height: 100px; box-sizing: border-box; padding: 20px 0 20px 40px; border-bottom: 1px #eee solid; background-color: #fff;}
+		#rightArea .intranetTitle > h4 {width: 100%; height: 30px; line-height: 30px; font-size: 24px; font-weight: 500; color: #222;}
+		#rightArea .intranetTitle > p {width: 100%; height: 29px; line-height: 29px; font-size: 13px; font-weight: 300; color: #777;}
+
+		#rightArea .intranetContentArea {width: 100%; box-sizing: border-box; padding: 40px; background-color: #f2f3f8;}
+		#rightArea .intranetContentArea > .icBox {width: 100%; min-height: 600px;}
+
+
+
+
+
+
+
+	@media screen and (max-width: 1400px) {
+		#wrap > #leftArea {width: 60px;}
+		#leftArea ul.leftMenu,
+		#leftArea ul.leftMenu > li {width: 60px;}
+		#leftArea ul.leftMenu > li > a {width: 60px; padding: 0; font-size: 0; overflow: hidden;}
+		#wrap > #rightArea {padding-left: 60px;}
+	}
+
+

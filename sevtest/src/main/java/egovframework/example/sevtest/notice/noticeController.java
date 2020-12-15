@@ -30,6 +30,7 @@ public class noticeController {
 		@RequestMapping(value="/notice.do")
 		public String noticeForm(@ModelAttribute("vo")noticeVO vo,HttpServletRequest request,ModelMap model)throws Exception{
 			List<noticeVO> list = noticeService.noticeList(vo);
+			System.out.println("공지사항22");
 			model.addAttribute("list", list);
 			return "/test/notice/noticeForm";
 		}
@@ -49,6 +50,17 @@ public class noticeController {
 			vo = noticeService.noticeSelect(vo);
 			model.addAttribute("noticevo", vo);
 			return "/test/notice/noticeUpdate";
+		}
+		@ResponseBody
+		@Transactional
+		@RequestMapping(value="/noticeDelete.do")
+		public String noticeDelete(@ModelAttribute("vo")noticeVO vo,HttpServletRequest request,ModelMap model)throws Exception{
+			vo.setINXS(request.getParameterValues("INX_CHK"));
+			if(noticeService.noticeDelete(vo)) {
+				return"true";
+			}else {
+				return "false";
+			}
 		}
 		@ResponseBody
 		@Transactional
@@ -93,10 +105,6 @@ public class noticeController {
 				vo.setIMG_1(destination);
 				
 			}
-			
-			
-			
-			
 		}
 
 

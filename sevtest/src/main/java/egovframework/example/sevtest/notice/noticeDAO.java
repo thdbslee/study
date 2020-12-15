@@ -22,4 +22,10 @@ public class noticeDAO extends EgovAbstractDAO {
 		return (noticeVO) select("noticeDAO.noticeSelect",vo);
 	}
 	
+	public boolean noticeDelete(noticeVO vo)throws Exception{
+		boolean bol = false;
+		bol = update("noticeDAO.noticeDelete",vo) > 0 ? true : false ; 
+		System.out.println("bol :" +bol);
+		return bol;
+	}
 }

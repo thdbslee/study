@@ -21,6 +21,13 @@ import egovframework.example.sevtest.service.sevService;
 
 @Controller
 public class levelController {
+	/** 등업게시판 
+	 *  levelVO ->등업게시판 VO 
+	 *  sevVO -> 사용자정보 VO  
+	 *  등업게시판 등록시 사용자 LEV_COUNT증가 
+	 *  COUNT가 3이면 staff로 등업 후 자유게시판 이용 가능
+	 *  LEVEL 0 : director  LEVEL 1 : manager LEVEL 2 : STAFF LEVEL3 : guest 
+	 */
 	@Resource(name="levelService")
 	levelService levelService;
 	@Resource(name="sevService")
@@ -49,8 +56,8 @@ public class levelController {
 	public String levInsert(@ModelAttribute("vo")levelVO vo,@ModelAttribute("sevvo")sevVO sevvo,@ModelAttribute("svo")sevVO svo,
 			HttpServletRequest request,ModelMap model,HttpSession sess)throws Exception{
 		sevVO loginvo =(sevVO)sess.getAttribute("Login");
-		if(levelService.levelInsert(vo)) {
-			sevService.sevUpdateLev(svo); //등록게시물건수 증가시키기  --받아온값을 가지고 update 
+		if(levelService.levelInsert(vo)) { //INSERT 
+			sevService.sevUpdateLev(svo); //사용자 등록게시물건수 증가시키기  --받아온값을 가지고 update 
 			svo = sevService.sevLevList(svo); //사용자 게시물건수 불러오기
 			int count = svo.getLEV_COUNT(); //게시물건수몇개인지 
 			System.out.println("count-->"+count);

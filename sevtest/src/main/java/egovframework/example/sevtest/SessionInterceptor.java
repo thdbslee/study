@@ -23,20 +23,16 @@ public class SessionInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception { 
 		sevVO loginVo = (sevVO) request.getSession().getAttribute("Login");	// 로그인 사용자 세션정보
 		String requestURI = request.getRequestURI(); // 요청 URI ex)/index.do
-		/*System.out.println("URI->"+requestURI); 
-		StringBuffer requestURL = request.getRequestURL(); ex)http://localhost:8080/index.do
-		System.out.println("URL->"+requestURL);*/
-		
-		if (requestURI.indexOf("/login.do") > -1) { //indexof값이없으면 -1리턴인데 -1보다크면 true로가니까 컨트롤러로간다
+
+		if (requestURI.indexOf("/login.do") > -1) {//uri값이 login.do인지 확인
 			return true;
-		} else if (requestURI.indexOf("/userLogin.do") > -1) {
+		} else if (requestURI.indexOf("/userLogin.do") > -1) { //uri 값이 userLogin.do인지 확인
 			return true;
-		} else {//값이없을경우 -1일경우 
-			// 위의 예외페이지 외에는 세션값을 체크해서 있으면 그냥 페이지표시
-			if (loginVo !=null && !loginVo.getID().isEmpty()) { //vo에값이있거나 id가있을경우는 true
+		} else { //uri값이 login.do, userLogin.do가 아닐경우 
+			if (loginVo !=null && !loginVo.getID().isEmpty()) { //로그인값이있을경우
 				return true; 
 			}
-			else {
+			else { //로그인값이없을경우 
 				// 정상적인 세션정보가 없으면 로그인페이지로 이동
 				System.out.println("세션정보없음");
 				ModelAndView modelAndView = new ModelAndView("redirect:/login.do");
@@ -50,11 +46,8 @@ public class SessionInterceptor extends HandlerInterceptorAdapter {
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView model) throws Exception {
 		String requestURI = request.getRequestURI();   
 		sevVO loginVo = (sevVO) request.getSession().getAttribute("Login");	// 로그인 사용자 세션정보
-		//System.out.println("requestURI :"+requestURI);
-		if (requestURI.indexOf("/board.do") > -1) {
+		if (requestURI.indexOf("/board.do") > -1) { // uri가 board.do인지확인 
 			if(loginVo.getLEVEL().equals("3")) {
-				//Map<String, Object> rtnMap = new HashMap<String, Object>();
-				//rtnMap.put("msgContent", "등업 후 자유게시판 사용가능");
 				request.getRequestDispatcher("/levelList.do");
 				response.setContentType("text/html; charset=UTF-8");
 				PrintWriter out = response.getWriter();
@@ -66,7 +59,6 @@ public class SessionInterceptor extends HandlerInterceptorAdapter {
 		}
 		//로그인정보 뷰단에 보냄
 		if(loginVo !=null) {
-			System.out.println("인터셉터loginVo::"+loginVo.getID());
 			model.addObject("loginvo", loginVo);
 		}
 		

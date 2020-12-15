@@ -40,7 +40,7 @@
 				<tr>
 					<th>첨부파일</th>
 					<td><input type="file"  id="egovComFileUploader" name="IMG1" id="IMG1"></td>
-					<label>파일찾기</label>
+					<!--<label>파일찾기</label>-->
 					<div id="egovComFileList"></div>
 				</tr>
 				</tbody>
