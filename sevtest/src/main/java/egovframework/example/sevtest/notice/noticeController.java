@@ -30,7 +30,6 @@ public class noticeController {
 		@RequestMapping(value="/notice.do")
 		public String noticeForm(@ModelAttribute("vo")noticeVO vo,HttpServletRequest request,ModelMap model)throws Exception{
 			List<noticeVO> list = noticeService.noticeList(vo);
-			System.out.println("공지사항22");
 			model.addAttribute("list", list);
 			return "/test/notice/noticeForm";
 		}
@@ -51,6 +50,18 @@ public class noticeController {
 			model.addAttribute("noticevo", vo);
 			return "/test/notice/noticeUpdate";
 		}
+		@ResponseBody
+		@Transactional
+		@RequestMapping(value="/noticeUpdate_ok.do")
+		public String noticeUpdateForm(@ModelAttribute("vo")noticeVO vo,HttpServletRequest request,ModelMap model)throws Exception{
+			if(noticeService.noticeUpdate(vo)) {
+				return "true";
+			}else {
+				return "false";
+			}
+			
+		}
+		
 		@ResponseBody
 		@Transactional
 		@RequestMapping(value="/noticeDelete.do")

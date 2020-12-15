@@ -21,7 +21,11 @@ public class noticeDAO extends EgovAbstractDAO {
 	public noticeVO noticeSelect(noticeVO vo)throws Exception{
 		return (noticeVO) select("noticeDAO.noticeSelect",vo);
 	}
-	
+	public boolean noticeUpdate(noticeVO vo)throws Exception{
+		boolean bol = false;
+		bol = update("noticeDAO.noticeUpdate",vo) > 0 ? true : false;
+		return bol;
+	}
 	public boolean noticeDelete(noticeVO vo)throws Exception{
 		boolean bol = false;
 		bol = update("noticeDAO.noticeDelete",vo) > 0 ? true : false ; 

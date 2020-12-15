@@ -14,7 +14,7 @@
             <div id="layoutSidenav_content">
                 <main>
                   <div class="container-fluid"
-                    style="width:1800px; margin:auto; padding-top:50px;">
+                    style="width:1400px; margin:auto; padding-top:30px;">
                         <h1 class="mt-4">사용자리스트</h1>
       					<div class="card mb-4">
                             <div class="card-header">

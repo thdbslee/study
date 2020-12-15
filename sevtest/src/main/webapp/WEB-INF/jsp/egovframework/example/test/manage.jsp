@@ -14,7 +14,7 @@
             <input type="hidden" id="AUTH_CODE" name="AUTH_CODE" value="${loginvo.AUTH_CODE}">
                 <main>
                    <div class="container-fluid"
-                    style="width:1800px; margin:auto; padding-top:50px;">
+                    style="width:1400px; margin:auto; padding-top:30px;">
                         <h1 class="mt-4">직원관리</h1>
                         <div class="card mb-4">
                             <div class="card-header">

@@ -2,19 +2,24 @@ function fn_onLoad(){
 	fn_setDefault();
 }
 function fn_setDefault(){
-	console.log("default");
 }
 function fn_click(INX){
 	location.href="/notceDetail.do?INX="+INX;
-	//window.open("/notceDetail.do?INX="+INX,'detail');
+	
 }
 
 function fn_edit(){
-	console.log("edit");
+	if($("input[name=INX_CHK]:checked").length == 0){
+		alert("수정할 공지사항 선택하세요");
+		return false;
+	}
+	var INX = $("#INX_CHK").val();
+	location.href="/noticeUpdate.do?INX="+INX;
+	
 }
 function fn_delete(){
   if($("input[name=INX_CHK]:checked").length == 0){
-	  alert("삭제할 공지사항 선택하세요SS");
+	  alert("삭제할 공지사항 선택하세요");
 	  return ;
   }
 	if(!confirm('선택한 게시물 삭제하시겠습니까 ?')){

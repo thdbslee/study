@@ -10,8 +10,6 @@
 <html lang="en">
     <head>
 
-      
-
         <title>Q&A 게시판</title>
         <link href="resources/admin/dist/css/styles.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
@@ -22,7 +20,7 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid"
-                    style="width:1800px; margin:auto; padding-top:50px;">
+                    style="width:1400px; margin:auto; padding-top:30px;">
                         <h1 class="mt-4">QA게시판</h1>
                        	<h7>${loginvo.ID}접속중입니다.</h7>     
                         <div class="card mb-4">
@@ -47,7 +45,7 @@
                                       			<th>title</th>
                                       			<th style="width:10%">id</th>
                                       			<th style="width:30%;">date</th>
-                                      			<th style="width:5%;">답변유무</th>
+                                      			<th style="width:5%;">answer</th>
                                       		</tr>
                                       	</thead>
                                       		<tbody>

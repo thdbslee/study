@@ -12,7 +12,7 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid"
-                    style="width:1800px; margin:auto; padding-top:50px;">
+                    style="width:1400px; margin:auto; padding-top:30px;">
                         <h1 class="mt-4">전체게시글</h1>
                        	<h7>${loginvo.ID}접속중입니다.</h7> 
                         <div class="card mb-4">
