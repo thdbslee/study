@@ -190,6 +190,7 @@ public class boardController {
 		
 		//댓글리스트불러오기
 		List<commentVO> list = boardService.commentList(cmvo);
+		model.addAttribute("cmlist", list);
 		
 		int totCnt = boardService.commenTotCnt(cmvo);
 		paginationInfo.setTotalRecordCount(totCnt);
