@@ -22,9 +22,8 @@
 
 </head>
 <title>게시판 상세보기 </title>
-<body >
+<body onbeforeunload="fn_close()">
 	<div>
-
 			<table class="simple_table">
 				<tbody>
 					<h4>게시판 상세보기</h4>
