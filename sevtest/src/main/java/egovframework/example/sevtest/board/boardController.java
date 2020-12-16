@@ -112,9 +112,6 @@ public class boardController {
 		sevVO loginvo = (sevVO) sess.getAttribute("Login");
 		vo.setINXS(request.getParameterValues("INX_CHK"));
 		//System.out.println(ToStringBuilder.reflectionToString(vo));
-		System.out.println("AUTH_CODE->"+loginvo.getAUTH_CODE());
-		System.out.println("loginID->"+loginvo.getID());
-		System.out.println("ID->"+vo.getID());
 		
 			if(boardService.boardDelete(vo)) {//게시물삭제시
 				boardService.boardComDelete(vo); //게시물번호와같은 댓글삭제
@@ -130,7 +127,6 @@ public class boardController {
 	public String boardEditForm(@ModelAttribute("vo")boardVO vo,HttpSession sess,HttpServletRequest request,ModelMap model)throws Exception{
 		sevVO loginvo = (sevVO)sess.getAttribute("Login");
 		vo = boardService.boardSelect(vo);
-		System.out.println("INX->"+vo.getINX());
 		model.addAttribute("boardvo",vo);
 		return "/test/board/boardEdit";
 	}
@@ -140,7 +136,6 @@ public class boardController {
 	@RequestMapping(value="/boardEdit_ok.do")
 	public String boardEdit(@ModelAttribute("vo")boardVO vo,HttpSession sess,HttpServletRequest request,ModelMap model)throws Exception{
 		sevVO loginvo = (sevVO)sess.getAttribute("Login");
-		System.out.println("테스트 : "+vo.getCONTENT());
 		if(boardService.boardUpdate(vo)) {
 			return"ture";
 		}else {
@@ -172,15 +167,10 @@ public class boardController {
 		paginationInfo.setRecordCountPerPage(5); //한 페이지에 게시되는 게시물 건수
 		paginationInfo.setPageSize(cmvo.getPageSize());//페이지리스트에게시되는페이지건수
 		//paginationInfo.setRecordCountPerPage(cmvo.getPageUnit());//한페이지당게시되는게시물건수
-		//System.out.println("RecourCountperPage->"+cmvo.getPageUnit());
-
-		cmvo.setFirstIndex(paginationInfo.getFirstRecordIndex());
-		System.out.println("FirstIndex->"+cmvo.getFirstIndex());
-		cmvo.setLastIndex(paginationInfo.getLastRecordIndex());
-		System.out.println("LastIndex->"+cmvo.getLastIndex());
-		cmvo.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
-		System.out.println("pageIndex->"+cmvo.getPageIndex());
 		
+		cmvo.setFirstIndex(paginationInfo.getFirstRecordIndex());
+		cmvo.setLastIndex(paginationInfo.getLastRecordIndex());
+		cmvo.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
 		
 		//게시판선택
 		vo = boardService.boardSelect(vo);
@@ -220,7 +210,6 @@ public class boardController {
 		sevVO loginvo = (sevVO) sess.getAttribute("Login");
 		
 		cmvo.setINX(Integer.parseInt(request.getParameter("delInx"))); //delInx값을 넣어준다 
-		System.out.println("delINX->"+cmvo.getINX());
 		if(boardService.commentDelete(cmvo)) {
 			return "true";
 		}else {

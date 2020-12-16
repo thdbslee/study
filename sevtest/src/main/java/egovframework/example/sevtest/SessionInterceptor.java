@@ -45,7 +45,7 @@ public class SessionInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView model) throws Exception {
 		String requestURI = request.getRequestURI();   
-		sevVO loginVo = (sevVO) request.getSession().getAttribute("Login");	// 로그인 사용자 세션정보
+		sevVO loginVo = (sevVO) request.getSession().getAttribute("Login");
 		if (requestURI.indexOf("/board.do") > -1) { // uri가 board.do인지확인 
 			if(loginVo.getLEVEL().equals("3")) {
 				request.getRequestDispatcher("/levelList.do");

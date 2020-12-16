@@ -33,12 +33,8 @@ function fn_egov_link_page(pageNo){
    	document.frm.submit();
 	
 }
-/*function fn_egov_link_page(pageNo){
-	location.href="/boardDetail.do?pageNo="+pageNo;
 
-}*/
 function fn_close(){
-	console.log("close");
 	opener.document.location.reload();
 	self.close();
 }

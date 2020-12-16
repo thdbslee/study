@@ -22,7 +22,7 @@
 
 </head>
 <title>게시판 상세보기 </title>
-<body>
+<body >
 	<div>
 
 			<table class="simple_table">
@@ -65,8 +65,10 @@
 						<th style="width:20px;">등록날짜</th>
 						<td style="width:100px;">${cmlist.loginDate }</td>
 						<th style="width:10px">
+						<c:if test="${loginvo.ID == cmlist.id }">
 							<a class="button" href="javascript:fn_cmdelete(${cmlist.inx})">
-							<input type="hidden" id="delInx" name="delInx" value="${cmlist.inx}">삭제</a> <!--내일-->
+							<input type="hidden" id="delInx" name="delInx" value="${cmlist.inx}">삭제</a> 
+						</c:if>
 						</th>
 					</tr>
 				</c:forEach>

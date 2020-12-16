@@ -32,13 +32,13 @@ public class sevController {
 		
 		return"/test/login";
 	}
+	//로그인 성공시 index.do화면으로 
 	@RequestMapping(value="/index.do")
 	public String index(HttpSession sess,HttpServletRequest request,ModelMap model)throws Exception{
 		sevVO loginVo =(sevVO)sess.getAttribute("Login");
-		System.out.println("indexof AUTH_CODE=>"+loginVo.getAUTH_CODE());
-		if(loginVo.getAUTH_CODE().equals("9")) {//관리자모드일때
+		if(loginVo.getAUTH_CODE().equals("9")) {//관리자
 			return "redirect:/mainTest.do";
-		}else {//일반사용자로그인할때
+		}else {//일반사용자
 			return "redirect:/userMain.do";
 		}
 	}
@@ -57,10 +57,8 @@ public class sevController {
 		if(vo!=null) {//아이디비밀번호맞으면 
 			//이미락걸린경우
 			if(vo.getLOCK_YN().equals("Y")) {
-				System.out.println("이미락걸린경우");
 				json.put("resultCode", "LOCK");
 			}else {
-				System.out.println("로그인성공");
 				sevService.LoginDate(vo); //로그인한날짜등록
 				sess.setAttribute("Login", vo);
 				json.put("resultCode", "Y");
@@ -86,7 +84,6 @@ public class sevController {
 	//로그아웃
 	@RequestMapping(value="/logout.do")
 	public String logout(HttpSession sess,HttpServletRequest request)throws Exception{
-		System.out.println("로그아웃");
 		sess.invalidate();
 		return "redirect:/login.do";
 	}
@@ -100,10 +97,9 @@ public class sevController {
 	@Transactional
 	@RequestMapping(value="/join_ok.do")
 	public String join_ok(HttpServletRequest request,ModelMap model,@ModelAttribute("vo")sevVO vo)throws Exception{
-		//id중복체크
-		int idcount = sevService.idcount(vo); //아이디갯수체크
+		int idcount = sevService.idcount(vo); //아이디중복확인
 		if(idcount==0) {
-			if(sevService.joinInsert(vo)) { //아이디갯수0이면 회원가입가능
+			if(sevService.joinInsert(vo)) { 
 				return "true";
 			}else {
 				return "n";
@@ -124,14 +120,13 @@ public class sevController {
 	@ResponseBody
 	@Transactional
 	@RequestMapping(value="/passwdchange_ok.do")
-	public String changePasswdOK(@ModelAttribute("vo")sevVO vo,@ModelAttribute("newvo")sevVO newvo,HttpServletRequest request,HttpSession sess,ModelMap model)throws Exception{
+	public String changePasswdOK(@ModelAttribute("vo")sevVO vo,@ModelAttribute("newvo")sevVO newvo
+		,HttpServletRequest request,HttpSession sess,ModelMap model)throws Exception{
 		sevVO loginvo =(sevVO) sess.getAttribute("Login");
 		//sevVO vo에 현재비밀번호넣기 
 		vo.setPASSWD(request.getParameter("OLDPASSWD").toString());
-		System.out.println("현재 ::"+vo.getPASSWD());
 		//sevVO newvo에 새비밀번호 넣기
 		newvo.setPASSWD(request.getParameter("NEWPASSWD").toString());
-		System.out.println("새 ::"+newvo.getPASSWD());
 		//현재 비밀번호 맞는지 확인
 		int passcount = sevService.passcount(vo);
 		if(passcount > 0) {
@@ -141,7 +136,6 @@ public class sevController {
 		}else {
 			return "N"; //변경실패
 		}
-		
 	}
 	
 	//사용자관리
@@ -149,14 +143,12 @@ public class sevController {
 	public String mainTest(@ModelAttribute("vo")sevVO vo,HttpServletRequest request,ModelMap model,HttpSession sess) throws Exception {
 		sevVO loginvo = (sevVO) sess.getAttribute("Login");
 		if(loginvo.getAUTH_CODE().equals("9")) {
-			System.out.println("AUTH_CODE->"+loginvo.getAUTH_CODE());
 			model.addAttribute("login", loginvo); //jsp에 로그인한 이름 확인하기*/
 			
 			List<sevVO> list = sevService.sevList(vo);//작성자리스트 
 			model.addAttribute("list", list);
 			return "/test/hello";	
 		}else {
-			System.out.println("일반사용자는mainTestxxxxxxx");
 			return "redirect:/index.do";
 		}
 
@@ -165,7 +157,6 @@ public class sevController {
 	@RequestMapping(value="/userMain.do")
 	public String userMain(@ModelAttribute("vo")sevVO vo,HttpServletRequest request,ModelMap model,HttpSession sess) throws Exception {
 		sevVO loginvo = (sevVO) sess.getAttribute("Login");
-		System.out.println("AUTH_CODE->"+loginvo.getAUTH_CODE());
 		model.addAttribute("login", loginvo); //jsp에 로그인한 이름 확인하기
 		
 		List<sevVO> list = sevService.sevList(vo);//작성자리스트 
@@ -179,7 +170,6 @@ public class sevController {
 		if(loginvo.getAUTH_CODE().equals("9")) {
 			List<sevVO> list = sevService.sevList(vo);
 			model.addAttribute("list", list);
-			System.out.println("manage");
 			return "/test/manage";
 		}else {
 			return "redirect:/index.do";
@@ -221,14 +211,12 @@ public class sevController {
 		
 		vo =sevService.sevSelect(vo); //inx체크하기 ? 
 		model.addAttribute("editvo", vo);
-		System.out.println("vo->"+vo.getINX());
 		return"/test/workEdit";
 	}
 	@ResponseBody
 	@Transactional
 	@RequestMapping(value ="/workEdit_ok.do", method=RequestMethod.POST)
 	public String workEditOk(@ModelAttribute("vo")sevVO vo,HttpServletRequest request,ModelMap model,HttpSession sess)throws Exception{
-		//vo.setInx(Integer.parseInt(request.getParameter("inx")));
 		if(sevService.sevUpdate(vo)) {
 			return "true";
 		}else {
@@ -241,8 +229,7 @@ public class sevController {
 	@RequestMapping(value="/workDelete.do",method=RequestMethod.POST)
 	public String workDelete(@ModelAttribute("vo")sevVO vo,HttpServletRequest request,ModelMap model)throws Exception{
 		vo.setINXS(request.getParameterValues("inx_check"));
-		
-		System.out.println(ToStringBuilder.reflectionToString(vo));
+
 		if(sevService.sevDelete(vo)) {
 			return "true";
 		}else {
@@ -254,8 +241,6 @@ public class sevController {
 	public String settingForm(HttpSession sess,HttpServletRequest request,ModelMap model)throws Exception{
 		sevVO loginvo = (sevVO) sess.getAttribute("Login");
 		model.addAttribute("loginvo", loginvo);
-		System.out.println("loginvo->"+loginvo);
-		System.out.println(ToStringBuilder.reflectionToString(loginvo));
 		return"/test/setting/settingForm";
 	}
 	//Mypage 비밀번호확인 후 변경홈페이지나오게
@@ -281,16 +266,14 @@ public class sevController {
 	@ResponseBody
 	@Transactional
 	@RequestMapping(value="/setting_eidt.do")
-	public String settingEdit(@ModelAttribute("vo")sevVO vo,HttpSession sess,HttpServletRequest request,ModelMap model)throws Exception{
+	public String settingEdit(@ModelAttribute("vo")sevVO vo,HttpSession sess
+		,HttpServletRequest request,ModelMap model)throws Exception{
 		sevVO loginvo = (sevVO) sess.getAttribute("Login");
 		model.addAttribute("vo", vo);
-		System.out.println("변경전이름=>"+loginvo.getNAME());
 		if(sevService.userSettingUpdate(vo)) {
 			sess.setAttribute("Login", loginvo); //세션업데이트하기->로그아웃안해도 세션바뀜
-			System.out.println("변경후이름=>"+loginvo.getNAME());
 			return "true";
 		}else {
-			System.out.println("정보변경오류");
 			return "false";
 		}
 		
