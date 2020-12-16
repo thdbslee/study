@@ -13,9 +13,7 @@
                 <main>
                     <div class="container-fluid"
                     style="width:1400px; margin:auto; padding-top:30px;">
-                        <h1 class="mt-4">게시글 상세보기</h1>
-                       	<h7>${loginvo.ID}접속중입니다.</h7> 
-                       	 
+                        <h1 class="mt-4">게시글 상세보기</h1>         	 
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table mr-1"></i>
@@ -24,12 +22,10 @@
                             <div class="card-body" >
                             
                              <table class="table table-bordered" id="dataTable" >
-                             	<form id="frm" name="frm" method="post" >
-								 <input type="text" id="ID" name="ID" value="${loginvo.ID}">
-								 <input type="text" id="MENU" name="MENU" value="${totalvo.MENU}">
-								 <input type="text" id="INX" name="INX" value="${totalvo.INX}">                         
-
-                                    <div>	
+                             	<form id="hidden" name="frm" method="post" >
+								 <input type="hidden" id="ID" name="ID" value="${loginvo.ID}">
+								 <input type="hidden" id="RNUM" name="RNUM" value="${totalvo.RNUM}">
+								  <div>	
 	                                 <tbody>
 	                                 	<tr>
 	                                 		<th>제목</th>
@@ -37,17 +33,7 @@
 	                                 	</tr>
 	                                 	<tr>
 	                                 		<th>게시판이름</th>
-	                                		<c:choose>
-	                                			<c:when test="${totalvo.MENU eq 'FREE' }">
-	                                				<td>자유게시판</td>
-	                                			</c:when>
-	                                			<c:when test="${totalvo.MENU eq 'Q&A' }">
-	                                				<td>Q & A게시판</td>
-	                                			</c:when>
-	                                			<c:when test="${totalvo.MENU eq 'LEVEL'}">
-	                                				<td>등업게시판</td>
-	                                			</c:when>
-	                                		</c:choose>
+	                                		<td>${totalvo.MENU}</td>
 	                                 	</tr>
 	                                 	<tr>
 	                                 		<th>내용</th>
@@ -63,7 +49,7 @@
                  				</table>
                  				  <tfoot>
                  				  	<div>
-	                                 	<a class="button" href="javascript:fn_delete()">삭제</a>
+	                                 	
 	                                 	<a class="button" href="/totwrite.do">목록</a>
 	                                 </div>
 	                              </tfoot>

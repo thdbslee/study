@@ -42,15 +42,6 @@
                          						<td>
                          						<input type="password" id="PASSWD" name="PASSWD" ></td>
                                        		</tr>
-                                       		
-                                       		<!-- <tr>
-                                       			<th>직위</th>
-                                       			<td><select name="LEVEL" id="LEVEL">
-												<option value="0"${loginvo.LEVEL eq '0' ?'selected':''}>director</option>
-												<option value="1"${loginvo.LEVEL eq '1' ?'selected':''}>manager</option>
-												<option value="2"${loginvo.LEVEL eq '2' ?'selected':''}>staff</option>
-												</select></td>
-                                       		</tr>-->
                                        		<tr>
                                        			<th>번호</th>
                                        			<td><input type="text" id="PHONE" name="PHONE" value="${loginvo.PHONE}"></td>

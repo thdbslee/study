@@ -40,6 +40,7 @@ public class noticeController {
 		@RequestMapping(value="/notceDetail.do")
 		public String noticeDetail(@ModelAttribute("vo")noticeVO vo,HttpServletRequest request,ModelMap model)throws Exception{
 			//select 
+			noticeService.noticeInfoCount(vo); //공지사항클릭하면 조회수 증가
 			vo = noticeService.noticeSelect(vo);
 			model.addAttribute("noticevo", vo);
 			return "/test/notice/noticeDetail";

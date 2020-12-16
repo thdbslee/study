@@ -13,7 +13,7 @@
                     <div class="container-fluid"
                     style="width:1400px; margin:auto; padding-top:30px;">
                         <h1 class="mt-4">자유게시판</h1>
-                       	<h7>${loginvo.ID}접속중입니다.</h7> 
+                       
                        	 
                         <div class="card mb-4">
                             <div class="card-header">
@@ -36,9 +36,10 @@
                                       	<thead>
                                       		<tr>
                                       			<th style="width:10%;"><input type="checkbox" id="all_check" name="all_check"></th>
-                                      			<th>title</th>
-                                      			<th>id</th>
+                                      			<th>제목</th>
                                       			<th style="width:8%;">조회수</th>
+                                      			<th>아이디</th>
+                                      			<th>이름</th>
                                       			<th style="width:100px;">date</th>
                                       		</tr>
                                       	</thead>
@@ -47,21 +48,21 @@
                                       				<tr>
                                       				<td>
                                       				<c:choose>
-                                      					<c:when test="${login.AUTH_CODE eq 9 }">
+                                      					<c:when test="${loginvo.AUTH_CODE eq 9 }">
                                       						<input type="checkbox" id="INX_CHK" name="INX_CHK" value="${list.INX}"> 
                                       					</c:when>
-                                  						<c:when test="${login.ID eq list.ID}">
+                                  						<c:when test="${loginvo.ID eq list.ID}">
                                   							<input type="checkbox" id="INX_CHK" name="INX_CHK" value="${list.INX}"> 
                                   						</c:when>
-                                      				</c:choose>
-                                      								
+                                      				</c:choose>			
                               						</td>
                                       				<td  id="test" name="test" style="cursor: pointer;" onMouseOver="this.style.backgroundColor='#F0F1F3'" onMouseOut="this.style.backgroundColor='#FFFFFF'" onclick="javascript:fn_detail('${list.INX}')">
                                       				${list.TITLE}</td>
-                                      				<td>${list.ID}</td>
                                       				<td style="text-align:center">
                                       				<input type="hidden" id="INFO" name="INFO" value="${list.INFO}">${list.INFO}</td>
-                                      				<td style="width:100px;">${list.NOTICE_DATE}</td>
+                                      				<td>${list.ID}</td>
+                                      				<td>${list.NAME}</td>
+                                      				<td style="width:100px;">${list.BOARD_DATE}</td>
                                       				</tr>
                                       			</c:forEach>
                                       		</tbody>
@@ -74,18 +75,7 @@
                         </div>-
                     </div>
                 </main>
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2020</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
+     
             </div>
         </div>
         

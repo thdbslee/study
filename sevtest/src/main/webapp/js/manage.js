@@ -25,8 +25,9 @@ function fn_edit(){
 	
 	
 }
+
 function fn_delete(){
-	console.log("delete");
+	
 	if($("input[name='inx_check']:checked").length == 0){
 		alert("삭제할 사용자 하나만 선택하세요");
 		return false;

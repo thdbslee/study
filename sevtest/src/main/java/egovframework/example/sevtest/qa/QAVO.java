@@ -3,6 +3,7 @@ package egovframework.example.sevtest.qa;
 public class QAVO {
 	private int INX;
 	private String ID;
+	private String NAME;
 	private String CONTENT;
 	private String TITLE;
 	private String INSERT_DATE;
@@ -10,6 +11,12 @@ public class QAVO {
 	private String INXS[];
 	
 	
+	public String getNAME() {
+		return NAME;
+	}
+	public void setNAME(String nAME) {
+		NAME = nAME;
+	}
 	public String[] getINXS() {
 		return INXS;
 	}

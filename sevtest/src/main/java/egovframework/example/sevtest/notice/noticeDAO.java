@@ -32,4 +32,8 @@ public class noticeDAO extends EgovAbstractDAO {
 		System.out.println("bol :" +bol);
 		return bol;
 	}
+
+	public void noticeInfoCount(noticeVO vo) {
+		update("noticeDAO.noticeInfoCount",vo);
+	}
 }

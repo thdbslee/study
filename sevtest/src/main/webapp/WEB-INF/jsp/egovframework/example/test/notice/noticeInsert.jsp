@@ -20,8 +20,6 @@
                     <div class="container-fluid"
                     style="width:1400px; margin:auto; padding-top:30px;">
                         <h1 class="mt-4">공지사항 등록</h1>
-                       	<h7>${loginvo.ID}접속중입니다.</h7> 
-                       	 
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table mr-1"></i>
@@ -38,7 +36,11 @@
 	                                    	</tr>
 	                                    	<tr>
 	                                    		<th>이름</th>
-	                                    		<td><input type="hidden" id="NAME" name="NAME" value="${loginvo.NAME}">${loginvo.NAME}</td>
+	                                    		<td style="width:5%;">
+	                                    		<input type="hidden" id="NAME" name="NAME" value="${loginvo.NAME}">
+	                                    		${loginvo.NAME}</td>
+	                                    		<th>아이디</th>
+	                                    		<td><input type="hidden" id="ID" name="ID" value="${loginvo.ID}">${loginvo.ID}</td>
 	                                    	</tr>
 	                                    	<tr>
 	                                    		<th>내용</th>

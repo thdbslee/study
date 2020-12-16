@@ -5,8 +5,7 @@ function fn_setDefault(){
 	
 }
 function fn_cmdelete(inx){
-	//alert("inx->"+inx);
-	//alert("delInx->"+$("#delInx").val(inx));
+
 	$("#delInx").val(inx);
 	if(!confirm('댓글삭제하시겠습니까?')){
 		return;
@@ -52,7 +51,7 @@ function fn_add(){
 		data: $("#frm").serialize(),
 		success:function(success){
 			if(success=="true"){
-				alert("등록완료2.");
+				alert("등록완료.");
 				location.reload();
 			}else{
 				alert("등록실패.");	

@@ -9,7 +9,7 @@ public class totalVO  extends DefaultVO {
 	private String TITLE;
 	private String MENU; 
 	private String CONTENT;
-	private int RNUM;
+	private String RNUM;
 	
 	public int getINX() {
 		return INX;
@@ -47,12 +47,13 @@ public class totalVO  extends DefaultVO {
 	public void setCONTENT(String cONTENT) {
 		CONTENT = cONTENT;
 	}
-	public int getRNUM() {
+	public String getRNUM() {
 		return RNUM;
 	}
-	public void setRNUM(int rNUM) {
+	public void setRNUM(String rNUM) {
 		RNUM = rNUM;
 	}
+	
 	
 	
 }

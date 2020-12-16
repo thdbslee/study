@@ -15,11 +15,11 @@
                 <main>
                    <div class="container-fluid"
                     style="width:1400px; margin:auto; padding-top:30px;">
-                        <h1 class="mt-4">직원관리</h1>
+                        <h1 class="mt-4">사용자관리</h1>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table mr-1"></i>
-                                직원관리
+                                사용자관리
                                          
                             </div>
                             <div class="card-body">

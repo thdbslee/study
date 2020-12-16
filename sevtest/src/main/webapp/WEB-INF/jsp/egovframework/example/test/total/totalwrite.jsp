@@ -12,17 +12,13 @@
 
 	<!-- Right Content Title End //-->	
 <div class="intranetContentArea clearFix">
-	<div class="icBox clearFix" style="width:1800px; margin:auto; padding-top :50px;">
-			<form method="post" id="frm" name="frm" class="clearFix">
+	<div class="icBox clearFix" style="width:1400px; margin:auto; padding-top :50px;">
+			<form method="post" id="frm" name="frm" class="clearFix" style="margin:auto;">
+			<input type="hidden" id="RNUM" name="RNUM">
 				<h1>작성글</h1>
 				<table class="searchTable">
-					<colgroup>
-						<col style="width: 100px;" />
-						<col style="width: auto;" />
-						<col style="width: 215px;" />
-					</colgroup>
+		
 					<tr>
-						<th class="point">검색</th>
 						<td>
 							<select name="searchType" id="searchType">
 								<option value="2" ${vo.searchType eq '2'?'selected':''}>제목</option>
@@ -41,8 +37,8 @@
 				<thead>
 				<tr>
          		<th>게시판메뉴</th>
-         		<th>아이디</th>
          		<th>제목</th>
+         		<th>아이디</th>
          		<th>작성날짜</th>
          		</tr>
          		</thead>
@@ -50,20 +46,10 @@
 	    			<c:forEach var="list" items="${list}">
 	    				<tr>
 	    				 
-	    				 	<c:choose>
-	     				<c:when test="${list.MENU eq 'FREE' }">
-	     				<td onclick="fn_detail('${list.INX}')" style="cursor:pointer;">자유게시판</td>
-	     				</c:when>
-	     				<c:when test="${list.MENU eq 'Q&A' }">
-	     				<td onclick="fn_detail('${list.INX}')" style="cursor:pointer;">Q & A게시판</td>
-	     				</c:when>
-	     				<c:when test="${list.MENU eq 'LEVEL'}">
-	     				<td onclick="fn_detail('${list.INX}')" style="cursor:pointer;">등업게시판</td>
-	     				</c:when>
-	     				</c:choose>
-	    				 	<td>${list.ID}</td>
-	    				 	<td>${list.TITLE}</td>
-	    				 	<td>${list.DT}</td>
+	    				 	<td onclick="fn_detail('${list.RNUM}')" style="cursor:pointer;">${list.MENU}</td>
+	    				 	<td onclick="fn_detail('${list.RNUM}')" style="cursor:pointer;">${list.TITLE}</td>
+	    				 	<td onclick="fn_detail('${list.RNUM}')" style="cursor:pointer;">${list.ID}</td>
+	    				 	<td onclick="fn_detail('${list.RNUM}')" style="cursor:pointer;">${list.DT}</td>
 	    				</tr>
 	    			</c:forEach>
 	    		</tbody>	

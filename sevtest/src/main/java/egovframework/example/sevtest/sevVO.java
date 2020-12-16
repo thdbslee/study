@@ -16,7 +16,7 @@ public class sevVO {
 	private String AUTH_CODE;
 	private String LOGIN_DATE;
 	private int LEV_COUNT ; //등업게시물 등록 건수
-	
+	private String OUT ; //탈퇴여부 
 	
 	public int getLEV_COUNT() {
 		return LEV_COUNT;
@@ -109,6 +109,10 @@ public class sevVO {
 	public void setSTWORK(String sTWORK) {
 		STWORK = sTWORK;
 	}
+	public String getOUT() {
+		return OUT;
+	}
+
 	
 	
 	

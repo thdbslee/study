@@ -50,7 +50,8 @@ public class sevController {
 	@ResponseBody
 	@Transactional
 	@RequestMapping(value="/userLogin.do")
-	public String userLogin(@ModelAttribute("vo")sevVO vo,@ModelAttribute("failVo")sevVO failVo,HttpServletRequest request,ModelMap model,HttpSession sess)throws Exception{
+	public String userLogin(@ModelAttribute("vo")sevVO vo,@ModelAttribute("failVo")sevVO failVo
+	,HttpServletRequest request,ModelMap model,HttpSession sess)throws Exception{
 		JSONObject json = new JSONObject();
 		vo = sevService.UserLogin(vo); //아이디비밀번호확인
 		if(vo!=null) {//아이디비밀번호맞으면 
@@ -117,7 +118,6 @@ public class sevController {
 	public String changePasswd(@ModelAttribute("vo")sevVO vo,HttpServletRequest request,ModelMap model,HttpSession sess)throws Exception{
 		sevVO loginvo = (sevVO) sess.getAttribute("Login");
 		model.addAttribute("loginvo", loginvo);
-		System.out.println("비밀번호 change");
 		return "/test/passwdchange";
 	}
 	//비밀번호변경확인
@@ -196,7 +196,6 @@ public class sevController {
 	//직원등록폼
 	@RequestMapping(value="/workInsert.do")
 	public String workInsertForm(@ModelAttribute("vo")sevVO vo,HttpServletRequest request,ModelMap model)throws Exception{
-		System.out.println("직원등록FORM");
 		return "/test/workInsert";
 	}
 	//직원등록

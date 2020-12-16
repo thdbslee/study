@@ -26,8 +26,12 @@
 				<tbody>
 					<h4>게시판 등록</h4>
 				<tr>
-					<th>작성자</th>
-					<td><input type="hidden" id="ID" name="ID" value="${login.ID}" readOnly>${login.ID}</td>
+					<th>아이디</th>
+					<td><input type="hidden" id="ID" name="ID" value="${login.ID}">${login.ID}</td>
+				</tr>
+				<tr>
+					<th>이름</th>
+					<td><input type="hidden" id="NAME" name="NAME" value="${loginvo.NAME}">${loginvo.NAME}</td>
 				</tr>
 				<tr>
 					<th scope="row">제목</th>

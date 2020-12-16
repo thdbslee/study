@@ -17,7 +17,7 @@ function fn_insert(){
 				self.close();
 			}else if(data=="upgrade"){
 				alert("등록완료");
-				alert("staff로 등업완료 자유게시판 이용가능합니다.");
+				alert("등업완료 자유게시판 이용가능합니다.");
 				opener.document.location.reload();
 				self.close();
 			}

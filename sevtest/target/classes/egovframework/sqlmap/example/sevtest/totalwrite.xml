@@ -7,27 +7,35 @@
 <select id="totalDAO.totalWriteList" parameterClass="totalVO" resultClass="totalVO">
 /*totalDAO.totalWriteList*/
 	<![CDATA[
-	SELECT A.INX ,A.TITLE,A.CONTENT , A.ID,A.MENU, 
-	A.DT
-	,@rownum:=@rownum+1 as RNUM
-	FROM 
-	(
-	  SELECT INX,TITLE,ID,NOTICE_DATE AS DT, 'FREE' AS MENU , CONTENT
-	   FROM NOTICE
-	  WHERE ID=#ID#
-	  UNION ALL 
-	  SELECT INX,TITLE,ID,INSERT_DATE AS DT, 'Q&A' AS MENU , CONTENT
-	   FROM QA WHERE ID=#ID#
-	  UNION ALL
-	  SELECT INX,TITLE,ID,INSERT_DATE AS DT,'LEVEL' AS MENU ,CONTENT
-	  FROM LEVEL WHERE ID=#ID#
-	  ) A
-	  ,(SELECT @rownum:=0)DT
+	SELECT B.INX,B.TITLE,B.CONTENT,B.MENU,B.ID
+	,DATE(B.DT)AS DT,B.RNUM
+	FROM(
+		SELECT A.INX ,A.TITLE,A.CONTENT , A.ID,A.MENU, 
+		A.DT
+		,@ROWNUM := @ROWNUM +1 AS RNUM
+		FROM 
+		(
+		  SELECT INX,TITLE,ID,BOARD_DATE AS DT, '자유게시판' AS MENU , CONTENT
+		   FROM BOARD
+		  WHERE ID=#ID#
+		  UNION ALL 
+		  SELECT INX,TITLE,ID,INSERT_DATE AS DT, 'Q&A게시판' AS MENU , CONTENT
+		   FROM QA WHERE ID=#ID#
+		  UNION ALL
+		  SELECT INX,TITLE,ID,INSERT_DATE AS DT,'등업게시판' AS MENU ,CONTENT
+		  FROM LEVEL WHERE ID=#ID#
+		  UNION ALL
+		  SELECT INX,TITLE,ID,INSERT_DATE AS DT, '공지사항' AS MENU,CONTENT
+		  FROM NOTICE
+		  WHERE ID = #ID#
+		  ) A
+		  )B
+		  ,(SELECT @ROWNUM :=0) RNUM
 	]]>
 	<dynamic prepend="WHERE">
 		<isNotEmpty property="searchText" prepend="AND">
 			<isEqual property="searchType" compareValue ="2">
-				A.TITLE LIKE CONCAT('%',#searchText#,'%')
+				B.TITLE LIKE CONCAT('%',#searchText#,'%')
 			</isEqual>
 		</isNotEmpty>
 	</dynamic>	  
@@ -37,22 +45,31 @@
 <select id="totalDAO.totalSelect" parameterClass="totalVO" resultClass="totalVO">
 /*totalDAO.totalSelect*/
 	<![CDATA[
-	SELECT A.INX ,A.TITLE,A.CONTENT , A.ID,A.MENU, 
-	A.DT
-	FROM 
-	(
-	  SELECT INX,TITLE,ID,NOTICE_DATE AS DT, 'FREE' AS MENU , CONTENT
-	   FROM NOTICE
-	  WHERE ID= #ID#
-	  UNION ALL 
-	  SELECT INX,TITLE,ID,INSERT_DATE AS DT, 'Q&A' AS MENU , CONTENT
-	   FROM QA WHERE ID= #ID#
-	  UNION ALL
-	  SELECT INX,TITLE,ID,INSERT_DATE AS DT,'LEVEL' AS MENU ,CONTENT
-	  FROM LEVEL WHERE ID= #ID#
-	  ) A
-  	WHERE A.INX =#INX#
-	
+	SELECT B.INX,B.TITLE,B.CONTENT,B.MENU,B.ID
+	,DATE(B.DT)AS DT,B.RNUM
+	FROM(
+		SELECT A.INX ,A.TITLE,A.CONTENT , A.ID,A.MENU, 
+		A.DT
+		,@ROWNUM := @ROWNUM +1 AS RNUM
+		FROM 
+		(
+		  SELECT INX,TITLE,ID,BOARD_DATE AS DT, '자유게시판' AS MENU , CONTENT
+		   FROM BOARD
+		  WHERE ID='SY'
+		  UNION ALL 
+		  SELECT INX,TITLE,ID,INSERT_DATE AS DT, 'Q&A게시판' AS MENU , CONTENT
+		   FROM QA WHERE ID='SY'
+		  UNION ALL
+		  SELECT INX,TITLE,ID,INSERT_DATE AS DT,'등업게시판' AS MENU ,CONTENT
+		  FROM LEVEL WHERE ID='SY'
+		  UNION ALL
+		  SELECT INX,TITLE,ID,INSERT_DATE AS DT, '공지사항' AS MENU,CONTENT
+		  FROM NOTICE
+		  WHERE ID = 'SY'
+		  ) A
+		  )B
+		  ,(SELECT @ROWNUM :=0) RNUM
+		  WHERE RNUM =#RNUM#
 	]]>
 </select>
 <delete id="totalDAO.totalDelete" parameterClass="totalVO">

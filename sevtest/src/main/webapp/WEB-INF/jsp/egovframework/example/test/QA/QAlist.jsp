@@ -21,8 +21,7 @@
                 <main>
                     <div class="container-fluid"
                     style="width:1400px; margin:auto; padding-top:30px;">
-                        <h1 class="mt-4">QA게시판</h1>
-                       	<h7>${loginvo.ID}접속중입니다.</h7>     
+                        <h1 class="mt-4">QA게시판</h1>    
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table mr-1"></i>
@@ -43,7 +42,8 @@
                                       		<tr>
                                       			<th style="width:10%;"><input type="checkbox" id="all_check" name="all_check"></th>
                                       			<th>title</th>
-                                      			<th style="width:10%">id</th>
+                                      			<th style="width:10%">아이디</th>
+                                      			<th>이름</th>
                                       			<th style="width:30%;">date</th>
                                       			<th style="width:5%;">answer</th>
                                       		</tr>
@@ -77,6 +77,7 @@
                         								</c:choose>
                         								
                         								<td>${list.ID}</td>
+                        								<td>${list.NAME}</td>
                         								<td>${list.INSERT_DATE}</td>
                         								<td>${list.ANSWER}</td>
                         							</tr>

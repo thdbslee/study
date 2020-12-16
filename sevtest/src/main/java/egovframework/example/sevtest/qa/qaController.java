@@ -102,9 +102,6 @@ public class qaController {
 		List<QA_ANSWERVO> list = qaService.answerList(anvo);
 		model.addAttribute("list", list);
 		
-		System.out.println("QAINX=>"+anvo.getQAINX());
-		System.out.println("INX=>"+anvo.getINX());
-		
 		return "/test/QA/QA_Detail";
 	}
 	//답변등록

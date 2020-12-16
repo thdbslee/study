@@ -59,8 +59,8 @@
 <select id="sevDAO.sevLevList" parameterClass="sevVO" resultClass="sevVO">
 /*sevDAO.sevLevList*/
 	SELECT ID
-	,CASE WHEN LEVEL='2' THEN 'staff'
-	WHEN LEVEL='3' THEN 'guest'
+	,CASE WHEN LEVEL='2' THEN '팀장'
+	WHEN LEVEL='3' THEN '팀원'
 	END LEVEL_NAME 
 	,LEVEL
 	,LEV_COUNT 

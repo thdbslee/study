@@ -30,7 +30,7 @@
 					<h4>게시판 상세보기</h4>
 				<tr>
 					<th scope="row">제목</th>
-					<td><input type="text" id="TITLE" name="TITLE" value="${boardvo.TITLE}"></td>
+					<td><input type="hidden" id="TITLE" name="TITLE" value="${boardvo.TITLE}">${boardvo.TITLE }</td>
 				</tr>	
 				<tr> 
 					<th>내용</th>

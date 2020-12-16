@@ -23,7 +23,7 @@
 
 
 </head>
-<title>게시판 수정하기</title>
+<title>게시판 수정</title>
 <body>
 	<div>
 			<form id="frm" name="frm" method="post">
@@ -31,7 +31,7 @@
 				<tbody>
 					<h4>게시판 수정하기</h4>
 				<tr>
-					<input type="text" id="INX" name="INX" value="${boardvo.INX}">
+					<input type="hidden" id="INX" name="INX" value="${boardvo.INX}">
 					<th scope="row">제목</th>
 					<td><input type="text" id="TITLE" name="TITLE" value="${boardvo.TITLE}"></td>
 				</tr>	
@@ -46,6 +46,14 @@
 							<img src="/upload/${boardvo.IMG_1}" style="max-width: 50%; max-height: 50%;">
 						</c:if>
 					</td>
+				</tr>
+				<tr>
+					<th>아이디</th>
+					<td>${boardvo.ID}</td>
+				</tr>
+				<tr>
+					<th>이름</th>
+					<td>${loginvo.NAME}</td>
 				</tr>
 				</tbody>
 			</table>

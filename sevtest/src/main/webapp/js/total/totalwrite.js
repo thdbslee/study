@@ -4,8 +4,10 @@ function fn_onload(){
 }
 function fn_setDefault(){
 }
-function fn_detail(INX){
-	location.href="/total_detail.do?INX="+INX;
+function fn_detail(RNUM){
+	
+	location.href="/total_detail.do?RNUM="+RNUM;
+	$("#RNUM").val(RNUM);
 }
 function fn_search(){
 	$("#frm").submit();

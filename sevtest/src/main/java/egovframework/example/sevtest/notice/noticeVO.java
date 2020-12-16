@@ -12,6 +12,7 @@ public class noticeVO {
 	private String INSERT_DATE; //등록일
 	private int INFO;//조회수
 	private String NAME; 
+	private String ID;
 	
 	
 	public int getINX() {
@@ -68,6 +69,12 @@ public class noticeVO {
 	}
 	public void setNAME(String nAME) {
 		NAME = nAME;
+	}
+	public String getID() {
+		return ID;
+	}
+	public void setID(String iD) {
+		ID = iD;
 	}
 	
 	

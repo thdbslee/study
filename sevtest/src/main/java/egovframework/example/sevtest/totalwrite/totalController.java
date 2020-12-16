@@ -33,7 +33,6 @@ public class totalController {
 		model.addAttribute("login", loginvo);
 		vo.setID(loginvo.getID());
 		List<totalVO> list = totalService.totalWriteList(vo);
-		System.out.println("ID ->"+vo.getID());
 		model.addAttribute("list", list);
 
 		return "/test/total/totalwrite";

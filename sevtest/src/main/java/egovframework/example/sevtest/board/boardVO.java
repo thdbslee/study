@@ -8,12 +8,25 @@ public class boardVO  {
 	private String CONTENT;
 	private String ID;
 	private String INXS[]; //여러개 삭제할 수 있도록
-	private String NOTICE_DATE;
 	private MultipartFile IMG1;
 	private String IMG_1;
 	private String INFO; //조회수
+	private String BOARD_DATE;
+	private String NAME;
 	
 	
+	public String getNAME() {
+		return NAME;
+	}
+	public void setNAME(String nAME) {
+		NAME = nAME;
+	}
+	public String getBOARD_DATE() {
+		return BOARD_DATE;
+	}
+	public void setBOARD_DATE(String bOARD_DATE) {
+		BOARD_DATE = bOARD_DATE;
+	}
 	public String getINFO() {
 		return INFO;
 	}
@@ -33,12 +46,7 @@ public class boardVO  {
 	public void setIMG_1(String iMG_1) {
 		IMG_1 = iMG_1;
 	}
-	public String getNOTICE_DATE() {
-		return NOTICE_DATE;
-	}
-	public void setNOTICE_DATE(String nOTICE_DATE) {
-		NOTICE_DATE = nOTICE_DATE;
-	}
+	
 	public String[] getINXS() {
 		return INXS;
 	}

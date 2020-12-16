@@ -27,11 +27,11 @@
 <body>
 	<div>
 			<form id="frm" name="frm" method="post">
-			<input type="text" id="ID" name="ID" value="${loginvo.ID}">
+			<input type="hidden" id="ID" name="ID" value="${loginvo.ID}">
 
 			<table class="simple_table">
 				<tbody>
-					<h4>등업게시판</h4>
+					<h4>  등업게시판  </h4>
 				<tr>
 					<th scope="row">제목</th>
 					<td><input type="text" id="TITLE" name="TITLE"></td>

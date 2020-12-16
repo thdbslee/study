@@ -6,35 +6,37 @@
 <select id="noticeDAO.noticeList" parameterClass="noticeVO" resultClass="noticeVO">
 /*noticeDAO.noticeList*/
 	SELECT
-	INX , NAME, TITLE, CONTENT, IMG_1 
+	INX , NAME, TITLE, CONTENT, IMG_1 ,INFO
 	,DATE_FORMAT(INSERT_DATE,'%Y-%m-%d')AS INSERT_DATE
-	FROM NOTICE2
+	FROM NOTICE
 </select>
 <select id="noticeDAO.noticeSelect" parameterClass="noticeVO" resultClass="noticeVO">
 /*noticeDAO.noticeSelect*/
 	SELECT INX, NAME, TITLE, CONTENT, IMG_1, INSERT_DATE
-	FROM NOTICE2 
+	FROM NOTICE 
 	WHERE INX =#INX#
 </select>
 <update id="noticeDAO.noticeInsert" parameterClass="noticeVO">
 /*noticeDAO.noticeInsert*/
-	INSERT INTO NOTICE2(
+	INSERT INTO NOTICE(
 		TITLE
 		,NAME
 		,CONTENT
 		,INSERT_DATE
 		,IMG_1
+		,ID
 	)VALUES(
 		#TITLE#
 		,#NAME#
 		,#CONTENT#
 		,NOW()
 		,#IMG_1#
+		,#ID#
 	)	
 </update>
 <update id="noticeDAO.noticeUpdate" parameterClass="noticeVO">
 /*noticeDAO.noticeUpdate*/
-	UPDATE NOTICE2 
+	UPDATE NOTICE 
 	SET 
 	TITLE = #TITLE# 
 	,CONTENT = #CONTENT#
@@ -45,11 +47,16 @@
 </update>
 <update id="noticeDAO.noticeDelete" parameterClass="noticeVO">
 /*noticeDAO.noticeDelete*/
-	DELETE FROM NOTICE2 
+	DELETE FROM NOTICE 
 	WHERE INX
 	<iterate prepend="IN" open="(" close=")" conjunction="," property="INXS">
 		#INXS[]#
 	</iterate>
 </update>
-
+<update id="noticeDAO.noticeInfoCount" parameterClass="noticeVO">
+/*noticeDAO.noticeInfoCount*/
+	UPDATE NOTICE SET
+		INFO = INFO +1
+	WHERE INX = #INX#
+</update>
 </sqlMap>

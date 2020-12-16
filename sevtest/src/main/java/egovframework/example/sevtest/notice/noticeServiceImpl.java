@@ -27,6 +27,7 @@ public class noticeServiceImpl extends EgovAbstractServiceImpl implements  notic
 	public noticeVO noticeSelect(noticeVO vo)throws Exception{
 		return noticeDAO.noticeSelect(vo);
 	}
+
 	@Override
 	public boolean noticeUpdate(noticeVO vo)throws Exception{
 		return noticeDAO.noticeUpdate(vo);
@@ -35,5 +36,11 @@ public class noticeServiceImpl extends EgovAbstractServiceImpl implements  notic
 	public boolean noticeDelete(noticeVO vo)throws Exception{
 		System.out.println("deleteService");
 		return noticeDAO.noticeDelete(vo);
+	}
+	//조회수증가
+	@Override 
+	public void noticeInfoCount(noticeVO vo) throws Exception {
+		noticeDAO.noticeInfoCount(vo);
+		
 	}
 }

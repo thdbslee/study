@@ -5,9 +5,7 @@
 <%@ taglib prefix="spring"	uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fn"		uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
- <%
-//  	request.setCharacterEncoding("utf-8");
- %>
+
 <!DOCTYPE html>
 
 <html lang="ko">

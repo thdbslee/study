@@ -10,7 +10,7 @@
  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript" src="/js/workInsert.js" ></script> 
 
-<title>직원등록</title>
+<title>사용자등록</title>
 <div>
 <form id="frm" name="frm" method="post">
 	<table>

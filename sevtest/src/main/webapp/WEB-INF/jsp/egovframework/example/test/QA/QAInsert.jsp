@@ -26,8 +26,12 @@
 				<tbody>
 					<h4>질문등록</h4>
 				<tr>
-					<th>작성자</th>
-					<td><input type="hidden" id="ID" name="ID" value="${loginvo.ID}" readOnly>${loginvo.ID}</td>
+					<th>아이디</th>
+					<td><input type="hidden" id="ID" name="ID" value="${loginvo.ID}">${loginvo.ID}</td>
+				</tr>
+				<tr>
+					<th>이름</th>
+					<td><input type="hidden" id="NAME" name="NAME" value="${loginvo.NAME}">${loginvo.NAME}</td>
 				</tr>
 				<tr>
 					<th scope="row">제목</th>

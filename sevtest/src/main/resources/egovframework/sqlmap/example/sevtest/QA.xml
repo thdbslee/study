@@ -13,6 +13,7 @@
 	,CONTENT
 	,INSERT_DATE
 	,ID 
+	,NAME
 	,ANSWER
 	FROM QA 
 	GROUP BY DATE_FORMAT(INSERT_DATE, '%Y-%m-%d %h:%i:%s')
@@ -22,11 +23,13 @@
 /*qaDAO.qaInsert*/
 	INSERT INTO QA(
 		ID
+		,NAME
 		,TITLE
 		,CONTENT
 		,INSERT_DATE
 	)VALUES(
 		#ID#
+		,#NAME#
 		,#TITLE#
 		,#CONTENT#
 		,DATE_FORMAT(NOW(),'%Y-%m-%d %h:%i:%s')

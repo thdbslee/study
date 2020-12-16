@@ -41,10 +41,10 @@
 					<th>레벨</th>
 					<td>
 						<select name="LEVEL" id="LEVEL">
-							<option value="0"${editvo.LEVEL eq '0' ?'selected':''}>director</option>
-							<option value="1"${editvo.LEVEL eq '1' ?'selected':''}>manager</option>
-							<option value="2"${editvo.LEVEL eq '2' ?'selected':''}>staff</option>
-							<option value="3"${editvo.LEVEL eq '3' ?'selected':''}>guest</option>
+							<%-- <option value="0"${editvo.LEVEL eq '0' ?'selected':''}>관리자</option> --%>
+							<option value="1"${editvo.LEVEL eq '1' ?'selected':''}>매니저</option>
+							<option value="2"${editvo.LEVEL eq '2' ?'selected':''}>팀장</option>
+							<option value="3"${editvo.LEVEL eq '3' ?'selected':''}>팀원</option>
 						</select>
 					</td>
 				</tr>

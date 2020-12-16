@@ -16,9 +16,7 @@
                 <main>
                     <div class="container-fluid"
                     style="width:1400px; margin:auto; padding-top:30px;">
-                        <h1 class="mt-4">공지사항</h1>
-                       	<h7>${loginvo.ID}접속중입니다.</h7> 
-                       	 
+                        <h1 class="mt-4">공지사항</h1>        	 
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table mr-1"></i>
@@ -27,7 +25,7 @@
                             <div class="card-body" >
                                 <div class="table-responsive" >
                                 	<form id="frm" name="frm">
-                                
+                                	<input type="hidden" id="ID" name="ID" value="${loginvo.ID}">
 									<input type="hidden" id="LEVEL" name="LEVEL" value="${loginvo.LEVEL }">
                                 	<input type="hidden" id="AUTH_CODE" name="AUTH_CODE" value="${loginvo.AUTH_CODE}">
                   

@@ -32,10 +32,14 @@
 					<h4>문의 수정</h4>
 				<tr>
 					<th>ID</th>
-					<td><input  id="ID" name="ID" value="${qavo.ID}" readOnly style="width:30px;"></td>
+					<td>${loginvo.ID}</td>
 				</tr>
 				<tr>
-					<input type="text" id="INX" name="INX" value="${qavo.INX}">
+					<th>이름</th>
+					<td>${loginvo.NAME}</td>
+				</tr>
+				<tr>
+					<input type="hidden" id="INX" name="INX" value="${qavo.INX}">
 					<th scope="row">제목</th>
 					<td><input type="text" id="TITLE" name="TITLE" value="${qavo.TITLE}"></td>
 				</tr>	

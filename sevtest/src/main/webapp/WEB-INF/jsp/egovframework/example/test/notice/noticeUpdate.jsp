@@ -15,7 +15,6 @@
                     <div class="container-fluid"
                     style="width:1400px; margin:auto; padding-top:30px;">
                         <h1 class="mt-4">공지사항수정</h1>
-                       	<h7>${loginvo.ID}접속중입니다.</h7> 
                        	 <input type="hidden" id="NAME" name="NAME" value="${loginvo.NAME}">
                        	 <input type="hidden" id="INX" name="INX" value="${noticevo.INX}">
                         <div class="card mb-4">

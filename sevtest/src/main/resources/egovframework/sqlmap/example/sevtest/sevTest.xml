@@ -6,19 +6,19 @@
 	<select id="sevDAO.UserLogin" parameterClass="sevVO" resultClass="sevVO">
     /*sevDAO.userLogin*/    
 			SELECT * FROM SEV WHERE ID=#ID# 
-			AND PASSWD=password(#PASSWD#)
+			AND PASSWD=#PASSWD#
 		
 	</select>
 	<select id="sevDAO.passcount" parameterClass="sevVO" resultClass="java.lang.Integer">
 	/*sevDAO.passcount*/
 		SELECT COUNT(*) FROM SEV
 		WHERE ID=#ID#
-		AND PASSWD=password(#PASSWD#)
+		AND PASSWD=#PASSWD#
 	</select>
 	<update id="sevDAO.updatePasswd" parameterClass="sevVO">
 	/*sevDAO.updatePasswd*/
 		UPDATE SEV SET
-		PASSWD = password(#PASSWD#)
+		PASSWD = #PASSWD#
 		WHERE ID = #ID# 
 	</update>
 	<update id="sevDAO.LoginDate" parameterClass="sevVO">
@@ -54,23 +54,25 @@
 			,NAME
 			,PHONE
 			,AGE
+			,LEVEL
 		)VALUES(
 			#ID#
-			,password(#PASSWD#)
+			,#PASSWD#
 			,1
 			,#NAME#
 			,#PHONE#
 			,#AGE#
+			,'3'
 		)
 	</update>
 	<select id="sevDAO.sevList" parameterClass="sevVO" resultClass="sevVO">
 	/*sevDAO.sevList*/
 		SELECT 
 		INX,NAME
-		,CASE WHEN LEVEL = '0' THEN 'director'
-		WHEN LEVEL = '1' THEN 'manager' 
-		WHEN LEVEL = '2' THEN 'staff' 
-		WHEN LEVEL = '3' THEN 'guest'
+		,CASE WHEN LEVEL = '0' THEN '관리자'
+		WHEN LEVEL = '1' THEN '매니저' 
+		WHEN LEVEL = '2' THEN '팀장' 
+		WHEN LEVEL = '3' THEN '팀원'
 		END LEVEL_NAME
 		,ID
 		,PHONE
@@ -98,8 +100,8 @@
 		)VALUES(
 			#NAME#
 			,#ID#
-			,password(#PASSWD#)
-			,#LEVEL#
+			,#PASSWD#
+			,'3'
 			,#PHONE#
 			,#AGE#
 			,#STWORK#
@@ -118,7 +120,7 @@
 		UPDATE SEV
 		SET 
 		NAME = #NAME#
-		,PASSWD = password(#PASSWD#)
+		,PASSWD = #PASSWD#
 		,LEVEL = #LEVEL#
 		,PHONE = #PHONE#
 		,AGE = #AGE#
