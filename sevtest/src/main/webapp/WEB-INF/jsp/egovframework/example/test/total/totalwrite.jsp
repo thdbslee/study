@@ -5,7 +5,7 @@
 
 <c:import url="/layoutMenu.do"></c:import>
      <script type="text/javascript" src="/js/total/totalwrite.js" ></script> 
- <link rel="stylesheet" type="text/css" href="css/baseStyle.css" />
+  <link rel="stylesheet" type="text/css" href="css/baseStyle.css" /> 
 <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css" media="all">
 <!DOCTYPE html>
 <html>
